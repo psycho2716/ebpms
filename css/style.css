@@ -19,7 +19,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 20px;
+    padding: 40px;
 }
 
 .form-container{
@@ -61,4 +61,28 @@ body{
 
 .login-form{
     box-shadow: 1px 1px 4px #6d6d6d;
+}
+
+.login-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.login-header h1{
+    font-weight: 600;
+}
+
+.card-logo{
+    width: 50px;
+}
+
+.error-message{
+    display: inline-block;
+    background-color: #fab1b8;
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 3px;
+    color: #4b4b4b;
+    display: none;
 }

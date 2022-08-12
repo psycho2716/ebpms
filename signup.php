@@ -20,7 +20,6 @@ include('includes/user_actions.php');
     <!-- Bootstrap Meta tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sign Up</title>
-    <link rel="shortcut icon" href="images/logo.png" type="image/png">
 
     <?php include('includes/head.php'); ?>
 
@@ -56,53 +55,53 @@ include('includes/user_actions.php');
                         <input type="text" name="address" class="form-control" value="<?php echo $address; ?>" placeholder="Complete Address">
                     </div>
                 </div>
-                <div class="row mb-3">
-                    <div class="col">
+                <div class="row mb-3 g-3">
+                    <div class="col-md-6">
+                        <label for="">Secretary</label>
+                        <input type="text" name="secretary" class="form-control" value="<?php echo $secretary; ?>" placeholder="Secretary">
+                    </div>
+                    <div class="col-md-6">
                         <label for="">Treasurer</label>
                         <input type="text" name="treasurer" class="form-control" value="<?php echo $treasurer; ?>" placeholder="Treasurer">
                     </div>
                 </div>
-                <div class="row mb-3">
-                    <div class="col">
-                        <label for="">Secretary</label>
-                        <input type="text" name="secretary" class="form-control" value="<?php echo $secretary; ?>" placeholder="Secretary">
-                    </div>
-                </div>
                 <div class="row mb-3 mt-5">
-                    <div class="col">
+                    <hr>
+                    <div class="col-md-6 g-2">
                         <label for="">Kagawad 1</label>
                         <input type="text" name="kagawad_1" class="form-control" value="<?php echo $kagawad_1; ?>" placeholder="Barangay Kagawad">
                     </div>
-                    <div class="col">
+                    <div class="col-md-6 g-2">
                         <label for="">Kagawad 2</label>
                         <input type="text" name="kagawad_2" class="form-control" value="<?php echo $kagawad_2; ?>" placeholder="Barangay Kagawad">
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <div class="col">
+                    <div class="col-md-6 g-2">
                         <label for="">Kagawad 3</label>
                         <input type="text" name="kagawad_3" class="form-control" value="<?php echo $kagawad_3; ?>" placeholder="Barangay Kagawad">
                     </div>
-                    <div class="col">
+                    <div class="col-md-6 g-2">
                         <label for="">Kagawad 4</label>
                         <input type="text" name="kagawad_4" class="form-control" value="<?php echo $kagawad_4; ?>" placeholder="Barangay Kagawad">
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <div class="col">
+                    <div class="col-md-6 g-2">
                         <label for="">Kagawad 5</label>
                         <input type="text" name="kagawad_5" class="form-control" value="<?php echo $kagawad_5; ?>" placeholder="Barangay Kagawad">
                     </div>
-                    <div class="col">
+                    <div class="col-md-6 g-2">
                         <label for="">Kagawad 6</label>
                         <input type="text" name="kagawad_6" class="form-control" value="<?php echo $kagawad_6; ?>" placeholder="Barangay Kagawad">
                     </div>
                 </div>
-                <div class="row mb-5">
-                    <div class="col-md-6">
+                <div class="row mb-4">
+                    <div class="col-md-6 g-2 mb-4">
                         <label for="">Kagawad 7</label>
                         <input type="text" name="kagawad_7" class="form-control" value="<?php echo $kagawad_7; ?>" placeholder="Barangay Kagawad">
                     </div>
+                    <hr>
                 </div>
                 <div class="row mb-3">
                     <div class="col">

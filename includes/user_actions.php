@@ -48,12 +48,43 @@ if (isset($_POST['signup'])) {
 
     if (count($errors) == 0) {
         $password = md5($password); //encrypt the password before saving in the database
-  
+
         $query = "INSERT INTO users (barangay_name, barangay_captain, address, treasurer, secretary, kagawad_1, kagawad_2, kagawad_3, kagawad_4, kagawad_5, kagawad_6, kagawad_7, bhw,  sk_kagawad,  username, password) 
                   VALUES('$barangay_name','$barangay_captain','$address','$treasurer','$secretary','$kagawad_1','$kagawad_2','$kagawad_3','$kagawad_4','$kagawad_5','$kagawad_6','$kagawad_7','$bhw','$sk_kagawad','$username', '$password')";
         mysqli_query($conn, $query);
-        $_SESSION['username'] = $username;
-        $_SESSION['success'] = "You are now logged in";
         header('location: login.php');
+    }
+}
+
+$username_err = $password_err = "";
+$error = "";
+
+if (isset($_POST['login'])) {
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+
+    if (empty($username)) {
+        $username_err = "Username is Empty";
+    }
+    if (empty($password)) {
+        $password_err = "Password is Empty!";
+    }
+
+    if ($username_err === "" && $password_err === "") {
+        $password = md5($password);
+        $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+        $results = mysqli_query($conn, $query);
+        if (mysqli_num_rows($results) == 1) {
+            $row = mysqli_fetch_assoc($results);
+
+            session_start();
+            
+            $_SESSION['username'] = $username;
+            $_SESSION['id'] = $row['id'];
+            header('location: index.php');
+            exit();
+        } else {
+            $error = "Username or Password is Incorrect!";
+        }
     }
 }
