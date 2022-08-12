@@ -11,10 +11,10 @@
         <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a href="login.php" class="nav-link">Login</a>
+                    <a href="login.php" class="nav-link <?= ($activePage == 'login') ? 'active':''; ?>">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a href="signup.php" class="nav-link active">Sign Up</a>
+                    <a href="signup.php" class="nav-link <?= ($activePage == 'signup') ? 'active':''; ?>">Sign Up</a>
                 </li>
             </ul>
         </div>
