@@ -219,7 +219,19 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px;
+}
+
+.dashboard-content .grid-container{
+    justify-content: center;
+    padding: 50px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 350px));
+    gap: 50px;
+}
+
+.card-1{
+    grid-row-start: 1;
+    grid-row-end: 2;
 }
 
 .dashboard-card{
@@ -245,4 +257,8 @@ body{
 .card-logo{
     text-align: center;
     font-size: 40px;
+}
+
+@media screen and (max-width: 768px){
+    
 }
