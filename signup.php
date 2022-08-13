@@ -28,7 +28,6 @@ include('includes/user_actions.php');
 <body class="landing-body">
     <?php include('includes/landing_nav.php'); ?>
 
-
     <div class="container-fluid content">
         <div class="form-container">
             <div class="header-text-container">
