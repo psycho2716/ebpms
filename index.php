@@ -43,6 +43,8 @@ if (!isset($_SESSION['id'])) {
         </div>
     </nav>
 
+    <?php include('includes/off_canvas_menu.php'); ?>
+        
     <div class="dashboard-content">
         <div class="container-fluid grid-container">
             <div class="card dashboard-card card-1 h-100">
@@ -107,46 +109,6 @@ if (!isset($_SESSION['id'])) {
             </div>
         </div>
 
-    </div>
-
-    <!-- Off Canvas Menu -->
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="sidebar-header">
-            <img src="images/logo.png">
-            <div class="sidebar-text-container">
-                <h4>EBPMS</h4>
-            </div>
-            <div class="close-btn-container">
-                <a class="close-btn-sidebar text-dark" role="button" data-bs-dismiss="offcanvas" aria-label="Close"><i class='bx bx-x'></i></a>
-            </div>
-        </div>
-        <div class="sidebar-body">
-            <div class="sidebar-links">
-                <ul>
-                    <li class="active">
-                        <a href="#" class="sidebar-link">Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="#" class="sidebar-link">Barangay Officials</a>
-                    </li>
-                    <li>
-                        <a href="#" class="sidebar-link">Population</a>
-                    </li>
-                    <li>
-                        <a href="#" class="sidebar-link">Household</a>
-                    </li>
-                    <li>
-                        <a href="#" class="sidebar-link">Beneficiaries</a>
-                    </li>
-                    <li>
-                        <a href="#" class="sidebar-link">Residents</a>
-                    </li>
-                    <li>
-                        <a href="#" class="sidebar-link">Certificates</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
     </div>
 
     <?php include('includes/foot.php'); ?>

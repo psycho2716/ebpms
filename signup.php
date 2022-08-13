@@ -101,6 +101,7 @@ include('includes/user_actions.php');
                 </div>
                 <div class="row mb-3 mt-5">
                     <hr>
+                    <h3>Kagawad Officials</h3>
                     <div class="col-md-6 g-2">
                         <label for="">Kagawad 1</label>
                         <input type="text" name="kagawad_1" class="form-control" value="<?php echo $kagawad_1; ?>" placeholder="Barangay Kagawad" required>

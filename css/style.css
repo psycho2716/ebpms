@@ -236,7 +236,7 @@ body{
 
 .dashboard-card{
     position: relative;
-    background-color: #2596be;
+    background: linear-gradient(90deg, #2193b0, #6dd5ed);
 }
 
 .icon-background{
@@ -249,9 +249,10 @@ body{
     top: -40px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #fff;
+    background: linear-gradient(90deg, #ff512f, #dd2476);
     border-radius: 50%;
     box-shadow: 0 1px 7px #242424;
+    color: #fff;
 }
 
 .card-logo{
