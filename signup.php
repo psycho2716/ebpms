@@ -113,15 +113,7 @@ include('includes/user_actions.php');
                         <input type="text" name="sk_kagawad" class="form-control" value="<?php echo $sk_kagawad; ?>" placeholder="SK Kagawad" required>
                     </div>
                 </div>
-                <?php if (count($errors) > 0) : ?>
-                    <div class="error">
-                        <?php foreach ($errors as $error) : ?>
-                            <div class="alert alert-danger input-error">
-                                <span><?php echo $error ?></span>
-                            </div>
-                        <?php endforeach ?>
-                    </div>
-                <?php endif ?>
+                
                 <div class="row mb-3">
                     <div class="col">
                         <label for="">Username</label>
