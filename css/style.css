@@ -86,3 +86,29 @@ body{
     color: #4b4b4b;
     display: none;
 }
+
+.landing-body{
+    background: url('../images/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+}
+
+.menu-btn{
+    font-size: 30px;
+}
+
+.sidebar-logo{
+    width: 40px;
+}
+
+.offcanvas{
+    max-width: 250px;
+}
+
+.sidebar-body ul{
+    list-style: none;
+    background-color: red;
+}

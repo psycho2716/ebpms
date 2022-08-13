@@ -1,7 +1,8 @@
 <?php
 include('includes/db.php');
 $barangay_name = $barangay_captain = $address = $treasurer = $secretary = $kagawad_1 = $kagawad_2 = $kagawad_3 = $kagawad_4 = $kagawad_5 = $kagawad_6 = $kagawad_7 = $bhw = $sk_kagawad = $username = "";
-$errors = array();
+$username_err = $password_err = $confirm_password_err = "";
+$error = "";
 
 // Signup Starts Here!
 if (isset($_POST['signup'])) {
@@ -24,11 +25,11 @@ if (isset($_POST['signup'])) {
     $confirm_password = mysqli_real_escape_string($conn, $_POST['confirm_password']);
 
     if (empty($username)) {
-        array_push($errors, "Please Enter your username!");
+        $username_err = "Username is Empty!";
     } elseif (empty($password)) {
-        array_push($errors, "Please Enter your password!");
+        $password_err = "Password is Empty!";
     } elseif (empty($confirm_password)) {
-        array_push($errors, "Please Confirm your username!");
+        $confirm_password_err = "Please Confirm Password!";
     }
 
     $sql = "SELECT * FROM users WHERE username='$username'";
@@ -37,16 +38,16 @@ if (isset($_POST['signup'])) {
 
     if ($username_check) { // if user exists
         if ($username_check['username'] === $username) {
-            array_push($errors, "Username is not available!");
+            $username_err = "Username is not available!";
         }
     }
 
     if ($password !== $confirm_password) {
-        array_push($errors, "Password not match, Please try again!");
+        $error = "Password is not match, Please try again!";
     }
 
 
-    if (count($errors) == 0) {
+    if (empty($username_err) && empty($password_err) && empty($confirm_password_err)) {
         $password = md5($password); //encrypt the password before saving in the database
 
         $query = "INSERT INTO users (barangay_name, barangay_captain, address, treasurer, secretary, kagawad_1, kagawad_2, kagawad_3, kagawad_4, kagawad_5, kagawad_6, kagawad_7, bhw,  sk_kagawad,  username, password) 
@@ -56,9 +57,7 @@ if (isset($_POST['signup'])) {
     }
 }
 
-$username_err = $password_err = "";
-$error = "";
-
+// Login Starts Here!
 if (isset($_POST['login'])) {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);

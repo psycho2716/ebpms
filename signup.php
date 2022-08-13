@@ -25,7 +25,7 @@ include('includes/user_actions.php');
 
 </head>
 
-<body>
+<body class="landing-body">
     <?php include('includes/landing_nav.php'); ?>
 
 
@@ -113,19 +113,54 @@ include('includes/user_actions.php');
                         <input type="text" name="sk_kagawad" class="form-control" value="<?php echo $sk_kagawad; ?>" placeholder="SK Kagawad" required>
                     </div>
                 </div>
-                
+                <?php
+                if (!empty($error)) {
+                ?>
+                    <span class="error-message mb-3" style="display: block; ">
+                        <?php echo $error ?>
+                    </span>
+                <?php
+                }
+                ?>
                 <div class="row mb-3">
                     <div class="col">
                         <label for="">Username</label>
                         <input type="text" name="username" value="<?php echo $username; ?>" class="form-control" placeholder="Username">
+                        <?php
+                        if ($username_err !== "") {
+                        ?>
+                            <span class="error-message" style="display: block; ">
+                                <?php echo $username_err ?>
+                            </span>
+                        <?php
+                        }
+                        ?>
                     </div>
                     <div class="col">
                         <label for="">Password</label>
                         <input type="password" name="password" class="form-control" placeholder="Password">
+                        <?php
+                        if ($password_err !== "") {
+                        ?>
+                            <span class="error-message" style="display: block; ">
+                                <?php echo $password_err ?>
+                            </span>
+                        <?php
+                        }
+                        ?>
                     </div>
                     <div class="col">
                         <label for="">Confirm Password</label>
                         <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password">
+                        <?php
+                        if ($confirm_password_err !== "") {
+                        ?>
+                            <span class="error-message" style="display: block; ">
+                                <?php echo $confirm_password_err ?>
+                            </span>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="container d-flex justify-content-end gap-2">
@@ -135,12 +170,8 @@ include('includes/user_actions.php');
         </div>
     </div>
 
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-    <!-- External JS -->
-    <script type="module" src="js/app.js"></script>
+    <?php include('includes/foot.php'); ?>
+    
 
 </body>
 
