@@ -7,6 +7,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    text-decoration: none;
 }
 
 body{
@@ -114,7 +115,7 @@ body{
     align-items: center;
     justify-content: space-between;
     height: 50px;
-    border-bottom: 1px solid #4b4b4b;
+    border-bottom: 1px solid #8b8b8b;
     padding: 0 20px;
 }
 
@@ -123,8 +124,11 @@ body{
     height: 50px;
     align-items: center;
     justify-content: center;
-    background-color: red;
-    vertical-align: middle;
+}
+
+.sidebar-text-container h4{
+    margin-top: 10px;
+    font-weight: 500;
 }
 
 .close-btn-container{
@@ -136,8 +140,109 @@ body{
 
 .close-btn-container i{
     font-size: 25px;
+    margin-top: 5px;
 }
 
 .sidebar-header img{
     width: 35px;
+}
+
+.input-container{
+    position: relative;
+}
+
+.input-container .eye-icon{
+    position: absolute;
+    right: 15px;
+    top: 69%;
+    transform: translateY(-50%);
+    color: #aaaaaa;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.sidebar-links{
+    width: 100%;
+}
+
+.sidebar-links ul{
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    margin-top: 40px;
+    padding: 0 20px;
+}
+
+.sidebar-links ul li{
+    height: 35px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    padding: 0 20px;
+    width: 100%;
+    transition: 0.3s background-color;
+}
+
+.sidebar-links ul li.active{
+    background-color: #242424;
+    color: #fff;
+}
+
+.sidebar-links ul li.active > .sidebar-link{
+    color: #fff;
+}
+
+.sidebar-links ul li a{
+    text-decoration: none;
+    color: #4b4b4b;
+    font-weight: 600;
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+}
+
+.sidebar-links ul li:hover{
+    background-color: #242424;
+}
+
+.sidebar-links ul li:hover > .sidebar-link{
+    color: #fff;
+}
+
+.dashboard-content{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.dashboard-card{
+    position: relative;
+    background-color: #2596be;
+}
+
+.icon-background{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 1px 7px #242424;
+}
+
+.card-logo{
+    text-align: center;
+    font-size: 40px;
 }

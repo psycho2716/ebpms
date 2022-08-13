@@ -18,7 +18,12 @@ if (!isset($_SESSION['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EBPMS</title>
     <?php include('includes/head.php'); ?>
-
+    <style>
+        body {
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/seal.png');
+            background-position: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,21 +43,130 @@ if (!isset($_SESSION['id'])) {
         </div>
     </nav>
 
+    <div class="dashboard-content">
+        <div class="container-fluid">
+            <div class="row row-cols-2">
+                <div class="col-md-4">
+                    <div class="card dashboard-card">
+                        <div class="icon-background">
+                            <i class="fa-solid fa-house-user card-logo"></i>
+                        </div>
+                        <div class="card-body mt-5 text-light">
+                            <h3 class="card-title text-center">Population</h3>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 
-    <!-- Off Canvas Menu -->
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="sidebar-header">
-            <img src="images/logo.png">
-            <div class="sidebar-text-container">
-                <h4>EBPMS</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card dashboard-card">
+                        <div class="icon-background">
+                            <i class="fa-solid fa-house-user card-logo"></i>
+                        </div>
+                        <div class="card-body mt-5 text-light">
+                            <h3 class="card-title text-center">Population</h3>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card dashboard-card">
+                        <div class="icon-background">
+                            <i class="fa-solid fa-house-user card-logo"></i>
+                        </div>
+                        <div class="card-body mt-5 text-light">
+                            <h3 class="card-title text-center">Population</h3>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="close-btn-container">
-                <span class="close-btn-sidebar"><i class='bx bx-x'></i></span>
+
+            <div class="row mt-5 row-cols-2">
+                <div class="col-md-4">
+                    <div class="card dashboard-card">
+                        <div class="icon-background">
+                            <i class="fa-solid fa-house-user card-logo"></i>
+                        </div>
+                        <div class="card-body mt-5 text-light">
+                            <h3 class="card-title text-center">Population</h3>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card dashboard-card">
+                        <div class="icon-background">
+                            <i class="fa-solid fa-house-user card-logo"></i>
+                        </div>
+                        <div class="card-body mt-5 text-light">
+                            <h3 class="card-title text-center">Population</h3>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card dashboard-card">
+                        <div class="icon-background">
+                            <i class="fa-solid fa-house-user card-logo"></i>
+                        </div>
+                        <div class="card-body mt-5 text-light">
+                            <h3 class="card-title text-center">Population</h3>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- Off Canvas Menu -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="sidebar-header">
+                <img src="images/logo.png">
+                <div class="sidebar-text-container">
+                    <h4>EBPMS</h4>
+                </div>
+                <div class="close-btn-container">
+                    <a class="close-btn-sidebar text-dark" role="button" data-bs-dismiss="offcanvas" aria-label="Close"><i class='bx bx-x'></i></a>
+                </div>
+            </div>
+            <div class="sidebar-body">
+                <div class="sidebar-links">
+                    <ul>
+                        <li class="active">
+                            <a href="#" class="sidebar-link">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#" class="sidebar-link">Barangay Officials</a>
+                        </li>
+                        <li>
+                            <a href="#" class="sidebar-link">Population</a>
+                        </li>
+                        <li>
+                            <a href="#" class="sidebar-link">Household</a>
+                        </li>
+                        <li>
+                            <a href="#" class="sidebar-link">Beneficiaries</a>
+                        </li>
+                        <li>
+                            <a href="#" class="sidebar-link">Residents</a>
+                        </li>
+                        <li>
+                            <a href="#" class="sidebar-link">Certificates</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
 
-    <?php include('includes/foot.php'); ?>
+        <?php include('includes/foot.php'); ?>
 
 </body>
 
