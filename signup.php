@@ -39,7 +39,41 @@ include('includes/user_actions.php');
                 <div class="row mb-3">
                     <div class="col">
                         <label for="">Barangay Name</label>
-                        <input type="text" name="barangay_name" class="form-control" value="<?php echo $barangay_name; ?>" placeholder="Enter Barangay Name" required>
+                        <select name="barangay_name" class="form-control" value="<?php echo $barangay_name; ?>" placeholder="Enter Barangay Name" required>
+                            <option selected disabled> -- Select Barangay -- </option>
+                            <option value="Agbaluto">Agbaluto</option>
+                            <option value="Agpanabat">Agpanabat</option>
+                            <option value="Agbudia">Agbudia</option>
+                            <option value="Agnaga">Agnaga</option>
+                            <option value="Agnay">Agnay</option>
+                            <option value="Agnipa">Agbaluto</option>
+                            <option value="Agbaluto">Agnipa</option>
+                            <option value="Agtongo">Agtongo</option>
+                            <option value="Alad (island barangay)">Alad (island barangay)</option>
+                            <option value="Bagacay">Bagacay</option>
+                            <option value="Cajimos">Cajimos</option>
+                            <option value="Calabogo">Calabogo</option>
+                            <option value="Capaclan">Capaclan</option>
+                            <option value="Ginablan">Ginablan</option>
+                            <option value="Guimpingan">Guimpingan</option>
+                            <option value="Ilauran">Ilauran</option>
+                            <option value="Lamao">Lamao</option>
+                            <option value="Li-o">Li-o</option>
+                            <option value="Logbon (island baranagay)">Logbon (island baranagay)</option>
+                            <option value="Lunas">Lunas</option>
+                            <option value="Lonos">Lonos</option>
+                            <option value="Macalas">Macalas</option>
+                            <option value="Mapula">Mapula</option>
+                            <option value="Cobrador(Naguso)">Cobrador(Naguso)</option>
+                            <option value="palje">palje</option>
+                            <option value="Barangay I (Poblacion)">Barangay I (Poblacion)</option>
+                            <option value="Barangay II (Poblacion)">Barangay II (Poblacion)</option>
+                            <option value="Barangay III (Poblacion)">Barangay III (Poblacion)</option>
+                            <option value="Barangay IV (Poblacion)" >Barangay IV (Poblacion)</option>
+                            <option value="Sablayan">Sablayan</option>
+                            <option value="Sawang">Sawang</option>
+                            <option value="Tambac">Tambac</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -171,7 +205,7 @@ include('includes/user_actions.php');
     </div>
 
     <?php include('includes/foot.php'); ?>
-    
+
 
 </body>
 

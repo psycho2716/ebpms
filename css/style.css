@@ -106,9 +106,38 @@ body{
 
 .offcanvas{
     max-width: 250px;
+    padding: 0;
 }
 
-.sidebar-body ul{
-    list-style: none;
+.sidebar-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    border-bottom: 1px solid #4b4b4b;
+    padding: 0 20px;
+}
+
+.sidebar-text-container{
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
     background-color: red;
+    vertical-align: middle;
+}
+
+.close-btn-container{
+    height: 100%;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.close-btn-container i{
+    font-size: 25px;
+}
+
+.sidebar-header img{
+    width: 35px;
 }

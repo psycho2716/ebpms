@@ -37,33 +37,18 @@ if (!isset($_SESSION['id'])) {
             </div>
         </div>
     </nav>
-    
+
 
     <!-- Off Canvas Menu -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-            <img src="images/logo.png" class="sidebar-logo">
-            <h4 class="offcanvas-title" id="offcanvasExampleLabel">EBPMS</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body sidebar-body">
-            <ul class="d-flex flex-column align-items-center pe-5 w-100">
-                <li>
-                    <a href="#" class="sidebar-link">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#" class="sidebar-link">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#" class="sidebar-link">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#" class="sidebar-link">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#" class="sidebar-link">Dashboard</a>
-                </li>
-            </ul>
+        <div class="sidebar-header">
+            <img src="images/logo.png">
+            <div class="sidebar-text-container">
+                <h4>EBPMS</h4>
+            </div>
+            <div class="close-btn-container">
+                <span class="close-btn-sidebar"><i class='bx bx-x'></i></span>
+            </div>
         </div>
     </div>
 
