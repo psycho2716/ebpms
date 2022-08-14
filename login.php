@@ -64,9 +64,10 @@ if (isset($_SESSION['id'])) {
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <div class="col">
+                    <div class="col input-container">
                         <label for="username">Password</label>
-                        <input type="password" class="form-control" name="password" placeholder="Enter Password">
+                        <input type="password" class="form-control form-input-password" name="password" placeholder="Enter Password">
+                        <i class='bx bx-show eye-icon'></i>
                         <?php
                         if ($password_err !== "") {
                         ?>

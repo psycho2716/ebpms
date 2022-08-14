@@ -170,9 +170,10 @@ include('includes/user_actions.php');
                         }
                         ?>
                     </div>
-                    <div class="col">
+                    <div class="col input-container">
                         <label for="">Password</label>
-                        <input type="password" name="password" class="form-control" placeholder="Password">
+                        <input type="password" name="password" class="form-control form-input-password" placeholder="Password">
+                        <i class='bx bx-show eye-icon'></i>
                         <?php
                         if ($password_err !== "") {
                         ?>
@@ -183,9 +184,9 @@ include('includes/user_actions.php');
                         }
                         ?>
                     </div>
-                    <div class="col">
+                    <div class="col input-container">
                         <label for="">Confirm Password</label>
-                        <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password">
+                        <input type="password" name="confirm_password" class="form-control form-input-password" placeholder="Confirm Password">
                         <?php
                         if ($confirm_password_err !== "") {
                         ?>
