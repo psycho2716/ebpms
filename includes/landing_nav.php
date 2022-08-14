@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark px-3">
     <div class="container-fluid">
         <a href="login.php" class="navbar-brand">
-            <img src="images/logo.png"> EBPMSDIDA
+            <img src="images/logo.png"> EBPMS
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

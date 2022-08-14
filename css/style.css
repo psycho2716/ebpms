@@ -119,6 +119,10 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
 }
 
+.logout-alt{
+    display: none;
+}
+
 .menu-btn {
     font-size: 30px;
 }
@@ -346,4 +350,17 @@ body::-webkit-scrollbar-thumb {
     box-shadow: 0 1px 7px #242424;
 }
 
-@media screen and (max-width: 768px) {}
+@media screen and (max-width: 768px) {
+    .navbar-logo-container{
+        border: none;
+        margin-right: 0;
+    }
+
+    .menu-btn {
+        transform: rotateY(180deg);
+    }
+
+    .logout-alt{
+        display: block;
+    }
+}

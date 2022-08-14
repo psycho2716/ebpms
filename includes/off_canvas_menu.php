@@ -33,6 +33,9 @@
                 <li class="<?= ($activePage == 'certificates') ? 'active' : ''; ?>">
                     <a href="certificates.php" class="sidebar-link">Certificates</a>
                 </li>
+                <li>
+                    <a href="logout.php" class="sidebar-link logout-alt">Log Out</a>
+                </li>
             </ul>
         </div>
     </div>
