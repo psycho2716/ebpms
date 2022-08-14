@@ -41,7 +41,9 @@ if (!isset($_SESSION['id'])) {
                     <a href="officials.php" class="card-link">
                         <div class="card-body mt-5 text-light">
                             <h3 class="card-title text-center"><?php echo $barangay_name; ?></h3>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <div class="barangay-card-img-container">
+                                <img src="images/bg.jpg" class="barangay-card-img">
+                            </div>
 
                         </div>
                         <div class="shine"></div>

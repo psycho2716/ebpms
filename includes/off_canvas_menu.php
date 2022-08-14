@@ -15,8 +15,8 @@
                 <li class="<?= ($activePage == 'index') ? 'active' : ''; ?>">
                     <a href="index.php" class="sidebar-link">Dashboard</a>
                 </li>
-                <li class="<?= ($activePage == 'officials') ? 'active' : ''; ?>">
-                    <a href="barangays.php" class="sidebar-link">Barangay Officials</a>
+                <li class="<?= ($activePage == 'barangays') ? 'active' : ''; ?>">
+                    <a href="barangays.php" class="sidebar-link">Barangays</a>
                 </li>
                 <li class="<?= ($activePage == 'population') ? 'active' : ''; ?>">
                     <a href="population.php" class="sidebar-link">Population</a>

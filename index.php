@@ -34,7 +34,15 @@ if (!isset($_SESSION['id'])) {
                 <a href="barangays.php" class="card-link">
                     <div class="card-body mt-5 text-light">
                         <h4 class="card-title text-center">Barangays</h4>
-                        <h2 class="card-text text-center">100</h2>
+                        <h2 class="card-text text-center">
+                            <?php
+                                $sql = "SELECT * FROM users";
+                                $result = mysqli_query($conn, $sql);
+                                $barangays = mysqli_num_rows($result);
+
+                                echo $barangays;
+                            ?>
+                        </h2>
                     </div>
                     <div class="card-footer">
                         <span class="text-light">More Details</span>
@@ -118,7 +126,7 @@ if (!isset($_SESSION['id'])) {
                     <div class="shine"></div>
                 </a>
             </div>
-            
+
         </div>
 
     </div>
