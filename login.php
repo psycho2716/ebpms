@@ -37,7 +37,7 @@ if (isset($_SESSION['id'])) {
             <img src="images/logo.png" class="card-logo" width="50px" height="50px">
         </div>
         <div class="card-body mt-2">
-           
+
             <?php
             if (!empty($error)) {
             ?>
@@ -68,6 +68,8 @@ if (isset($_SESSION['id'])) {
                         <label for="username">Password</label>
                         <input type="password" class="form-control form-input-password" name="password" placeholder="Enter Password">
                         <i class='bx bx-show eye-icon'></i>
+                    </div>
+                    <div class="input-container">
                         <?php
                         if ($password_err !== "") {
                         ?>

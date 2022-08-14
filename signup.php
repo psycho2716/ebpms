@@ -68,7 +68,7 @@ include('includes/user_actions.php');
                             <option value="Barangay I (Poblacion)">Barangay I (Poblacion)</option>
                             <option value="Barangay II (Poblacion)">Barangay II (Poblacion)</option>
                             <option value="Barangay III (Poblacion)">Barangay III (Poblacion)</option>
-                            <option value="Barangay IV (Poblacion)" >Barangay IV (Poblacion)</option>
+                            <option value="Barangay IV (Poblacion)">Barangay IV (Poblacion)</option>
                             <option value="Sablayan">Sablayan</option>
                             <option value="Sawang">Sawang</option>
                             <option value="Tambac">Tambac</option>
@@ -156,6 +156,15 @@ include('includes/user_actions.php');
                 <?php
                 }
                 ?>
+                <?php
+                if ($password_err !== "") {
+                ?>
+                    <span class="error-message" style="display: block; ">
+                        <?php echo $password_err ?>
+                    </span>
+                <?php
+                }
+                ?>
                 <div class="row mb-3">
                     <div class="col">
                         <label for="">Username</label>
@@ -174,15 +183,6 @@ include('includes/user_actions.php');
                         <label for="">Password</label>
                         <input type="password" name="password" class="form-control form-input-password" placeholder="Password">
                         <i class='bx bx-show eye-icon'></i>
-                        <?php
-                        if ($password_err !== "") {
-                        ?>
-                            <span class="error-message" style="display: block; ">
-                                <?php echo $password_err ?>
-                            </span>
-                        <?php
-                        }
-                        ?>
                     </div>
                     <div class="col input-container">
                         <label for="">Confirm Password</label>

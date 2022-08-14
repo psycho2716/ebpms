@@ -13,25 +13,25 @@
         <div class="sidebar-links">
             <ul>
                 <li class="<?= ($activePage == 'index') ? 'active' : ''; ?>">
-                    <a href="#" class="sidebar-link">Dashboard</a>
+                    <a href="index.php" class="sidebar-link">Dashboard</a>
                 </li>
                 <li class="<?= ($activePage == 'officials') ? 'active' : ''; ?>">
-                    <a href="#" class="sidebar-link">Barangay Officials</a>
+                    <a href="barangays.php" class="sidebar-link">Barangay Officials</a>
                 </li>
                 <li class="<?= ($activePage == 'population') ? 'active' : ''; ?>">
-                    <a href="#" class="sidebar-link">Population</a>
+                    <a href="population.php" class="sidebar-link">Population</a>
                 </li>
                 <li class="<?= ($activePage == 'household') ? 'active' : ''; ?>">
-                    <a href="#" class="sidebar-link">Household</a>
+                    <a href="household.php" class="sidebar-link">Household</a>
                 </li>
                 <li class="<?= ($activePage == 'beneficiaries') ? 'active' : ''; ?>">
-                    <a href="#" class="sidebar-link">Beneficiaries</a>
+                    <a href="beneficiaries.php" class="sidebar-link">Beneficiaries</a>
                 </li>
                 <li class="<?= ($activePage == 'residents') ? 'active' : ''; ?>">
-                    <a href="#" class="sidebar-link">Residents</a>
+                    <a href="residents.php" class="sidebar-link">Residents</a>
                 </li>
                 <li class="<?= ($activePage == 'certificates') ? 'active' : ''; ?>">
-                    <a href="#" class="sidebar-link">Certificates</a>
+                    <a href="certificates.php" class="sidebar-link">Certificates</a>
                 </li>
             </ul>
         </div>

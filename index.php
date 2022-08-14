@@ -31,11 +31,13 @@ if (!isset($_SESSION['id'])) {
                 <div class="icon-background">
                     <i class="fa-solid fa-house-user card-logo"></i>
                 </div>
-                <a href="officials.php" class="card-link">
+                <a href="barangays.php" class="card-link">
                     <div class="card-body mt-5 text-light">
-                        <h3 class="card-title text-center">Barangay Officials</h3>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
+                        <h4 class="card-title text-center">Barangays</h4>
+                        <h2 class="card-text text-center">100</h2>
+                    </div>
+                    <div class="card-footer">
+                        <span class="text-light">More Details</span>
                     </div>
                     <div class="shine"></div>
                 </a>
@@ -47,9 +49,11 @@ if (!isset($_SESSION['id'])) {
                 </div>
                 <a href="population.php" class="card-link">
                     <div class="card-body mt-5 text-light">
-                        <h3 class="card-title text-center">Population</h3>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
+                        <h4 class="card-title text-center">Population</h4>
+                        <h2 class="card-text text-center">100</h2>
+                    </div>
+                    <div class="card-footer">
+                        <span class="text-light">More Details</span>
                     </div>
                     <div class="shine"></div>
                 </a>
@@ -60,9 +64,11 @@ if (!isset($_SESSION['id'])) {
                 </div>
                 <a href="household.php" class="card-link">
                     <div class="card-body mt-5 text-light">
-                        <h3 class="card-title text-center">Household</h3>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
+                        <h4 class="card-title text-center">Household</h4>
+                        <h2 class="card-text text-center">100</h2>
+                    </div>
+                    <div class="card-footer">
+                        <span class="text-light">More Details</span>
                     </div>
                     <div class="shine"></div>
                 </a>
@@ -73,9 +79,11 @@ if (!isset($_SESSION['id'])) {
                 </div>
                 <a href="beneficiaries.php" class="card-link">
                     <div class="card-body mt-5 text-light">
-                        <h3 class="card-title text-center">Beneficiaries</h3>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
+                        <h4 class="card-title text-center">Beneficiaries</h4>
+                        <h2 class="card-text text-center">100</h2>
+                    </div>
+                    <div class="card-footer">
+                        <span class="text-light">More Details</span>
                     </div>
                     <div class="shine"></div>
                 </a>
@@ -86,9 +94,11 @@ if (!isset($_SESSION['id'])) {
                 </div>
                 <a href="residents" class="card-link">
                     <div class="card-body mt-5 text-light">
-                        <h3 class="card-title text-center">Residents</h3>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
+                        <h4 class="card-title text-center">Residents</h4>
+                        <h2 class="card-text text-center">100</h2>
+                    </div>
+                    <div class="card-footer">
+                        <span class="text-light">More Details</span>
                     </div>
                     <div class="shine"></div>
                 </a>
@@ -99,13 +109,16 @@ if (!isset($_SESSION['id'])) {
                 </div>
                 <a href="certificates" class="card-link">
                     <div class="card-body mt-5 text-light">
-                        <h3 class="card-title text-center">Certificates</h3>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
+                        <h4 class="card-title text-center">Certificates</h4>
+                        <h2 class="card-text text-center">100</h2>
+                    </div>
+                    <div class="card-footer">
+                        <span class="text-light">More Details</span>
                     </div>
                     <div class="shine"></div>
                 </a>
             </div>
+            
         </div>
 
     </div>
