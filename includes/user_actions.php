@@ -173,3 +173,81 @@ if (isset($_GET['delete_certificate'])) {
         header('location: ../certificates.php?info=failed');
     }
 }
+
+// Add Resident
+if (isset($_POST['add_resident'])) {
+    $purok_id = $_GET['purok_id'];
+    $barangay_id = $_GET['barangay_id'];
+
+    $residents_name = $_POST['residents_name'];
+    $residents_address = $_POST['residents_address'];
+    $gender = $_POST['gender'];
+    $dob = $_POST['dob'];
+    $ethnicity = $_POST['ethnicity'];
+    $civil_status = $_POST['civil_status'];
+
+    $query = mysqli_query($conn, "SELECT * FROM residents WHERE residents_name = '$residents_name'");
+    $fetch = mysqli_fetch_array($query);
+
+    if (!$fetch) {
+        mysqli_query($conn, "INSERT INTO residents (residents_name, residents_address, gender, dob, purok_id, barangay_id, civil_status, ethnicity)
+        VALUES('$residents_name', '$residents_address', '$gender', '$dob', '$purok_id', '$barangay_id', '$civil_status', '$ethnicity')");
+
+        header('location: residents.php?info=success');
+    } else {
+        $purok_err = " is already registered!";
+    }
+}
+
+// Delete Resident
+if (isset($_GET['delete_resident'])) {
+    $id = $_GET['delete_resident'];
+    $purok_id = $_GET['purok_id'];
+
+    $sql = "DELETE FROM residents WHERE id=$id";
+
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        header('location: residents.php?info=success');
+        exit;
+    } else {
+        header('location: residents.php?info=failed');
+    }
+}
+
+// Edit Resident
+if (isset($_POST['edit_resident'])) {
+    // Get edit id and purok id
+    $id = $_GET['edit_id'];
+    $purok_id = $_GET['purok_id'];
+
+    // Store post values in a variable
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $middle_name = $_POST['middle_name'];
+    $occupation = $_POST['occupation'];
+    $school_attainment = $_POST['school_attainment'];
+    $skills = $_POST['skills'];
+    $blood_type = $_POST['blood_type'];
+    $gender = $_POST['gender'];
+    $dob = $_POST['dob'];
+    $citizenship = $_POST['citizenship'];
+    $civil_status = $_POST['civil_status'];
+    $residents_address = $_POST['residents_address'];
+    $household_type = $_POST['household_type'];
+    $four_ps = $_POST['four_ps'];
+    $pwd = $_POST['pwd'];
+
+
+    $sql = "UPDATE residents SET first_name ='$first_name', middle_name ='$middle_name', last_name ='$last_name', occupation ='$occupation', school_attainment ='$school_attainment', skills ='$skills', blood_type ='$blood_type', residents_address = '$residents_address', gender = '$gender', dob = '$dob', citizenship = '$citizenship', civil_status = '$civil_status', household_type = '$household_type', 4p_s = '$four_ps', pwd = '$pwd' WHERE id = $id ";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        header('location: residents.php?edit=success');
+        exit;
+    } else {
+        header('location: residents.php?edit=failed');
+        exit;
+    }
+}

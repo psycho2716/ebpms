@@ -1,5 +1,6 @@
 <?php
 include('includes/db.php');
+include('includes/user_actions.php');
 
 session_start();
 $id = $_SESSION['id'];
@@ -25,78 +26,6 @@ $row = mysqli_fetch_assoc($run_query);
 $result_barangay_id = $row['barangay_id'];
 $barangay_name = $row['barangay_name'];
 
-// Add Resident
-if (isset($_POST['add_resident'])) {
-    $purok_id = $_GET['purok_id'];
-    $barangay_id = $_GET['barangay_id'];
-
-    $residents_name = $_POST['residents_name'];
-    $residents_address = $_POST['residents_address'];
-    $gender = $_POST['gender'];
-    $dob = $_POST['dob'];
-    $ethnicity = $_POST['ethnicity'];
-    $civil_status = $_POST['civil_status'];
-
-    $query = mysqli_query($conn, "SELECT * FROM residents WHERE residents_name = '$residents_name'");
-    $fetch = mysqli_fetch_array($query);
-
-    if (!$fetch) {
-        mysqli_query($conn, "INSERT INTO residents (residents_name, residents_address, gender, dob, purok_id, barangay_id, civil_status, ethnicity)
-        VALUES('$residents_name', '$residents_address', '$gender', '$dob', '$purok_id', '$barangay_id', '$civil_status', '$ethnicity')");
-
-        header('location: residents.php?info=success');
-    } else {
-        $purok_err = " is already registered!";
-    }
-}
-
-// Delete Resident
-if (isset($_GET['delete_resident'])) {
-    $id = $_GET['delete_resident'];
-    $purok_id = $_GET['purok_id'];
-
-    $sql = "DELETE FROM residents WHERE id=$id";
-
-    $result = mysqli_query($conn, $sql);
-
-    if ($result) {
-        header('location: residents.php?info=success');
-        exit;
-    } else {
-        header('location: residents.php?info=failed');
-    }
-}
-
-// Edit Resident
-if (isset($_POST['edit_resident'])) {
-    // Get edit id and purok id
-    $id = $_GET['edit_id'];
-    $purok_id = $_GET['purok_id'];
-
-    // Store post values in a variable
-    $first_name = $_POST['first_name'];
-    $middle_name = $_POST['middle_name'];
-    $last_name = $_POST['last_name'];
-    $occupation = $_POST['occupation'];
-    $school_attainment = $_POST['school_attainment'];
-    $blood_type = $_POST['blood_type'];
-    $skills = $_POST['skills'];
-    $citizenship = $_POST['citizenship'];
-    $residents_address = $_POST['residents_address'];
-    $gender = $_POST['gender'];
-    $dob = $_POST['dob'];
-
-    $sql = "UPDATE residents SET first_name ='$first_name', residents_address = '$residents_address', gender = '$gender', dob = '$dob', middle_name = '$middle_name', last_name = '$last_name', occupation = '$occupation', school_attainment = '$school_attainment', blood_type = '$blood_type', skills = '$skills', citizenship = '$citizenship' WHERE id = $id ";
-    $result = mysqli_query($conn, $sql);
-
-    if ($result) {
-        header('location: residents.php?info=success');
-        exit;
-    } else {
-        header('location: residents.php?info=failed');
-        exit;
-    }
-}
 
 ?>
 
@@ -216,7 +145,7 @@ if (isset($_POST['edit_resident'])) {
                 </thead>
                 <tbody>
                     <?php
-                    $sql = "SELECT * FROM residents WHERE barangay_id = '$barangay_id'";
+                    $sql = "SELECT * FROM residents";
                     $run_query = mysqli_query($conn, $sql);
                     $i = 0;
 
@@ -250,6 +179,11 @@ if (isset($_POST['edit_resident'])) {
                                         </a>
                                     </div>
                                     <div class='m-1'>
+                                        <a class='btn btn-primary' data-bs-toggle='modal' role='button' data-bs-target='#view$resident_id'>
+                                            <i class='fa-solid fa-id-card'></i>
+                                        </a>
+                                    </div>
+                                    <div class='m-1'>
                                         <a class='btn btn-warning' data-bs-toggle='modal' role='button' data-bs-target='#edit$resident_id'>
                                             <i class='fa-solid fa-pen'></i>
                                         </a>
@@ -270,6 +204,116 @@ if (isset($_POST['edit_resident'])) {
         </div>
     </div>
 
+    <!-- Residents Profile Modal -->
+    <?php
+    $sql = "SELECT * FROM residents";
+    $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_array($result)) {
+        $resident_id = $row['id'];
+        $first_name = $row['first_name'];
+        $middle_name = $row['middle_name'];
+        $last_name = $row['last_name'];
+        $residents_address = $row['residents_address'];
+        $gender = $row['gender'];
+        $dob = $row['dob'];
+        $citizenship = $row['citizenship'];
+        $civil_status = $row['civil_status'];
+        $occupation = $row['occupation'];
+        $school_attainment = $row['school_attainment'];
+        $skills = $row['skills'];
+        $blood_type = $row['blood_type'];
+        $purok_id = $row['purok_id'];
+        $household_type = $row['household_type'];
+        $four_ps = $row['4p_s'];
+        $pwd = $row['pwd'];
+    ?>
+        <div class="modal fade" id="view<?php echo $resident_id; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark text-light">
+                        <h5 class="modal-title" id="staticBackdropLabel"><strong>Informations</strong></h5>
+                        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="custom-profile-card">
+                            <div class="profile-header">
+                                <img src="images/logo.png">
+                            </div>
+                            <div class="profile-body mt-2">
+                                <div class="body-header text-center">
+                                    <h4><?php echo $last_name . ", " . $first_name; ?><span> <?php echo $middle_name; ?></span></h4>
+                                    <span>
+                                        <?php
+                                        if ($household_type === "Head") {
+                                            echo "Head of Household";
+                                        } else {
+                                            echo "Member of Household";
+                                        }
+                                        ?>
+                                    </span>
+                                </div>
+                                <div class="profile-text mt-3">
+                                    <div class="row mb-1">
+                                        <div class="col">
+                                            <span>Date of Birth: <?php echo $dob; ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1">
+                                        <div class="col">
+                                            <span>Address: <?php echo $residents_address; ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1">
+                                        <div class="col">
+                                            <span>Citizenship: <?php echo $citizenship; ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1">
+                                        <div class="col">
+                                            <span>Civil Status: <?php echo $civil_status; ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1">
+                                        <div class="col">
+                                            <span>School Attainment: <?php echo $school_attainment; ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1">
+                                        <div class="col">
+                                            <span>Occupation: <?php echo $occupation; ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1">
+                                        <div class="col">
+                                            <span>Skills: <?php echo $skills; ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1">
+                                        <div class="col">
+                                            <span>Blood Type: <?php echo $blood_type; ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1">
+                                        <div class="col">
+                                            <span>4P's: <?php echo $four_ps; ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1">
+                                        <div class="col">
+                                            <span>PWD: <?php echo $pwd; ?></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php
+    }
+    ?>
+
     <!-- Edit Modal -->
     <?php
     $sql = "SELECT * FROM residents";
@@ -289,6 +333,15 @@ if (isset($_POST['edit_resident'])) {
         $blood_type = $row['blood_type'];
         $citizenship = $row['citizenship'];
         $purok_id = $row['purok_id'];
+        $household_type = $row['household_type'];
+        $four_ps = $row['4p_s'];
+        $pwd = $row['pwd'];
+
+        if ($household_type === "Head") {
+            $household_type_result = "Head of Household";
+        } else {
+            $household_type_result = "Member of Household";
+        }
 
         echo "
                 <div class='modal fade' id='edit$resident_id' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
@@ -299,7 +352,7 @@ if (isset($_POST['edit_resident'])) {
                                 <button type='button' class='btn-close bg-light' data-bs-dismiss='modal' aria-label='Close'></button>
                             </div>
                             <div class='modal-body'>
-                                <form action='residents.php?purok_id=$purok_id&&edit_id=$resident_id' method='post'>
+                                <form action='residents.php?edit_id=$resident_id' method='post'>
                                     <div class='form-input-container row mb-2'>
                                         <div class='col-md-4'>
                                             <label>Last Name</label>
@@ -316,6 +369,16 @@ if (isset($_POST['edit_resident'])) {
                                     </div>
                                     <div class='form-input-container row mb-2'>
                                         <div class='col'>
+                                            <label>Household Type</label>
+                                            <select name='household_type' class='form-control'>
+                                                <option selected value='$household_type'> $household_type_result </option>
+                                                <option value='Head'>Head of Household</option>
+                                                <option value='Member'>Member of Household</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class='form-input-container row mb-2'>
+                                        <div class='col'>
                                             <label>Address</label>
                                             <input type='text' name='residents_address' class='form-control' value='$residents_address' placeholder='Complete Address' required>
                                         </div>
@@ -324,8 +387,8 @@ if (isset($_POST['edit_resident'])) {
                                         <div class='col'>
                                             <label>Gender</label>
                                             <select name='gender' class='form-control' >
-                                                <option selected disabled> -- Select Gender -- </option>
-                                                <option selected disabled value='$gender'>$gender</option>
+                                                <option disabled> -- Select Gender -- </option>
+                                                <option class='selected-item' selected value='$gender'>$gender</option>
                                                 <option value='Male'>Male</option>
                                                 <option value='Female'>Female</option>
                                             </select>
@@ -340,20 +403,15 @@ if (isset($_POST['edit_resident'])) {
                                     <div class='form-input-container row mb-2'>
                                         <div class='col'>
                                             <label>Citizenship</label>
-                                            <select name='citizenship' class='form-control'>
-                                                <option disabled> -- Select citizenship -- </option>
-                                                <option selected disabled value='$citizenship'>$citizenship</option>
-                                                <option value='Foreign'>Foreign</option>
-                                                <option value='Filipino'>Filipino</option>
-                                            </select>
+                                            <input type='text' name='citizenship' class='form-control' value='$citizenship' placeholder='Citizenship' required>
                                         </div>
                                     </div>
                                     <div class='form-input-container row mb-2'>
                                         <div class='col'>
                                             <label>Civil Status</label>
                                             <select name='civil_status' class='form-control'>
-                                                <option selected disabled> -- Select Status -- </option>
-                                                <option selected disabled value='$civil_status'>$civil_status</option>
+                                                <option disabled> -- Select Status -- </option>
+                                                <option selected value='$civil_status'>$civil_status</option>
                                                 <option value='Single'>Single</option>
                                                 <option value='Married'>Married</option>
                                                 <option value='Divorced'>Divorced</option>
@@ -383,6 +441,26 @@ if (isset($_POST['edit_resident'])) {
                                         <div class='col'>
                                             <label>Blood Type</label>
                                             <input type='text'  name='blood_type' value='$blood_type' placeholder='Blood Type' class='form-control'>
+                                        </div>
+                                    </div>
+                                    <div class='form-input-container row mb-2'>
+                                        <div class='col'>
+                                            <label>4P's</label>
+                                            <select name='four_ps' class='form-control'>
+                                                <option selected value='$four_ps'>$four_ps</option>
+                                                <option value='Yes'>Yes</option>
+                                                <option value='No'>No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class='form-input-container row mb-2'>
+                                        <div class='col'>
+                                            <label>PWD</label>
+                                            <select name='pwd' class='form-control'>
+                                                <option selected value='$pwd'>$pwd</option>
+                                                <option value='Yes'>Yes</option>
+                                                <option value='No'>No</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <button class='btn btn-primary my-3' name='edit_resident'>Submit</button>

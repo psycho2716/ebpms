@@ -49,6 +49,36 @@ $result_purok_img = $purok_data['img'];
     <title>EBPMS</title>
     <?php include('../includes/head.php'); ?>
     <link rel="stylesheet" href="../css/style.css">
+
+
+    <style>
+        <?php
+        if (!isset($_GET['edit'])) {
+        ?>
+            .alert.edit {
+                display: none;
+            }
+        <?php
+        }
+
+        if (!isset($_GET['delete'])) {
+        ?>
+            .alert.delete {
+                display: none;
+            }
+        <?php
+        }
+
+        if (!isset($_GET['add'])) {
+        ?>
+            .alert.add {
+                display: none;
+            }
+        <?php
+        }
+        ?>
+    </style>
+    
 </head>
 
 <body class="dashboard-body">
@@ -132,6 +162,12 @@ $result_purok_img = $purok_data['img'];
         <button class="btn btn-success ms-auto" type="button" data-bs-toggle="modal" data-bs-target="#editPurok"><i class="fa-solid fa-address-card"></i></button>
     </div>
 
+    <div class="container">
+        <div class="alert alert-danger text-center m-3 delete"><span>Data has been Deleted!</span></div>
+        <div class="alert alert-success text-center m-3 add"><span>Data has been Added!</span></div>
+        <div class="alert alert-success text-center m-3 edit"><span>Data has been Added!</span></div>
+    </div>
+    
     <?php
     if (!empty($purok_err)) {
     ?>

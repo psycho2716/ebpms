@@ -95,7 +95,15 @@ $barangay_name = $row['barangay_name'];
                 <a href="household.php" class="card-link">
                     <div class="card-body mt-5 text-light">
                         <h4 class="card-title text-center">Household</h4>
-                        <h2 class="card-text text-center">100</h2>
+                        <h2 class="card-text text-center">
+                            <?php
+                            $sql = "SELECT * FROM residents WHERE household_type = 'Head'";
+                            $result = mysqli_query($conn, $sql);
+                            $household_type = mysqli_num_rows($result);
+
+                            echo $household_type;
+                            ?>
+                        </h2>
                     </div>
                     <div class="card-footer">
                         <span class="text-light">More Details</span>
@@ -110,7 +118,23 @@ $barangay_name = $row['barangay_name'];
                 <a href="beneficiaries.php" class="card-link">
                     <div class="card-body mt-5 text-light">
                         <h4 class="card-title text-center">Beneficiaries</h4>
-                        <h2 class="card-text text-center">100</h2>
+                        <h2 class="card-text text-center">
+                            <?php
+                            $counters = $conn->query("SELECT COUNT(pwd) AS counter FROM residents WHERE pwd = 'Yes' ");
+                            $counter = $counters->fetch_assoc();
+                            $pwd = $counter['counter'];
+
+                            $counters = $conn->query("SELECT COUNT(civil_status) AS counter FROM residents WHERE civil_status = 'Single Parent' ");
+                            $counter = $counters->fetch_assoc();
+                            $civil_status = $counter['counter'];
+
+                            $counters = $conn->query("SELECT COUNT(4p_s) AS counter FROM residents WHERE 4p_s = 'Yes' ");
+                            $counter = $counters->fetch_assoc();
+                            $four_ps = $counter['counter'];
+
+                            echo $pwd + $civil_status + $four_ps;
+                            ?>
+                        </h2>
                     </div>
                     <div class="card-footer">
                         <span class="text-light">More Details</span>

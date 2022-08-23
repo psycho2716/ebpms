@@ -18,12 +18,15 @@ if (isset($_POST['add_resident'])) {
     $citizenship = $_POST['citizenship'];
     $civil_status = $_POST['civil_status'];
     $residents_address = $_POST['residents_address'];
+    $household_type = $_POST['household_type'];
+    $four_ps = $_POST['four_ps'];
+    $pwd = $_POST['pwd'];
 
 
-    mysqli_query($conn, "INSERT INTO residents (first_name, residents_address, gender, dob, purok_id, barangay_id, civil_status, citizenship, last_name, middle_name, occupation, school_attainment, skills, blood_type)
-        VALUES('$first_name', '$residents_address', '$gender', '$dob', '$purok_id', '$barangay_id', '$civil_status', '$citizenship', '$last_name', '$middle_name', '$occupation', '$school_attainment', '$skills', '$blood_type')");
+    mysqli_query($conn, "INSERT INTO residents (first_name, residents_address, gender, dob, purok_id, barangay_id, civil_status, citizenship, last_name, middle_name, occupation, school_attainment, skills, blood_type, household_type, 4p_s, pwd)
+        VALUES('$first_name', '$residents_address', '$gender', '$dob', '$purok_id', '$barangay_id', '$civil_status', '$citizenship', '$last_name', '$middle_name', '$occupation', '$school_attainment', '$skills', '$blood_type', '$household_type', '$four_ps', '$pwd')");
 
-    header('location: view_purok.php?purok_id=' . $purok_id . '&&info=success');
+    header('location: view_purok.php?purok_id=' . $purok_id . '&&add=success');
 }
 
 // Delete Resident
@@ -36,10 +39,10 @@ if (isset($_GET['delete_resident'])) {
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        header('location: view_purok.php?purok_id=' . $purok_id . '&&info=success');
+        header('location: view_purok.php?purok_id=' . $purok_id . '&&delete=success');
         exit;
     } else {
-        header('location: view_purok.php?purok_id=' . $purok_id . '&&info=failed');
+        header('location: view_purok.php?purok_id=' . $purok_id . '&&delete=failed');
     }
 }
 
@@ -62,16 +65,19 @@ if (isset($_POST['edit_resident'])) {
     $citizenship = $_POST['citizenship'];
     $civil_status = $_POST['civil_status'];
     $residents_address = $_POST['residents_address'];
+    $household_type = $_POST['household_type'];
+    $four_ps = $_POST['four_ps'];
+    $pwd = $_POST['pwd'];
 
 
-    $sql = "UPDATE residents SET first_name ='$first_name', middle_name ='$middle_name', last_name ='$last_name', occupation ='$occupation', school_attainment ='$school_attainment', skills ='$skills', blood_type ='$blood_type', residents_address = '$residents_address', gender = '$gender', dob = '$dob', citizenship = '$citizenship', civil_status = '$civil_status' WHERE id = $id ";
+    $sql = "UPDATE residents SET first_name ='$first_name', middle_name ='$middle_name', last_name ='$last_name', occupation ='$occupation', school_attainment ='$school_attainment', skills ='$skills', blood_type ='$blood_type', residents_address = '$residents_address', gender = '$gender', dob = '$dob', citizenship = '$citizenship', civil_status = '$civil_status', household_type = '$household_type', 4p_s = '$four_ps', pwd = '$pwd' WHERE id = $id ";
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        header('location: view_purok.php?purok_id=' . $purok_id . '&&info=success');
+        header('location: view_purok.php?purok_id=' . $purok_id . '&&edit=success');
         exit;
     } else {
-        header('location: view_purok.php?purok_id=' . $purok_id . '&&info=failed');
+        header('location: view_purok.php?purok_id=' . $purok_id . '&&edit=failed');
         exit;
     }
 }

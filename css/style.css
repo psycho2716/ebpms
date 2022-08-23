@@ -362,6 +362,16 @@ body::-webkit-scrollbar-thumb {
     box-shadow: 0 1px 7px #242424;
 }
 
+.beneficiaries-card-img {
+    width: 100%;
+    max-width: 200px;
+}
+
+.beneficiaries-card-solo-img {
+    width: 100%;
+    max-width: 150px;
+}
+
 .certificate-card-img {
     width: 100%;
     max-width: 200px;
@@ -419,7 +429,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .document-header-text h4 {
-    margin-bottom: -4px;
+    margin-bottom: -1px;
     font-weight: 600;
 }
 
@@ -628,8 +638,8 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     gap: 10px;
     padding: 10px 15px;
-    background-color: rgba(255, 255, 255, 0.171);
-    backdrop-filter: blur(20px);
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(30px);
     box-shadow: 1px 1px 7px #242424;
 }
 
