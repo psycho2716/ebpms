@@ -38,8 +38,8 @@ include('includes/user_actions.php');
                 <div class="row mb-3">
                     <div class="col">
                         <label for="">Barangay Name</label>
-                        <select name="barangay_name" class="form-control" value="<?php echo $barangay_name; ?>" placeholder="Enter Barangay Name" required>
-                            <option selected disabled> -- Select Barangay -- </option>
+                        <select name="barangay_name" class="form-control" placeholder="Enter Barangay Name" required>
+                            <option selected disabled value=""> -- Select Barangay -- </option>
                             <option value="Agbaluto">Agbaluto</option>
                             <option value="Agpanabat">Agpanabat</option>
                             <option value="Agbudia">Agbudia</option>
@@ -144,7 +144,7 @@ include('includes/user_actions.php');
                     </div>
                     <div class="col">
                         <label for="">SK Kagawad</label>
-                        <input type="text" name="sk_kagawad" class="form-control" value="<?php echo $sk_kagawad; ?>" placeholder="SK Kagawad" required>
+                        <input type="text" name="sk_chairman" class="form-control" value="<?php echo $sk_chairman; ?>" placeholder="SK Kagawad" required>
                     </div>
                 </div>
                 <?php
@@ -152,6 +152,12 @@ include('includes/user_actions.php');
                 ?>
                     <span class="error-message mb-3" style="display: block; ">
                         <?php echo $error ?>
+                    </span>
+                <?php
+                } elseif (!empty($barangay_err)) {
+                ?>
+                    <span class="error-message mb-3" style="display: block; ">
+                        <?php echo $barangay_err ?>
                     </span>
                 <?php
                 }
@@ -165,6 +171,7 @@ include('includes/user_actions.php');
                 <?php
                 }
                 ?>
+
                 <div class="row mb-3">
                     <div class="col">
                         <label for="">Username</label>
@@ -183,7 +190,9 @@ include('includes/user_actions.php');
                         <label for="">Password</label>
                         <input type="password" name="password" class="form-control form-input-password" placeholder="Password">
                         <i class='bx bx-show eye-icon'></i>
+
                     </div>
+
                     <div class="col input-container">
                         <label for="">Confirm Password</label>
                         <input type="password" name="confirm_password" class="form-control form-input-password" placeholder="Confirm Password">

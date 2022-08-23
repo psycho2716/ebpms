@@ -31,7 +31,7 @@ if (isset($_SESSION['id'])) {
 <body class="landing-body">
     <?php include('includes/landing_nav.php'); ?>
 
-    <div class="card mx-auto mt-5 login-form" style="width: 350px;">
+    <div class="card mx-auto mt-5 login-form" style="max-width: 350px;">
         <div class="card-header login-header">
             <h1>Log In</h1>
             <img src="images/logo.png" class="card-logo" width="50px" height="50px">

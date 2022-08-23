@@ -3,3 +3,23 @@
 
 <!-- External JS -->
 <script type="module" src="js/app.js"></script>
+
+<script>
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+    const myModal = document.getElementById('myModal')
+    const myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', () => {
+        myInput.focus()
+    })
+</script>
+
+<script>
+    const printBtn = document.querySelector('.print-btn');
+
+    printBtn.addEventListener('click', function () {
+        print();
+    })
+</script>

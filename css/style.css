@@ -1,5 +1,6 @@
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&display=swap');
 
 /* Style Resets */
 * {
@@ -8,6 +9,10 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     text-decoration: none;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -87,16 +92,17 @@ body::-webkit-scrollbar-thumb {
     font-weight: 600;
 }
 
-.navbar-logo-container{
+.navbar-logo-container {
     border-right: 1px solid #fff;
     margin-right: 10px;
 }
 
-.navbar-brand img{
-    width: 50px;
+.navbar-brand img {
+    width: 35px;
+    margin-right: 10px;
 }
 
-.card-logo {
+.official-link-logo {
     width: 50px;
 }
 
@@ -119,7 +125,7 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
 }
 
-.logout-alt{
+.logout-alt {
     display: none;
 }
 
@@ -143,6 +149,10 @@ body::-webkit-scrollbar-thumb {
     height: 50px;
     border-bottom: 1px solid #8b8b8b;
     padding: 0 20px;
+}
+
+.sidebar-body {
+    overflow: auto;
 }
 
 .sidebar-text-container {
@@ -231,7 +241,7 @@ body::-webkit-scrollbar-thumb {
     margin-top: 10px;
 }
 
-.sidebar-links ul li:hover {
+.sidebar-links ul li:not(:last-child):hover {
     background-color: #242424;
 }
 
@@ -251,11 +261,11 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
     padding: 50px 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 350px));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 270px));
     gap: 50px;
 }
 
-.card-1 {
+.official-link-1 {
     grid-row-start: 1;
     grid-row-end: 2;
 }
@@ -277,11 +287,12 @@ body::-webkit-scrollbar-thumb {
     transform: translateX(-50%);
     background: linear-gradient(90deg, #ff512f, #dd2476);
     border-radius: 50%;
-    box-shadow: 0 1px 7px #242424;
+    box-shadow: 1px 1px 4px #242424;
     color: #fff;
     z-index: 1;
 }
 
+.official-link-logo,
 .card-logo {
     text-align: center;
     font-size: 40px;
@@ -299,13 +310,13 @@ body::-webkit-scrollbar-thumb {
     border-radius: 4px;
 }
 
-.card .card-link {
+.official-link .official-link-link {
     text-decoration: none;
     position: relative;
     overflow: hidden;
 }
 
-.dashboard-card:hover .card-footer span{
+.dashboard-card:hover .official-link-footer span {
     text-decoration: underline;
 }
 
@@ -324,7 +335,7 @@ body::-webkit-scrollbar-thumb {
     transform: skewX(20deg) translateX(475px);
 }
 
-.official-logo{
+.official-logo {
     width: 70px;
     height: 70px;
     position: absolute;
@@ -336,31 +347,545 @@ body::-webkit-scrollbar-thumb {
     z-index: 1;
 }
 
-.barangay-card-img-container{
+.barangay-card-img-container {
     display: flex;
     justify-content: center;
     width: 100%;
+    padding-top: 10px;
 }
 
-.barangay-card-img{
-    height: auto;
+.barangay-card-img {
     width: 100%;
-    max-width: 300px;
+    max-width: 200px;
+    border-radius: 5px;
+    border-radius: 50%;
+    box-shadow: 0 1px 7px #242424;
+}
+
+.certificate-card-img {
+    width: 100%;
+    max-width: 200px;
     border-radius: 5px;
     box-shadow: 0 1px 7px #242424;
 }
 
-@media screen and (max-width: 768px) {
-    .navbar-logo-container{
+.custom-tooltip {
+    --bs-tooltip-bg: var(--bs-primary);
+}
+
+.barangay-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 10px;
+}
+
+.document-format-container {
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 10px;
+    border-radius: 3px;
+}
+
+.document-header-container {
+    width: 100%;
+    border-bottom: 2px solid #a1a1a1;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.document-header {
+    display: flex;
+    gap: 20px;
+    max-width: 100%;
+}
+
+.document-header .document-logo-container img {
+    width: 70px;
+}
+
+.document-header-text {
+    text-align: center;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.document-header-text h4 {
+    margin-bottom: -4px;
+    font-weight: 600;
+}
+
+.document-format-container .document-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.document-format-container .document-body .officials {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.document-format-container .document-body .officials .officials-card {
+    background-color: #fff;
+}
+
+.document-body .officials {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: '. captain captain .'
+        'secretary secretary treasurer treasurer'
+        'kagawad1 kagawad1 kagawad2 kagawad2'
+        'kagawad3 kagawad3 kagawad4 kagawad4'
+        'kagawad5 kagawad5 kagawad6 kagawad6'
+        '. kagawad7 kagawad7 .'
+        'bhw bhw sk sk'
+    ;
+    gap: 20px;
+}
+
+@media screen and (max-width: 425px) {
+    .document-body .officials {
+        display: block;
+    }
+
+    .document-header .document-logo-container img {
+        width: 60px;
+    }
+}
+
+@media screen and (min-width: 320px) {
+    .content {
+        padding: 20px;
+    }
+}
+
+.officials-official-link-1 {
+    text-decoration: none;
+    color: #242424;
+    grid-area: captain;
+}
+
+.custom-card:hover {
+    color: #242424;
+    transform: scale(1.05);
+}
+
+.custom-card,
+.card-link {
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.shine {
+    position: absolute;
+    top: 0;
+    left: -90px;
+    height: 100%;
+    width: 50px;
+    background: rgba(255, 255, 255, 0.4);
+    transition: all .4s linear;
+    transform: skewX(20deg) translateX(-20px);
+}
+
+.official-shine {
+    position: absolute;
+    top: 0;
+    left: -90px;
+    height: 100%;
+    width: 50px;
+    background: rgba(255, 255, 255, 0.4);
+    transition: all .4s linear;
+    transform: skewX(20deg) translateX(0);
+}
+
+.official-card-link:hover .official-shine {
+    transform: skewX(20deg) translateX(675px);
+}
+
+.officials-official-link-2 {
+    grid-area: secretary;
+    text-decoration: none;
+    color: #242424;
+}
+
+.officials-official-link-3 {
+    grid-area: treasurer;
+    text-decoration: none;
+    color: #242424;
+}
+
+.officials-official-link-4 {
+    grid-area: kagawad1;
+    text-decoration: none;
+    color: #242424;
+}
+
+.officials-official-link-5 {
+    grid-area: kagawad2;
+    text-decoration: none;
+    color: #242424;
+}
+
+.officials-official-link-6 {
+    grid-area: kagawad3;
+    text-decoration: none;
+    color: #242424;
+}
+
+.officials-official-link-7 {
+    grid-area: kagawad4;
+    text-decoration: none;
+    color: #242424;
+}
+
+.officials-official-link-8 {
+    grid-area: kagawad5;
+    text-decoration: none;
+    color: #242424;
+}
+
+.officials-official-link-9 {
+    grid-area: kagawad6;
+    text-decoration: none;
+    color: #242424;
+}
+
+.officials-official-link-10 {
+    grid-area: kagawad7;
+    text-decoration: none;
+    color: #242424;
+}
+
+.officials-official-link-11 {
+    grid-area: bhw;
+    text-decoration: none;
+    color: #242424;
+}
+
+.officials-official-link-12 {
+    grid-area: sk;
+    text-decoration: none;
+    color: #242424;
+}
+
+.custom-card {
+    box-shadow: 0 1px 7px #4b4b4b;
+}
+
+.custom-card-img-container {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url('../images/seal.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 5px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-card-img-container img {
+    width: 150px;
+}
+
+.custom-card-header {
+    padding-top: 7px;
+    border-bottom: 1px solid #a1a1a1;
+    width: 100%;
+}
+
+.custom-card-header h4 {
+    font-weight: 600;
+}
+
+.custom-card-body {
+    padding: 10px;
+}
+
+.custom-card-text {
+    padding: 10px;
+}
+
+.custom-card-text h5 {
+    text-decoration: underline;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.171);
+    backdrop-filter: blur(20px);
+    box-shadow: 1px 1px 7px #242424;
+}
+
+.logout-alt {
+    display: none;
+}
+
+.welcome-message {
+    font-size: 20px;
+}
+
+.welcome-sidebar {
+    display: none;
+}
+
+.table-container {
+    background-color: #fff;
+    max-width: 950px;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.profile-img-container {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-img-container .profile-image {
+    width: 200px;
+    height: auto;
+    background-color: #e4e4e49f;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 1px 1px 4px #6d6d6d;
+}
+
+.cert-modal-body {
+    display: flex;
+    justify-content: center;
+}
+
+.cert-modal-body ol li a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #242424;
+}
+
+.cert-modal-body ol li a:hover {
+    text-decoration: underline;
+}
+
+/* Certificates */
+/* 1. Barangay Clearance */
+.clearance {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/seal.png');
+    padding: 20px 60px;
+}
+
+.barangay-clearance {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('../images/mapula.png');
+    background-size: 800px;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 250px auto;
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+.clearance-header h4,
+.clearance-header h3 {
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+.clearance-header span {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.clearance-header h3 {
+    font-weight: 600;
+}
+
+.clearance-body {
+    width: 100%;
+    padding: 50px;
+}
+
+.clearance-body h1 {
+    text-transform: uppercase;
+    text-align: center;
+    font-family: 'Lora', serif;
+    color: #23a7c5;
+    text-shadow: 1px 1px 1px #000;
+    margin-bottom: 70px;
+    font-size: 50px;
+}
+
+.clearance-body h5 {
+    font-weight: 700;
+}
+
+.clearance-body .body-text {
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.captain-name,
+.sk-chairman-name,
+.treasurer-name,
+.secretary-name {
+    font-size: 15px;
+}
+
+.body-letter {
+    text-indent: 50px;
+}
+
+.clearance-footer {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    padding: 40px;
+}
+
+.footer-text {
+    text-align: center;
+}
+
+.footer-text h3 {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.clearance-logo img {
+    width: 100px;
+}
+
+.official-container {
+    border: 5px double #000000;
+    padding: 20px 0;
+}
+
+.clearance-official-body-header .official-title,
+.clearance-official-body-content .official-title {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.clearance-official-body-content span.kagawad {
+    display: inline-block;
+}
+
+.fees {
+    width: 100%;
+    padding: 5px 0;
+    border: 1px dashed #000;
+    padding: 10px;
+}
+
+.fee-input-container {
+    display: flex;
+    gap: 10px;
+}
+
+.fee-input-container .fee-title {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.fee-input {
+    width: 110px;
+    padding: 0 10px;
+    border: none;
+    border-bottom: 1px solid #242424;
+    outline: none;
+}
+
+/* Clearance Ends Here! */
+
+/* resident Profile */
+.custom-profile-card {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: center;
+    background-color: #e0dfdf;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.profile-header img {
+    width: 100px;
+}
+
+.body-header h4 {
+    margin-bottom: -5px;
+}
+
+.profile-text .row .col span {
+    font-weight: 500;
+}
+
+@media print {
+    .button-container {
+        display: none;
+    }
+
+    .clearance {
+        padding: 0;
+    }
+
+    .clearance-body {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .barangay-clearance {
+        padding: 20px;
+        grid-template-columns: 320px auto;
+    }
+}
+
+
+
+@media screen and (max-width: 767px) {
+    .navbar-logo-container {
         border: none;
         margin-right: 0;
     }
 
     .menu-btn {
+        margin-left: 20px;
         transform: rotateY(180deg);
     }
 
-    .logout-alt{
+    .logout-alt {
         display: block;
+    }
+
+    .welcome-message.welcome-sidebar {
+        display: block;
+    }
+
+    .welcome-message {
+        display: none;
     }
 }

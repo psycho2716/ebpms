@@ -2,11 +2,26 @@
 include('includes/db.php');
 
 session_start();
+$id = $_SESSION['id'];
 
 if (!isset($_SESSION['id'])) {
     header('location: login.php');
 }
 
+$sql1 = "SELECT * FROM users WHERE id = $id";
+$run_query1 = mysqli_query($conn, $sql1);
+$row1 = mysqli_fetch_assoc($run_query1);
+// Fetch barangay id from users table
+$barangay_id = $row1['barangay_id'];
+
+// Get barangay id from barangays
+$sql = "SELECT * FROM barangays WHERE barangay_id = '$barangay_id'";
+$run_query = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($run_query);
+
+// barangay id final result
+$result_barangay_id = $row['barangay_id'];
+$barangay_name = $row['barangay_name'];
 ?>
 
 <!DOCTYPE html>
@@ -31,16 +46,16 @@ if (!isset($_SESSION['id'])) {
                 <div class="icon-background">
                     <i class="fa-solid fa-house-user card-logo"></i>
                 </div>
-                <a href="barangays.php" class="card-link">
+                <a href="purok.php" class="card-link">
                     <div class="card-body mt-5 text-light">
-                        <h4 class="card-title text-center">Barangays</h4>
+                        <h4 class="card-title text-center">Purok/Sitio</h4>
                         <h2 class="card-text text-center">
                             <?php
-                                $sql = "SELECT * FROM users";
-                                $result = mysqli_query($conn, $sql);
-                                $barangays = mysqli_num_rows($result);
+                            $sql = "SELECT * FROM purok WHERE barangay_id = '$barangay_id'";
+                            $result = mysqli_query($conn, $sql);
+                            $purok = mysqli_num_rows($result);
 
-                                echo $barangays;
+                            echo $purok;
                             ?>
                         </h2>
                     </div>
@@ -49,16 +64,23 @@ if (!isset($_SESSION['id'])) {
                     </div>
                     <div class="shine"></div>
                 </a>
-
             </div>
             <div class="card dashboard-card h-100">
                 <div class="icon-background">
                     <i class="fa-solid fa-people-group card-logo"></i>
                 </div>
-                <a href="population.php" class="card-link">
+                <a href="residents.php" class="card-link">
                     <div class="card-body mt-5 text-light">
-                        <h4 class="card-title text-center">Population</h4>
-                        <h2 class="card-text text-center">100</h2>
+                        <h4 class="card-title text-center">Residents</h4>
+                        <h2 class="card-text text-center">
+                            <?php
+                            $sql = "SELECT * FROM residents WHERE barangay_id = '$barangay_id'";
+                            $result = mysqli_query($conn, $sql);
+                            $residents = mysqli_num_rows($result);
+
+                            echo $residents;
+                            ?>
+                        </h2>
                     </div>
                     <div class="card-footer">
                         <span class="text-light">More Details</span>
@@ -98,27 +120,20 @@ if (!isset($_SESSION['id'])) {
             </div>
             <div class="card dashboard-card h-100">
                 <div class="icon-background">
-                    <i class="fa-solid fa-users-line card-logo"></i>
-                </div>
-                <a href="residents" class="card-link">
-                    <div class="card-body mt-5 text-light">
-                        <h4 class="card-title text-center">Residents</h4>
-                        <h2 class="card-text text-center">100</h2>
-                    </div>
-                    <div class="card-footer">
-                        <span class="text-light">More Details</span>
-                    </div>
-                    <div class="shine"></div>
-                </a>
-            </div>
-            <div class="card dashboard-card h-100">
-                <div class="icon-background">
                     <i class="fa-solid fa-certificate card-logo"></i>
                 </div>
-                <a href="certificates" class="card-link">
+                <a href="certificates.php" class="card-link">
                     <div class="card-body mt-5 text-light">
                         <h4 class="card-title text-center">Certificates</h4>
-                        <h2 class="card-text text-center">100</h2>
+                        <h2 class="card-text text-center">
+                            <?php
+                            $sql = "SELECT * FROM certificates WHERE barangay_id = '$barangay_id'";
+                            $result = mysqli_query($conn, $sql);
+                            $certificates = mysqli_num_rows($result);
+
+                            echo $certificates;
+                            ?>
+                        </h2>
                     </div>
                     <div class="card-footer">
                         <span class="text-light">More Details</span>

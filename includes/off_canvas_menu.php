@@ -3,23 +3,21 @@
     <div class="sidebar-header">
         <img src="images/logo.png">
         <div class="sidebar-text-container">
-            <h4>EBPMS</h4>
+            <h4><strong>EBPMS</strong></h4>
         </div>
         <div class="close-btn-container">
             <a class="close-btn-sidebar text-dark" role="button" data-bs-dismiss="offcanvas" aria-label="Close"><i class='bx bx-x'></i></a>
         </div>
     </div>
     <div class="sidebar-body">
+        <h5 class="welcome-message welcome-sidebar text-dark text-center mt-3">Welcome! <strong>Barangay <?php echo $barangay_name; ?></strong></h5>
         <div class="sidebar-links">
             <ul>
                 <li class="<?= ($activePage == 'index') ? 'active' : ''; ?>">
                     <a href="index.php" class="sidebar-link">Dashboard</a>
                 </li>
-                <li class="<?= ($activePage == 'barangays') ? 'active' : ''; ?>">
-                    <a href="barangays.php" class="sidebar-link">Barangays</a>
-                </li>
-                <li class="<?= ($activePage == 'population') ? 'active' : ''; ?>">
-                    <a href="population.php" class="sidebar-link">Population</a>
+                <li class="<?= ($activePage == 'purok') ? 'active' : ''; ?>">
+                    <a href="purok.php" class="sidebar-link">Purok/Sitio</a>
                 </li>
                 <li class="<?= ($activePage == 'household') ? 'active' : ''; ?>">
                     <a href="household.php" class="sidebar-link">Household</a>
@@ -32,6 +30,9 @@
                 </li>
                 <li class="<?= ($activePage == 'certificates') ? 'active' : ''; ?>">
                     <a href="certificates.php" class="sidebar-link">Certificates</a>
+                </li>
+                <li class="<?= ($activePage == 'officials') ? 'active' : ''; ?>">
+                    <a href="officials.php?barangay_id=<?php echo $result_barangay_id; ?>" class="sidebar-link">Barangay Officials</a>
                 </li>
                 <li>
                     <a href="logout.php" class="sidebar-link logout-alt">Log Out</a>

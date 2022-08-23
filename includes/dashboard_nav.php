@@ -9,10 +9,14 @@
     </a>
 
     <div class="container-fluid">
+        <span class="welcome-message text-light"><span>Welcome!</span> <strong>Barangay <?php echo $barangay_name; ?></strong></span>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto">
+                <li>
+                    <h3 class="welcome-message ">Welcome</h3>
+                </li>
                 <li class="nav-item">
-                    <a href="logout.php" class="nav-link logout-btn text-light">Log Out</a>
+                    <a href="logout.php" class="nav-link logout-btn text-light"><i class="fa-solid fa-arrow-up-left-from-circle"></i> Log Out</a>
                 </li>
             </ul>
         </div>
