@@ -36,10 +36,10 @@ if (isset($_GET['delete_resident'])) {
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        header('location: solo_parent.php?delete=success');
+        header('location: senior.php?delete=success');
         exit;
     } else {
-        header('location: solo_parent.php?delete=failed');
+        header('location: senior.php?delete=failed');
     }
 }
 
@@ -71,10 +71,10 @@ if (isset($_POST['edit_resident'])) {
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        header('location: solo_parent.php?edit=success');
+        header('location: senior.php?edit=success');
         exit;
     } else {
-        header('location: solo_parent.php?edit=failed');
+        header('location: senior.php?edit=failed');
         exit;
     }
 }
@@ -168,9 +168,11 @@ if (isset($_POST['edit_resident'])) {
                         $gender = $row['gender'];
                         $dob = $row['dob'];
 
-                        $diff = date_diff(date_create($dob), date_create(date("Y-m-d")));
+                        $currentDate = date("Y-m-d");
+                        $age = date_diff(date_create($dob), date_create($currentDate));
+                        $age_result = intval($age->format("%y"));
 
-                        if (number_format($diff->format('%y')) >= 60) {
+                        if ($age_result >= 60) {
                             echo "
                                 <tr>
                                     <th>$no</th>
@@ -250,7 +252,7 @@ if (isset($_POST['edit_resident'])) {
                                 <button type='button' class='btn-close bg-light' data-bs-dismiss='modal' aria-label='Close'></button>
                             </div>
                             <div class='modal-body'>
-                                <form action='solo_parent.php?edit_id=$resident_id' method='post'>
+                                <form action='senior.php?edit_id=$resident_id' method='post'>
                                     <div class='form-input-container row mb-2'>
                                         <div class='col-md-4'>
                                             <label>Last Name</label>
@@ -390,7 +392,7 @@ if (isset($_POST['edit_resident'])) {
                                 <h6>Resident data will be deleted.</h6>
                             </div>
                             <div class='modal-footer'>
-                                <a href='solo_parent.php?delete_resident=$resident_id' type='button' class='btn btn-danger'>Delete</a>
+                                <a href='senior.php?delete_resident=$resident_id' type='button' class='btn btn-danger'>Delete</a>
                                 <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
                             </div>
                         </div>
@@ -528,28 +530,28 @@ if (isset($_POST['edit_resident'])) {
                     <div class="cert-modal-body modal-body">
                         <ol>
                             <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>">Barangay Clearance</a>
+                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&senior">Barangay Clearance</a>
                             </li>
                             <li>
-                                <a href="certs/business_clearance.php?resident_id=<?php echo $resident_id; ?>">Business Clearance</a>
+                                <a href="certs/business_clearance.php?resident_id=<?php echo $resident_id; ?>&&senior">Business Clearance</a>
                             </li>
                             <li>
-                                <a href="certs/certification.php?resident_id=<?php echo $resident_id; ?>">Certification</a>
+                                <a href="certs/certification.php?resident_id=<?php echo $resident_id; ?>&&senior">Certification</a>
                             </li>
                             <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>">Barangay Clearance</a>
+                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&senior">Barangay Clearance</a>
                             </li>
                             <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>">Barangay Clearance</a>
+                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&senior">Barangay Clearance</a>
                             </li>
                             <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>">Barangay Clearance</a>
+                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&senior">Barangay Clearance</a>
                             </li>
                             <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>">Barangay Clearance</a>
+                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&senior">Barangay Clearance</a>
                             </li>
                             <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>">Barangay Clearance</a>
+                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&senior">Barangay Clearance</a>
                             </li>
                         </ol>
                     </div>

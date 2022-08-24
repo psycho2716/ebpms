@@ -119,7 +119,9 @@ $barangay_name = $row['barangay_name'];
 
     <div class="button-container">
         <a href="index.php" class="btn btn-danger"><i class="fa-solid fa-circle-arrow-left"></i> Back</a>
-        <a href="#" class="btn btn-success"><i class="fa-solid fa-file-arrow-down"></i> Export Data</a>
+        <form method="post" action="includes/export.php?barangay_id=<?php echo $barangay_id; ?>">
+            <button type="submit" name="export" class="btn btn-success"><i class="fa-solid fa-file-arrow-down"></i> Export Data</button>
+        </form>
     </div>
 
     <?php
@@ -521,28 +523,28 @@ $barangay_name = $row['barangay_name'];
                             <div class='cert-modal-body modal-body'>
                             <ol>
                                 <li>
-                                    <a href='certs/barangay_clearance.php?resident_id=$resident_id'>Barangay Clearance</a>
+                                    <a href='certs/barangay_clearance.php?resident_id=$resident_id&&residents'>Barangay Clearance</a>
                                 </li>
                                 <li>
-                                    <a href='certs/certification.php?resident_id=$resident_id'>Certification</a>
+                                    <a href='certs/certification.php?resident_id=$resident_id&&residents'>Certification</a>
                                 </li>
                                 <li>
-                                    <a href='certs/business_clearance.php?resident_id=$resident_id'>Business Clearance</a>
+                                    <a href='certs/business_clearance.php?resident_id=$resident_id&&residents'>Business Clearance</a>
                                 </li>
                                 <li>
-                                    <a href='certs/barangay_clearance.php?resident_id=$resident_id'>Barangay Clearance</a>
+                                    <a href='certs/barangay_clearance.php?resident_id=$resident_id&&residents'>Barangay Clearance</a>
                                 </li>
                                 <li>
-                                    <a href='certs/barangay_clearance.php?resident_id=$resident_id'>Barangay Clearance</a>
+                                    <a href='certs/barangay_clearance.php?resident_id=$resident_id&&residents'>Barangay Clearance</a>
                                 </li>
                                 <li>
-                                    <a href='certs/barangay_clearance.php?resident_id=$resident_id'>Barangay Clearance</a>
+                                    <a href='certs/barangay_clearance.php?resident_id=$resident_id&&residents'>Barangay Clearance</a>
                                 </li>
                                 <li>
-                                    <a href='certs/barangay_clearance.php?resident_id=$resident_id'>Barangay Clearance</a>
+                                    <a href='certs/barangay_clearance.php?resident_id=$resident_id&&residents'>Barangay Clearance</a>
                                 </li>
                                 <li>
-                                    <a href='certs/barangay_clearance.php?resident_id=$resident_id'>Barangay Clearance</a>
+                                    <a href='certs/barangay_clearance.php?resident_id=$resident_id&&residents'>Barangay Clearance</a>
                                 </li>
                             </ol>
                             </div>
