@@ -524,28 +524,28 @@ if (isset($_POST['edit_resident'])) {
                     <div class="cert-modal-body modal-body">
                         <ol>
                             <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>">Barangay Clearance</a>
+                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&solo_parent">Barangay Clearance</a>
                             </li>
                             <li>
-                                <a href="certs/business_clearance.php?resident_id=<?php echo $resident_id; ?>">Business Clearance</a>
+                                <a href="certs/business_clearance.php?resident_id=<?php echo $resident_id; ?>&&solo_parent">Business Clearance</a>
                             </li>
                             <li>
-                                <a href="certs/certification.php?resident_id=<?php echo $resident_id; ?>">Certification</a>
+                                <a href="certs/certification.php?resident_id=<?php echo $resident_id; ?>&&solo_parent">Certification</a>
                             </li>
                             <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>">Barangay Clearance</a>
+                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&solo_parent">Barangay Clearance</a>
                             </li>
                             <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>">Barangay Clearance</a>
+                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&solo_parent">Barangay Clearance</a>
                             </li>
                             <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>">Barangay Clearance</a>
+                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&solo_parent">Barangay Clearance</a>
                             </li>
                             <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>">Barangay Clearance</a>
+                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&solo_parent">Barangay Clearance</a>
                             </li>
                             <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>">Barangay Clearance</a>
+                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&solo_parent">Barangay Clearance</a>
                             </li>
                         </ol>
                     </div>

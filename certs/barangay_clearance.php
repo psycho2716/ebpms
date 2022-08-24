@@ -67,12 +67,43 @@ $citizenship = $result_query['citizenship'];
     <title>EBPMS</title>
     <?php include('../includes/head.php'); ?>
     <link rel="stylesheet" href="../css/style.css">
-    
+
 </head>
 
 <body>
     <div class="button-container">
-        <a href="../residents.php" class="btn btn-danger"><i class="fa-solid fa-circle-arrow-left"></i> Back</a>
+        <?php
+        if (isset($_GET['senior'])) {
+        ?>
+            <a href="../senior.php" class="btn btn-danger"><i class="fa-solid fa-circle-arrow-left"></i> Back</a>
+        <?php
+        }
+        if (isset($_GET['residents'])) {
+        ?>
+            <a href="../residents.php" class="btn btn-danger"><i class="fa-solid fa-circle-arrow-left"></i> Back</a>
+        <?php
+        }
+        if (isset($_GET['4p_s'])) {
+        ?>
+            <a href="../4p_s.php" class="btn btn-danger"><i class="fa-solid fa-circle-arrow-left"></i> Back</a>
+        <?php
+        }
+        if (isset($_GET['pwd'])) {
+        ?>
+            <a href="../pwd.php" class="btn btn-danger"><i class="fa-solid fa-circle-arrow-left"></i> Back</a>
+        <?php
+        }
+        if (isset($_GET['solo_parent'])) {
+        ?>
+            <a href="../solo_parent.php" class="btn btn-danger"><i class="fa-solid fa-circle-arrow-left"></i> Back</a>
+        <?php
+        }
+        if (isset($_GET['household'])) {
+        ?>
+            <a href="../household.php" class="btn btn-danger"><i class="fa-solid fa-circle-arrow-left"></i> Back</a>
+        <?php
+        }
+        ?>
         <button class="btn btn-primary print-btn" type="button"><i class="fa-solid fa-print"></i> Print</button>
     </div>
 
@@ -176,7 +207,8 @@ $citizenship = $result_query['citizenship'];
                         <h5 class="mb-4">To Whom it may concern:</h5>
 
                         <p class="body-letter">
-                            This is to certify that <strong><?php echo $first_name . "&nbsp" . $middle_name . "&nbsp" . $last_name; ?></strong>, <?php $diff = date_diff(date_create($dob), date_create(date("Y-m-d"))); echo $diff->format('%y'); ?> years of age, <?php echo $citizenship; ?>
+                            This is to certify that <strong><?php echo $first_name . "&nbsp" . $middle_name . "&nbsp" . $last_name; ?></strong>, <?php $diff = date_diff(date_create($dob), date_create(date("Y-m-d")));
+                                                                                                                                                    echo $diff->format('%y'); ?> years of age, <?php echo $citizenship; ?>
                             <span style="text-transform: lowercase;"><?php echo $civil_status; ?></span> is a bona fide resident of <?php echo $address; ?>.
                         </p>
                         <br>
