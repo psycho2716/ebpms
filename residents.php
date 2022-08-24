@@ -145,7 +145,7 @@ $barangay_name = $row['barangay_name'];
                 </thead>
                 <tbody>
                     <?php
-                    $sql = "SELECT * FROM residents";
+                    $sql = "SELECT * FROM residents WHERE barangay_id = '$barangay_id'";
                     $run_query = mysqli_query($conn, $sql);
                     $i = 0;
 
