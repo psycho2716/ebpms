@@ -97,7 +97,7 @@ $barangay_name = $row['barangay_name'];
                         <h4 class="card-title text-center">Household</h4>
                         <h2 class="card-text text-center">
                             <?php
-                            $sql = "SELECT * FROM residents WHERE household_type = 'Head'";
+                            $sql = "SELECT * FROM residents WHERE household_type = 'Head' AND barangay_id = '$barangay_id'";
                             $result = mysqli_query($conn, $sql);
                             $household_type = mysqli_num_rows($result);
 
@@ -120,15 +120,15 @@ $barangay_name = $row['barangay_name'];
                         <h4 class="card-title text-center">Beneficiaries</h4>
                         <h2 class="card-text text-center">
                             <?php
-                            $counters = $conn->query("SELECT COUNT(pwd) AS counter FROM residents WHERE pwd = 'Yes' ");
+                            $counters = $conn->query("SELECT COUNT(pwd) AS counter FROM residents WHERE pwd = 'Yes' AND barangay_id = '$barangay_id'");
                             $counter = $counters->fetch_assoc();
                             $pwd = $counter['counter'];
 
-                            $counters = $conn->query("SELECT COUNT(civil_status) AS counter FROM residents WHERE civil_status = 'Single Parent' ");
+                            $counters = $conn->query("SELECT COUNT(civil_status) AS counter FROM residents WHERE civil_status = 'Single Parent' AND barangay_id = '$barangay_id'");
                             $counter = $counters->fetch_assoc();
                             $civil_status = $counter['counter'];
 
-                            $counters = $conn->query("SELECT COUNT(4p_s) AS counter FROM residents WHERE 4p_s = 'Yes' ");
+                            $counters = $conn->query("SELECT COUNT(4p_s) AS counter FROM residents WHERE 4p_s = 'Yes' AND barangay_id = '$barangay_id'");
                             $counter = $counters->fetch_assoc();
                             $four_ps = $counter['counter'];
 

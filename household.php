@@ -149,7 +149,7 @@ if (isset($_POST['edit_resident'])) {
                 </thead>
                 <tbody>
                     <?php
-                    $sql = "SELECT * FROM residents WHERE household_type = 'Head'";
+                    $sql = "SELECT * FROM residents WHERE household_type = 'Head' AND barangay_id = '$barangay_id'";
                     $run_query = mysqli_query($conn, $sql);
                     $i = 0;
 

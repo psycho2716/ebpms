@@ -143,7 +143,7 @@ include('includes/user_actions.php');
                         <input type="text" name="bhw" class="form-control" value="<?php echo $bhw; ?>" placeholder="Barangay Health Worker" required>
                     </div>
                     <div class="col">
-                        <label for="">SK Kagawad</label>
+                        <label for="">SK Chairman</label>
                         <input type="text" name="sk_chairman" class="form-control" value="<?php echo $sk_chairman; ?>" placeholder="SK Kagawad" required>
                     </div>
                 </div>
