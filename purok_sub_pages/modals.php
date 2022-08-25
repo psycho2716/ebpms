@@ -181,6 +181,36 @@
     }
     ?>
 
+    <!-- Delete Purok Modal -->
+    <?php
+    $sql = "SELECT * FROM residents";
+    $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_array($result)) {
+        $resident_id = $row['id'];
+        $purok_id = $row['purok_id'];
+
+        echo "
+                <div class='modal fade' id='deletePurok$resident_id' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
+                    <div class='modal-dialog'>
+                        <div class='modal-content'>
+                            <div class='modal-header bg-dark text-light'>
+                                <h5 class='modal-title' id='staticBackdropLabel'>Are you sure you want to delete?</h5>
+                                <button type='button' class='btn-close bg-light' data-bs-dismiss='modal' aria-label='Close'></button>
+                            </div>
+                            <div class='modal-body'>
+                                <h6>Resident data will be deleted.</h6>
+                            </div>
+                            <div class='modal-footer'>
+                                <a href='purok_sub_pages_actions.php?delete_resident=$resident_id&&purok_id=$purok_id' type='button' class='btn btn-danger'>Delete</a>
+                                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            ";
+    }
+    ?>
+
     <!-- Add Modal -->
     <div class="modal fade" id="addResident" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -313,7 +343,7 @@
                     <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="profile-img-container">
+                    <div class="profile-img-container" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Click to update photo!">
                         <a class='btn btn-warning' data-bs-toggle='modal' role='button' data-bs-target='#editPhoto' style="text-decoration: none; ">
                             <?php
                             if (!$result_purok_img) {
@@ -343,7 +373,7 @@
 
                     <div class="container d-flex justify-content-end gap-2">
                         <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#editPurokInfo">Update Info</button>
-                        <button type='button' class='btn btn-danger' data-bs-dismiss='modal'>Delete</button>
+                        <button type='button' class='btn btn-danger' data-bs-dismiss='modal' data-bs-target="#deletePurok<?php echo $resident_id; ?>">Delete</button>
                     </div>
                 </div>
             </div>
