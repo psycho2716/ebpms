@@ -182,34 +182,23 @@
     ?>
 
     <!-- Delete Purok Modal -->
-    <?php
-    $sql = "SELECT * FROM residents";
-    $result = mysqli_query($conn, $sql);
-    while ($row = mysqli_fetch_array($result)) {
-        $resident_id = $row['id'];
-        $purok_id = $row['purok_id'];
-
-        echo "
-                <div class='modal fade' id='deletePurok$resident_id' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
-                    <div class='modal-dialog'>
-                        <div class='modal-content'>
-                            <div class='modal-header bg-dark text-light'>
-                                <h5 class='modal-title' id='staticBackdropLabel'>Are you sure you want to delete?</h5>
-                                <button type='button' class='btn-close bg-light' data-bs-dismiss='modal' aria-label='Close'></button>
-                            </div>
-                            <div class='modal-body'>
-                                <h6>Resident data will be deleted.</h6>
-                            </div>
-                            <div class='modal-footer'>
-                                <a href='purok_sub_pages_actions.php?delete_resident=$resident_id&&purok_id=$purok_id' type='button' class='btn btn-danger'>Delete</a>
-                                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
-                            </div>
-                        </div>
-                    </div>
+    <div class='modal fade' id='deletePurok' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header bg-dark text-light'>
+                    <h5 class='modal-title' id='staticBackdropLabel'>Are you sure you want to delete?</h5>
+                    <button type='button' class='btn-close bg-light' data-bs-dismiss='modal' aria-label='Close'></button>
                 </div>
-            ";
-    }
-    ?>
+                <div class='modal-body'>
+                    <h6>Purok data will be deleted.</h6>
+                </div>
+                <div class='modal-footer'>
+                    <a href='purok_sub_pages_actions.php?delete_purok=<?php echo $_GET['purok_id']; ?>' type='button' class='btn btn-danger'>Delete</a>
+                    <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Add Modal -->
     <div class="modal fade" id="addResident" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -389,7 +378,7 @@
                     <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="purok_sub_pages_actions.php?purok_id=<?php echo $row['purok_id']; ?>" method="post">
+                    <form action="purok_sub_pages_actions.php?purok_id=<?php echo $_GET['purok_id']; ?>" method="post">
                         <div class="form-input-container row mb-2">
                             <div class="col">
                                 <label>Purok Name</label>

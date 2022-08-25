@@ -46,6 +46,24 @@ if (isset($_GET['delete_resident'])) {
     }
 }
 
+// Delete Purok
+if (isset($_GET['delete_purok'])) {
+    $purok_id = $_GET['delete_purok'];
+
+    $sql1 = "DELETE FROM purok WHERE purok_id = '$purok_id'";
+    $sql2 = "DELETE FROM residents WHERE purok_id = '$purok_id'";
+
+    $result1 = mysqli_query($conn, $sql1);
+    $result2 = mysqli_query($conn, $sql2);
+
+    if ($result1 || $result2) {
+        header('location: ../purok.php?delete=success');
+        exit;
+    } else {
+        header('location: ../purok.php?delete=failed');
+    }
+}
+
 // Edit Resident
 if (isset($_POST['edit_resident'])) {
     // Get edit id and purok id
@@ -86,23 +104,22 @@ if (isset($_POST['edit_resident'])) {
 if (isset($_POST['edit_purok'])) {
     // Get edit purok id
     $purok_id = $_GET['purok_id'];
-    echo $purok_id;
-    
-    // // Store post values in a variable
-    // $purok_name = $_POST['purok_name'];
-    // $purok_address = $_POST['purok_address'];
+
+    // Store post values in a variable
+    $purok_name = $_POST['purok_name'];
+    $purok_address = $_POST['purok_address'];
 
 
-    // $sql = "UPDATE purok SET purok_name ='$purok_name', purok_address ='$purok_address' WHERE id = $purok_id ";
-    // $result = mysqli_query($conn, $sql);
+    $sql = "UPDATE purok SET purok_name ='$purok_name', purok_address ='$purok_address' WHERE purok_id = $purok_id ";
+    $result = mysqli_query($conn, $sql);
 
-    // if ($result) {
-    //     header('location: view_purok.php?purok_id=' . $purok_id . '&&info=success');
-    //     exit;
-    // } else {
-    //     header('location: view_purok.php?purok_id=' . $purok_id . '&&info=failed');
-    //     exit;
-    // }
+    if ($result) {
+        header('location: view_purok.php?purok_id=' . $purok_id . '&&edit=success');
+        exit;
+    } else {
+        header('location: view_purok.php?purok_id=' . $purok_id . '&&edit=failed');
+        exit;
+    }
 }
 
 // Upload Profile
