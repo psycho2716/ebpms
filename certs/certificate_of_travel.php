@@ -6,6 +6,7 @@ $id = $_SESSION['id'];
 $resident_id = $_GET['resident_id'];
 $purok_id = $_GET['purok_id'];
 
+
 if (!isset($_SESSION['id'])) {
     header('location: login.php');
 }
@@ -45,6 +46,10 @@ $result_query = mysqli_fetch_assoc($run_data_query);
 $first_name = $result_query['first_name'];
 $middle_name = $result_query['middle_name'];
 $last_name = $result_query['last_name'];
+$occupation = $result_query['occupation'];
+$school_attainment = $result_query['school_attainment'];
+$blood_type = $result_query['blood_type'];
+$skills = $result_query['skills'];
 $residents_address = $result_query['residents_address'];
 $dob = $result_query['dob'];
 $civil_status = $result_query['civil_status'];
@@ -130,101 +135,11 @@ $citizenship = $result_query['citizenship'];
     </div>
 
     <div class="clearance">
-        <div class="barangay-clearance" id="data">
-            <div class="left py-2">
+        <div class="barangay-clearance cot" id="data">
+            <div class="document-body cot">
                 <div class="clearance-logo d-flex justify-content-center">
                     <img src="../images/logo.png">
                 </div>
-                <div class="official-container my-2">
-                    <div class="official-clearance-header text-center">
-                        <h4>
-                            <?php echo $barangay_name; ?> Barangay Officials
-                        </h4>
-                    </div>
-                    <div class="official-clearance-body">
-                        <div class="clearance-official-body-header text-center">
-                            <span>Concurrent</span>
-                            <h5 class="captain-name mt-4">
-                                <?php echo $barangay_captain; ?>
-                            </h5>
-                            <span class="official-title">
-                                Punong Barangay
-                            </span>
-                        </div>
-                        <div class="clearance-official-body-content mt-4 text-center">
-                            <span class="official-title">
-                                Barangay Kagawad
-                            </span>
-                            <span class="Kagawad-name d-block mt-3">
-                                <?php echo $kagawad_1; ?>
-                            </span>
-                            <span class="Kagawad-name d-block mt-3">
-                                <?php echo $kagawad_2; ?>
-                            </span>
-                            <span class="Kagawad-name d-block mt-3">
-                                <?php echo $kagawad_3; ?>
-                            </span>
-                            <span class="Kagawad-name d-block mt-3">
-                                <?php echo $kagawad_4; ?>
-                            </span>
-                            <span class="Kagawad-name d-block mt-3">
-                                <?php echo $kagawad_5; ?>
-                            </span>
-                            <span class="Kagawad-name d-block mt-3">
-                                <?php echo $kagawad_6; ?>
-                            </span>
-                            <span class="Kagawad-name d-block my-3">
-                                <?php echo $kagawad_7; ?>
-                            </span>
-                            <h5 class="sk-chairman-name mt-4">
-                                <?php echo $sk_chairman; ?>
-                            </h5>
-                            <span class="official-title">
-                                SK Chairman
-                            </span>
-                            <h5 class="secretary-name mt-4">
-                                <?php echo $secretary; ?>
-                            </h5>
-                            <span class="official-title">
-                                Kalihim
-                            </span>
-                            <h5 class="treasurer-name mt-4">
-                                <?php echo $treasurer; ?>
-                            </h5>
-                            <span class="official-title">
-                                Ingat-Yaman
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="fees">
-                    <div class="fee-input-container">
-                        <span class="fee-title">Clearance Fee: </span>
-                        <input type="text" class="fee-input">
-                    </div>
-                    <div class="fee-input-container">
-                        <span class="fee-title">OR No. </span>
-                        <input type="text" class="fee-input">
-                    </div>
-                    <div class="fee-input-container">
-                        <span class="fee-title">Date Issued </span>
-                        <input type="text" class="fee-input">
-                    </div>
-                    <div class="fee-input-container">
-                        <span class="fee-title">CTC No. </span>
-                        <input type="text" class="fee-input">
-                    </div>
-                    <div class="fee-input-container">
-                        <span class="fee-title">Date Issued: </span>
-                        <input type="text" class="fee-input">
-                    </div>
-                    <div class="fee-input-container">
-                        <span class="fee-title">Doc Stamp: </span>
-                        <input type="text" class="fee-input">
-                    </div>
-                </div>
-            </div>
-            <div class="document-body">
                 <div class="clearance-header text-center">
                     <h4>Republic of the Philippines <br> Province of Romblon <br> Municipality of Romblon</h4>
                     <span>o00o</span>
@@ -234,26 +149,54 @@ $citizenship = $result_query['citizenship'];
                     <h3 class="mt-4">Office of the Punong Barangay</h3>
                 </div>
                 <div class="clearance-body">
-                    <h1>Business Clearance 2022</h1>
+                    <h1>Certification</h1>
 
                     <div class="body-text">
 
                         <h5 class="mb-4">To Whom it may concern:</h5>
 
                         <p class="body-letter">
-                            Clearance is hereby granted to <strong><?php echo $first_name . "&nbsp" . $middle_name . "&nbsp" . $last_name; ?></strong> to engage in business as owner / proprietor / operator of Sari- Sari Store the period ending <input type="text" placeholder="Year" class="cow-specs">.
+                            This is to certify that <strong><?php echo $first_name . "&nbsp" . $middle_name . "&nbsp" . $last_name; ?></strong>, <?php $diff = date_diff(date_create($dob), date_create(date("Y-m-d")));
+                                                                                                                                                    echo $diff->format('%y'); ?> years of age, <span><input type="text" class="input-1 cot-input"></span> is subject to travel to <input type="text" class="input-2 cot-input">, going to <input type="text" class="input-3 cot-input"> on <input type="date" class="input-4 cot-input">.
                         </p>
                         <br>
-                        <p class="body-letter fw-bold">
+                        <p class="body-letter">
+                            This certifies further that he is <strong>NOT</strong> Person Under Monitoring (PUM)/NOT Person Under Investigation (PUI) due to COVID Pandemic while in the AOR and <?php echo $address; ?> is <strong>Low Risk Barangay</strong>.
+                        </p>
+                        <p class="body-letter">
                             Issued this
                             <?php echo date("d"); ?>'th day of
-                            <?php echo date("M, Y"); ?> at
-                            <?php echo $address; ?>
-                            for whatever legal purposes this may serve.
+                            <?php echo date("M, Y"); ?> prior to his travel from this place to other Municipality and for any other purpose this may serve.
                         </p>
                     </div>
                 </div>
-                <div class="clearance-footer">
+                <div class="clearance-footer clearance-footer-2">
+                    <div class="fees-2">
+                        <div class="fee-input-container">
+                            <span class="fee-title">Clearance Fee: </span>
+                            <input type="text" class="fee-input">
+                        </div>
+                        <div class="fee-input-container">
+                            <span class="fee-title">OR No. </span>
+                            <input type="text" class="fee-input">
+                        </div>
+                        <div class="fee-input-container">
+                            <span class="fee-title">Date Issued </span>
+                            <input type="text" class="fee-input">
+                        </div>
+                        <div class="fee-input-container">
+                            <span class="fee-title">CTC No. </span>
+                            <input type="text" class="fee-input">
+                        </div>
+                        <div class="fee-input-container">
+                            <span class="fee-title">Date Issued: </span>
+                            <input type="text" class="fee-input">
+                        </div>
+                        <div class="fee-input-container">
+                            <span class="fee-title">Doc Stamp: </span>
+                            <input type="text" class="fee-input">
+                        </div>
+                    </div>
                     <div class="footer-text">
                         <h3>
                             <?php echo $barangay_captain; ?>
@@ -266,7 +209,31 @@ $citizenship = $result_query['citizenship'];
     </div>
 
     <?php include('../includes/foot.php'); ?>
+    <script>
+        const input1 = document.querySelector(".input-1");
+        const input2 = document.querySelector(".input-2");
+        const input3 = document.querySelector(".input-3");
+        input1.addEventListener('input', resizeInput1);
+        resizeInput1.call(input1);
 
+        function resizeInput1() {
+            this.style.width = this.value.length + "ch";
+        }
+
+        input2.addEventListener('input', resizeInput2);
+        resizeInput2.call(input2);
+
+        function resizeInput2() {
+            this.style.width = this.value.length + "ch";
+        }
+
+        input3.addEventListener('input', resizeInput3);
+        resizeInput3.call(input3);
+
+        function resizeInput3() {
+            this.style.width = this.value.length + "ch";
+        }
+    </script>
 </body>
 
 </html>

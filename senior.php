@@ -529,7 +529,7 @@ if (isset($_POST['edit_resident'])) {
                     </div>
                     <div class="cert-modal-body modal-body">
                         <ol>
-                            <li>
+                        <li>
                                 <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&senior">Barangay Clearance</a>
                             </li>
                             <li>
@@ -539,19 +539,16 @@ if (isset($_POST['edit_resident'])) {
                                 <a href="certs/certification.php?resident_id=<?php echo $resident_id; ?>&&senior">Certification</a>
                             </li>
                             <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&senior">Barangay Clearance</a>
+                                <a href="certs/certificate_of_travel.php?resident_id=<?php echo $resident_id; ?>&&senior">Certificate of Travel</a>
                             </li>
                             <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&senior">Barangay Clearance</a>
+                                <a href="certs/requirements_to_travel.php?resident_id=<?php echo $resident_id; ?>&&purok_id=<?php echo $purok_id; ?>&&senior">Requirements to Travel Certification</a>
                             </li>
                             <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&senior">Barangay Clearance</a>
+                                <a href="certs/travel_acceptance.php?resident_id=<?php echo $resident_id; ?>&&purok_id=<?php echo $purok_id; ?>&&senior">Travel Acceptance Certification</a>
                             </li>
                             <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&senior">Barangay Clearance</a>
-                            </li>
-                            <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&senior">Barangay Clearance</a>
+                                <a href="certs/cattle_sale.php?resident_id=<?php echo $resident_id; ?>&&purok_id=<?php echo $purok_id; ?>&&senior">Certification Sale of Large Cattle</a>
                             </li>
                         </ol>
                     </div>

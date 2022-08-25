@@ -4,6 +4,8 @@ include('../includes/db.php');
 session_start();
 $id = $_SESSION['id'];
 $resident_id = $_GET['resident_id'];
+$purok_id = $_GET['purok_id'];
+
 
 if (!isset($_SESSION['id'])) {
     header('location: login.php');
@@ -71,13 +73,10 @@ $citizenship = $result_query['citizenship'];
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- FontAwesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
-        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- External CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -95,7 +94,43 @@ $citizenship = $result_query['citizenship'];
 
 <body>
     <div class="button-container">
-        <a href="../residents.php" class="btn btn-danger"><i class="fa-solid fa-circle-arrow-left"></i> Back</a>
+        <?php
+        if (isset($_GET['senior'])) {
+        ?>
+            <a href="../senior.php" class="btn btn-danger"><i class="fa-solid fa-circle-arrow-left"></i> Back</a>
+        <?php
+        }
+        if (isset($_GET['residents'])) {
+        ?>
+            <a href="../residents.php" class="btn btn-danger"><i class="fa-solid fa-circle-arrow-left"></i> Back</a>
+        <?php
+        }
+        if (isset($_GET['4p_s'])) {
+        ?>
+            <a href="../4p_s.php" class="btn btn-danger"><i class="fa-solid fa-circle-arrow-left"></i> Back</a>
+        <?php
+        }
+        if (isset($_GET['pwd'])) {
+        ?>
+            <a href="../pwd.php" class="btn btn-danger"><i class="fa-solid fa-circle-arrow-left"></i> Back</a>
+        <?php
+        }
+        if (isset($_GET['solo_parent'])) {
+        ?>
+            <a href="../solo_parent.php" class="btn btn-danger"><i class="fa-solid fa-circle-arrow-left"></i> Back</a>
+        <?php
+        }
+        if (isset($_GET['household'])) {
+        ?>
+            <a href="../household.php" class="btn btn-danger"><i class="fa-solid fa-circle-arrow-left"></i> Back</a>
+        <?php
+        }
+        if (isset($_GET['view_purok'])) {
+        ?>
+            <a href="../purok_sub_pages/view_purok.php?purok_id=<?php echo $purok_id; ?>" class="btn btn-danger"><i class="fa-solid fa-circle-arrow-left"></i> Back</a>
+        <?php
+        }
+        ?>
         <button class="btn btn-primary print-btn" type="button"><i class="fa-solid fa-print"></i> Print</button>
     </div>
 

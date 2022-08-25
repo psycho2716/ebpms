@@ -4,6 +4,7 @@ include('../includes/db.php');
 session_start();
 $id = $_SESSION['id'];
 $resident_id = $_GET['resident_id'];
+$purok_id = $_GET['purok_id'];
 
 if (!isset($_SESSION['id'])) {
     header('location: login.php');
@@ -101,6 +102,11 @@ $citizenship = $result_query['citizenship'];
         if (isset($_GET['household'])) {
         ?>
             <a href="../household.php" class="btn btn-danger"><i class="fa-solid fa-circle-arrow-left"></i> Back</a>
+        <?php
+        }
+        if (isset($_GET['view_purok'])) {
+        ?>
+            <a href="../purok_sub_pages/view_purok.php?purok_id=<?php echo $purok_id; ?>" class="btn btn-danger"><i class="fa-solid fa-circle-arrow-left"></i> Back</a>
         <?php
         }
         ?>

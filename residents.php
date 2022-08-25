@@ -208,27 +208,27 @@ $barangay_name = $row['barangay_name'];
 
     <!-- Residents Profile Modal -->
     <?php
-    $sql = "SELECT * FROM residents";
-    $result = mysqli_query($conn, $sql);
-    while ($row = mysqli_fetch_array($result)) {
-        $resident_id = $row['id'];
-        $first_name = $row['first_name'];
-        $middle_name = $row['middle_name'];
-        $last_name = $row['last_name'];
-        $residents_address = $row['residents_address'];
-        $gender = $row['gender'];
-        $dob = $row['dob'];
-        $citizenship = $row['citizenship'];
-        $civil_status = $row['civil_status'];
-        $occupation = $row['occupation'];
-        $school_attainment = $row['school_attainment'];
-        $skills = $row['skills'];
-        $blood_type = $row['blood_type'];
-        $purok_id = $row['purok_id'];
-        $household_type = $row['household_type'];
-        $four_ps = $row['4p_s'];
-        $pwd = $row['pwd'];
-    ?>
+        $sql = "SELECT * FROM residents";
+        $result = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_array($result)) {
+            $resident_id = $row['id'];
+            $first_name = $row['first_name'];
+            $middle_name = $row['middle_name'];
+            $last_name = $row['last_name'];
+            $residents_address = $row['residents_address'];
+            $gender = $row['gender'];
+            $dob = $row['dob'];
+            $citizenship = $row['citizenship'];
+            $civil_status = $row['civil_status'];
+            $occupation = $row['occupation'];
+            $school_attainment = $row['school_attainment'];
+            $skills = $row['skills'];
+            $blood_type = $row['blood_type'];
+            $purok_id = $row['purok_id'];
+            $household_type = $row['household_type'];
+            $four_ps = $row['4p_s'];
+            $pwd = $row['pwd'];
+        ?>
         <div class="modal fade" id="view<?php echo $resident_id; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -318,26 +318,26 @@ $barangay_name = $row['barangay_name'];
 
     <!-- Edit Modal -->
     <?php
-    $sql = "SELECT * FROM residents";
-    $result = mysqli_query($conn, $sql);
-    while ($row = mysqli_fetch_array($result)) {
-        $resident_id = $row['id'];
-        $first_name = $row['first_name'];
-        $middle_name = $row['middle_name'];
-        $last_name = $row['last_name'];
-        $residents_address = $row['residents_address'];
-        $gender = $row['gender'];
-        $dob = $row['dob'];
-        $civil_status = $row['civil_status'];
-        $occupation = $row['occupation'];
-        $school_attainment = $row['school_attainment'];
-        $skills = $row['skills'];
-        $blood_type = $row['blood_type'];
-        $citizenship = $row['citizenship'];
-        $purok_id = $row['purok_id'];
-        $household_type = $row['household_type'];
-        $four_ps = $row['4p_s'];
-        $pwd = $row['pwd'];
+        $sql = "SELECT * FROM residents";
+        $result = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_array($result)) {
+            $resident_id = $row['id'];
+            $first_name = $row['first_name'];
+            $middle_name = $row['middle_name'];
+            $last_name = $row['last_name'];
+            $residents_address = $row['residents_address'];
+            $gender = $row['gender'];
+            $dob = $row['dob'];
+            $civil_status = $row['civil_status'];
+            $occupation = $row['occupation'];
+            $school_attainment = $row['school_attainment'];
+            $skills = $row['skills'];
+            $blood_type = $row['blood_type'];
+            $citizenship = $row['citizenship'];
+            $purok_id = $row['purok_id'];
+            $household_type = $row['household_type'];
+            $four_ps = $row['4p_s'];
+            $pwd = $row['pwd'];
 
         if ($household_type === "Head") {
             $household_type_result = "Head of Household";
@@ -477,11 +477,11 @@ $barangay_name = $row['barangay_name'];
 
     <!-- Delete Modal -->
     <?php
-    $sql = "SELECT * FROM residents";
-    $result = mysqli_query($conn, $sql);
-    while ($row = mysqli_fetch_array($result)) {
-        $resident_id = $row['id'];
-        $purok_id = $row['purok_id'];
+        $sql = "SELECT * FROM residents";
+        $result = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_array($result)) {
+            $resident_id = $row['id'];
+            $purok_id = $row['purok_id'];
 
         echo "
                     <div class='modal fade' id='delete$resident_id' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
@@ -507,10 +507,10 @@ $barangay_name = $row['barangay_name'];
 
     <!-- Print Modal -->
     <?php
-    $sql = "SELECT * FROM residents";
-    $result = mysqli_query($conn, $sql);
-    while ($row = mysqli_fetch_array($result)) {
-        $resident_id = $row['id'];
+        $sql = "SELECT * FROM residents";
+        $result = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_array($result)) {
+            $resident_id = $row['id'];
 
         echo "
                 <div class='modal fade' id='print$resident_id' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
@@ -526,25 +526,22 @@ $barangay_name = $row['barangay_name'];
                                     <a href='certs/barangay_clearance.php?resident_id=$resident_id&&residents'>Barangay Clearance</a>
                                 </li>
                                 <li>
-                                    <a href='certs/certification.php?resident_id=$resident_id&&residents'>Certification</a>
-                                </li>
-                                <li>
                                     <a href='certs/business_clearance.php?resident_id=$resident_id&&residents'>Business Clearance</a>
                                 </li>
                                 <li>
-                                    <a href='certs/barangay_clearance.php?resident_id=$resident_id&&residents'>Barangay Clearance</a>
+                                    <a href='certs/certification.php?resident_id=$resident_id&&residents'>Certification</a>
                                 </li>
                                 <li>
-                                    <a href='certs/barangay_clearance.php?resident_id=$resident_id&&residents'>Barangay Clearance</a>
+                                    <a href='certs/certificate_of_travel.php?resident_id=$resident_id&&residents'>Certificate of Travel</a>
                                 </li>
                                 <li>
-                                    <a href='certs/barangay_clearance.php?resident_id=$resident_id&&residents'>Barangay Clearance</a>
+                                    <a href='certs/requirements_to_travel.php?resident_id=$resident_id&&purok_id=$purok_id&&residents'>Requirements to Travel Certification</a>
                                 </li>
                                 <li>
-                                    <a href='certs/barangay_clearance.php?resident_id=$resident_id&&residents'>Barangay Clearance</a>
+                                    <a href='certs/travel_acceptance.php?resident_id=$resident_id&&purok_id=$purok_id&&residents'>Travel Acceptance Certification</a>
                                 </li>
                                 <li>
-                                    <a href='certs/barangay_clearance.php?resident_id=$resident_id&&residents'>Barangay Clearance</a>
+                                    <a href='certs/cattle_sale.php?resident_id=$resident_id&&purok_id=$purok_id&&residents'>Certification Sale of Large Cattle</a>
                                 </li>
                             </ol>
                             </div>

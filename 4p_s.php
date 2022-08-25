@@ -533,19 +533,16 @@ if (isset($_POST['edit_resident'])) {
                                 <a href="certs/certification.php?resident_id=<?php echo $resident_id; ?>&&4p_s">Certification</a>
                             </li>
                             <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&4p_s">Barangay Clearance</a>
+                                <a href="certs/certificate_of_travel.php?resident_id=<?php echo $resident_id; ?>&&4p_s">Certificate of Travel</a>
                             </li>
                             <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&4p_s">Barangay Clearance</a>
+                                <a href="certs/requirements_to_travel.php?resident_id=<?php echo $resident_id; ?>&&purok_id=<?php echo $purok_id; ?>&&4p_s">Requirements to Travel Certification</a>
                             </li>
                             <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&4p_s">Barangay Clearance</a>
+                                <a href="certs/travel_acceptance.php?resident_id=<?php echo $resident_id; ?>&&purok_id=<?php echo $purok_id; ?>&&4p_s">Travel Acceptance Certification</a>
                             </li>
                             <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&4p_s">Barangay Clearance</a>
-                            </li>
-                            <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&4p_s">Barangay Clearance</a>
+                                <a href="certs/cattle_sale.php?resident_id=<?php echo $resident_id; ?>&&purok_id=<?php echo $purok_id; ?>&&4p_s">Certification Sale of Large Cattle</a>
                             </li>
                         </ol>
                     </div>
