@@ -38,6 +38,35 @@ $barangay_name = $row['barangay_name'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EBPMS</title>
     <?php include('includes/head.php'); ?>
+
+    <style>
+        <?php
+        if (!isset($_GET['edit'])) {
+        ?>.alert.edit {
+            display: none;
+        }
+
+        <?php
+        }
+
+        if (!isset($_GET['delete'])) {
+        ?>.alert.delete {
+            display: none;
+        }
+
+        <?php
+        }
+
+        if (!isset($_GET['add'])) {
+        ?>.alert.add {
+            display: none;
+        }
+
+        <?php
+        }
+        ?>
+    </style>
+
 </head>
 
 <body class="dashboard-body">
@@ -50,6 +79,11 @@ $barangay_name = $row['barangay_name'];
         <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#addPurok"><i class="fa-solid fa-circle-plus"></i> Add Purok</button>
     </div>
 
+    <div class="container">
+        <div class="alert alert-success text-center m-3 delete"><span>Data has been Deleted!</span></div>
+        <div class="alert alert-success text-center m-3 add"><span>Data has been Added!</span></div>
+        <div class="alert alert-success text-center m-3 edit"><span>Data has been Edited!</span></div>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="addPurok" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

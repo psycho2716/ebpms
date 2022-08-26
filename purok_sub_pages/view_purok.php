@@ -161,12 +161,11 @@ $result_purok_img = $purok_data['img'];
         <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#addResident"><i class="fa-solid fa-circle-plus"></i> Add Resident</button>
         <div class="btn-right">
             <button class="btn btn-success profile-button1" type="button" data-bs-toggle="modal" data-bs-target="#editPurok"><i class="fa-solid fa-address-card"></i></button>
-            <button class="btn btn-danger profile-button2" type="button" data-bs-toggle="modal" data-bs-target="#deletePurok"><i class="fa-solid fa-trash"></i></button>
         </div>
     </div>
 
     <div class="container">
-        <div class="alert alert-danger text-center m-3 delete"><span>Data has been Deleted!</span></div>
+        <div class="alert alert-success text-center m-3 delete"><span>Data has been Deleted!</span></div>
         <div class="alert alert-success text-center m-3 add"><span>Data has been Added!</span></div>
         <div class="alert alert-success text-center m-3 edit"><span>Data has been Edited!</span></div>
     </div>

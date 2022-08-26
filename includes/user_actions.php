@@ -113,7 +113,7 @@ if (isset($_POST['purok_add'])) {
     if (!$fetch) {
         mysqli_query($conn, "INSERT INTO purok (purok_address, purok_name, purok_id, barangay_id)
         VALUES('$purok_address', '$purok_name', '$purok_id', '$barangay_id')");
-        header('location: purok.php?info=success');
+        header('location: purok.php?add=success');
     } else {
         $purok_err = " is already registered!";
     }
@@ -152,7 +152,7 @@ if (isset($_POST['certificate_add'])) {
     if (!$fetch) {
         mysqli_query($conn, "INSERT INTO certificates (certificate_name, img, file, barangay_id)
         VALUES('$certificate_name', '$image', '$file', '$barangay_id')");
-        header('location: certificates.php?info=success');
+        header('location: certificates.php?add=success');
     } else {
         $certificate_err = " is already registered!";
     }
@@ -167,10 +167,10 @@ if (isset($_GET['delete_certificate'])) {
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        header('location: ../certificates.php?info=success');
+        header('location: ../certificates.php?delete=success');
         exit;
     } else {
-        header('location: ../certificates.php?info=failed');
+        header('location: ../certificates.php?delete=failed');
     }
 }
 
@@ -193,7 +193,7 @@ if (isset($_POST['add_resident'])) {
         mysqli_query($conn, "INSERT INTO residents (residents_name, residents_address, gender, dob, purok_id, barangay_id, civil_status, ethnicity)
         VALUES('$residents_name', '$residents_address', '$gender', '$dob', '$purok_id', '$barangay_id', '$civil_status', '$ethnicity')");
 
-        header('location: residents.php?info=success');
+        header('location: residents.php?add=success');
     } else {
         $purok_err = " is already registered!";
     }
@@ -209,10 +209,10 @@ if (isset($_GET['delete_resident'])) {
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        header('location: residents.php?info=success');
+        header('location: residents.php?delete=success');
         exit;
     } else {
-        header('location: residents.php?info=failed');
+        header('location: residents.php?delete=failed');
     }
 }
 

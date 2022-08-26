@@ -131,7 +131,7 @@ if (isset($_POST['edit_resident'])) {
     </div>
 
     <div class="container">
-        <div class="alert alert-danger text-center m-3 delete"><span>Data has been Deleted!</span></div>
+        <div class="alert alert-success text-center m-3 delete"><span>Data has been Deleted!</span></div>
         <div class="alert alert-success text-center m-3 add"><span>Data has been Added!</span></div>
         <div class="alert alert-success text-center m-3 edit"><span>Data has been Edited!</span></div>
     </div>

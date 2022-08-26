@@ -362,7 +362,7 @@
 
                     <div class="container d-flex justify-content-end gap-2">
                         <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#editPurokInfo">Update Info</button>
-                        <button type='button' class='btn btn-danger' data-bs-dismiss='modal' data-bs-target="#deletePurok<?php echo $resident_id; ?>">Delete</button>
+                        <button class="btn btn-danger profile-button2" type="button" data-bs-toggle="modal" data-bs-target="#deletePurok"><i class="fa-solid fa-trash"></i> Delete Purok</button>
                     </div>
                 </div>
             </div>

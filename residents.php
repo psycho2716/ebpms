@@ -40,6 +40,35 @@ $barangay_name = $row['barangay_name'];
     <title>EBPMS</title>
     <?php include('includes/head.php'); ?>
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        <?php
+        if (!isset($_GET['edit'])) {
+        ?>.alert.edit {
+            display: none;
+        }
+
+        <?php
+        }
+
+        if (!isset($_GET['delete'])) {
+        ?>.alert.delete {
+            display: none;
+        }
+
+        <?php
+        }
+
+        if (!isset($_GET['add'])) {
+        ?>.alert.add {
+            display: none;
+        }
+
+        <?php
+        }
+        ?>
+    </style>
+
 </head>
 
 <body class="dashboard-body">
@@ -122,6 +151,12 @@ $barangay_name = $row['barangay_name'];
         <form method="post" action="includes/export.php?barangay_id=<?php echo $barangay_id; ?>">
             <button type="submit" name="export" class="btn btn-success"><i class="fa-solid fa-file-arrow-down"></i> Export Data</button>
         </form>
+    </div>
+
+    <div class="container">
+        <div class="alert alert-success text-center m-3 delete"><span>Data has been Deleted!</span></div>
+        <div class="alert alert-success text-center m-3 add"><span>Data has been Added!</span></div>
+        <div class="alert alert-success text-center m-3 edit"><span>Data has been Edited!</span></div>
     </div>
 
     <?php
@@ -208,27 +243,27 @@ $barangay_name = $row['barangay_name'];
 
     <!-- Residents Profile Modal -->
     <?php
-        $sql = "SELECT * FROM residents";
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($result)) {
-            $resident_id = $row['id'];
-            $first_name = $row['first_name'];
-            $middle_name = $row['middle_name'];
-            $last_name = $row['last_name'];
-            $residents_address = $row['residents_address'];
-            $gender = $row['gender'];
-            $dob = $row['dob'];
-            $citizenship = $row['citizenship'];
-            $civil_status = $row['civil_status'];
-            $occupation = $row['occupation'];
-            $school_attainment = $row['school_attainment'];
-            $skills = $row['skills'];
-            $blood_type = $row['blood_type'];
-            $purok_id = $row['purok_id'];
-            $household_type = $row['household_type'];
-            $four_ps = $row['4p_s'];
-            $pwd = $row['pwd'];
-        ?>
+    $sql = "SELECT * FROM residents";
+    $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_array($result)) {
+        $resident_id = $row['id'];
+        $first_name = $row['first_name'];
+        $middle_name = $row['middle_name'];
+        $last_name = $row['last_name'];
+        $residents_address = $row['residents_address'];
+        $gender = $row['gender'];
+        $dob = $row['dob'];
+        $citizenship = $row['citizenship'];
+        $civil_status = $row['civil_status'];
+        $occupation = $row['occupation'];
+        $school_attainment = $row['school_attainment'];
+        $skills = $row['skills'];
+        $blood_type = $row['blood_type'];
+        $purok_id = $row['purok_id'];
+        $household_type = $row['household_type'];
+        $four_ps = $row['4p_s'];
+        $pwd = $row['pwd'];
+    ?>
         <div class="modal fade" id="view<?php echo $resident_id; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -318,26 +353,26 @@ $barangay_name = $row['barangay_name'];
 
     <!-- Edit Modal -->
     <?php
-        $sql = "SELECT * FROM residents";
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($result)) {
-            $resident_id = $row['id'];
-            $first_name = $row['first_name'];
-            $middle_name = $row['middle_name'];
-            $last_name = $row['last_name'];
-            $residents_address = $row['residents_address'];
-            $gender = $row['gender'];
-            $dob = $row['dob'];
-            $civil_status = $row['civil_status'];
-            $occupation = $row['occupation'];
-            $school_attainment = $row['school_attainment'];
-            $skills = $row['skills'];
-            $blood_type = $row['blood_type'];
-            $citizenship = $row['citizenship'];
-            $purok_id = $row['purok_id'];
-            $household_type = $row['household_type'];
-            $four_ps = $row['4p_s'];
-            $pwd = $row['pwd'];
+    $sql = "SELECT * FROM residents";
+    $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_array($result)) {
+        $resident_id = $row['id'];
+        $first_name = $row['first_name'];
+        $middle_name = $row['middle_name'];
+        $last_name = $row['last_name'];
+        $residents_address = $row['residents_address'];
+        $gender = $row['gender'];
+        $dob = $row['dob'];
+        $civil_status = $row['civil_status'];
+        $occupation = $row['occupation'];
+        $school_attainment = $row['school_attainment'];
+        $skills = $row['skills'];
+        $blood_type = $row['blood_type'];
+        $citizenship = $row['citizenship'];
+        $purok_id = $row['purok_id'];
+        $household_type = $row['household_type'];
+        $four_ps = $row['4p_s'];
+        $pwd = $row['pwd'];
 
         if ($household_type === "Head") {
             $household_type_result = "Head of Household";
@@ -477,11 +512,11 @@ $barangay_name = $row['barangay_name'];
 
     <!-- Delete Modal -->
     <?php
-        $sql = "SELECT * FROM residents";
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($result)) {
-            $resident_id = $row['id'];
-            $purok_id = $row['purok_id'];
+    $sql = "SELECT * FROM residents";
+    $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_array($result)) {
+        $resident_id = $row['id'];
+        $purok_id = $row['purok_id'];
 
         echo "
                     <div class='modal fade' id='delete$resident_id' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
@@ -507,10 +542,10 @@ $barangay_name = $row['barangay_name'];
 
     <!-- Print Modal -->
     <?php
-        $sql = "SELECT * FROM residents";
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($result)) {
-            $resident_id = $row['id'];
+    $sql = "SELECT * FROM residents";
+    $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_array($result)) {
+        $resident_id = $row['id'];
 
         echo "
                 <div class='modal fade' id='print$resident_id' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
