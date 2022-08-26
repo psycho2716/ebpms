@@ -173,6 +173,9 @@ if (isset($_POST['edit_resident'])) {
                         $age_result = intval($age->format("%y"));
 
                         if ($age_result >= 60) {
+                            $senior = "UPDATE residents SET senior ='Yes' WHERE id = '$resident_id'";
+                            $result = mysqli_query($conn, $senior);
+
                             echo "
                                 <tr>
                                     <th>$no</th>
@@ -529,7 +532,7 @@ if (isset($_POST['edit_resident'])) {
                     </div>
                     <div class="cert-modal-body modal-body">
                         <ol>
-                        <li>
+                            <li>
                                 <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&purok_id=<?php echo $purok_id; ?>&&senior">Barangay Clearance</a>
                             </li>
                             <li>

@@ -132,7 +132,11 @@ $barangay_name = $row['barangay_name'];
                             $counter = $counters->fetch_assoc();
                             $four_ps = $counter['counter'];
 
-                            echo $pwd + $civil_status + $four_ps;
+                            $counters = $conn->query("SELECT COUNT(senior) AS counter FROM residents WHERE senior = 'Yes' AND barangay_id = '$barangay_id'");
+                            $counter = $counters->fetch_assoc();
+                            $senior = $counter['counter'];
+
+                            echo $pwd + $civil_status + $four_ps + $senior;
                             ?>
                         </h2>
                     </div>
