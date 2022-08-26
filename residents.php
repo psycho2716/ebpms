@@ -558,16 +558,16 @@ $barangay_name = $row['barangay_name'];
                             <div class='cert-modal-body modal-body'>
                             <ol>
                                 <li>
-                                    <a href='certs/barangay_clearance.php?resident_id=$resident_id&&residents'>Barangay Clearance</a>
+                                    <a href='certs/barangay_clearance.php?resident_id=$resident_id&&purok_id=$purok_id&&residents'>Barangay Clearance</a>
                                 </li>
                                 <li>
-                                    <a href='certs/business_clearance.php?resident_id=$resident_id&&residents'>Business Clearance</a>
+                                    <a href='certs/business_clearance.php?resident_id=$resident_id&&purok_id=$purok_id&&residents'>Business Clearance</a>
                                 </li>
                                 <li>
-                                    <a href='certs/certification.php?resident_id=$resident_id&&residents'>Certification</a>
+                                    <a href='certs/certification.php?resident_id=$resident_id&&purok_id=$purok_id&&residents'>Certification</a>
                                 </li>
                                 <li>
-                                    <a href='certs/certificate_of_travel.php?resident_id=$resident_id&&residents'>Certificate of Travel</a>
+                                    <a href='certs/certificate_of_travel.php?resident_id=$resident_id&&purok_id=$purok_id&&residents'>Certificate of Travel</a>
                                 </li>
                                 <li>
                                     <a href='certs/requirements_to_travel.php?resident_id=$resident_id&&purok_id=$purok_id&&residents'>Requirements to Travel Certification</a>

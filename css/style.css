@@ -466,31 +466,6 @@ body::-webkit-scrollbar-thumb {
   gap: 20px;
 }
 
-@media screen and (max-width: 425px) {
-  .document-body .officials {
-    display: block;
-  }
-
-  .document-header .document-logo-container img {
-    width: 60px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .content {
-    padding: 20px;
-  }
-
-  .button-container{
-    justify-content: center;
-  }
-
-  .btn-right {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
 .profile-button {
   margin-left: auto;
 }
@@ -948,6 +923,8 @@ body::-webkit-scrollbar-thumb {
   font-weight: 500;
 }
 
+
+/* Media Queries */
 @media print {
   .button-container {
     display: none;
@@ -997,5 +974,34 @@ body::-webkit-scrollbar-thumb {
 
   .welcome-message {
     display: none;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .document-body .officials {
+    display: block;
+  }
+
+  .document-header .document-logo-container img {
+    width: 60px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .content {
+    padding: 20px;
+  }
+
+  .button-container{
+    justify-content: center;
+  }
+
+  .btn-right {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .document-body.cot .clearance-logo img {
+    left: -50px;
   }
 }

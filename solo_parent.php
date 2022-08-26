@@ -524,16 +524,16 @@ if (isset($_POST['edit_resident'])) {
                     <div class="cert-modal-body modal-body">
                         <ol>
                         <li>
-                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&solo_parent">Barangay Clearance</a>
+                                <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&purok_id=<?php echo $purok_id; ?>&&solo_parent">Barangay Clearance</a>
                             </li>
                             <li>
-                                <a href="certs/business_clearance.php?resident_id=<?php echo $resident_id; ?>&&solo_parent">Business Clearance</a>
+                                <a href="certs/business_clearance.php?resident_id=<?php echo $resident_id; ?>&&purok_id=<?php echo $purok_id; ?>&&solo_parent">Business Clearance</a>
                             </li>
                             <li>
-                                <a href="certs/certification.php?resident_id=<?php echo $resident_id; ?>&&solo_parent">Certification</a>
+                                <a href="certs/certification.php?resident_id=<?php echo $resident_id; ?>&&purok_id=<?php echo $purok_id; ?>&&solo_parent">Barangay Certification</a>
                             </li>
                             <li>
-                                <a href="certs/certificate_of_travel.php?resident_id=<?php echo $resident_id; ?>&&solo_parent">Certificate of Travel</a>
+                                <a href="certs/certificate_of_travel.php?resident_id=<?php echo $resident_id; ?>&&purok_id=<?php echo $purok_id; ?>&&solo_parent">Certificate of Travel</a>
                             </li>
                             <li>
                                 <a href="certs/requirements_to_travel.php?resident_id=<?php echo $resident_id; ?>&&purok_id=<?php echo $purok_id; ?>&&solo_parent">Requirements to Travel Certification</a>

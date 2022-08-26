@@ -563,7 +563,7 @@
                                 <a href="../certs/business_clearance.php?resident_id=<?php echo $resident_id; ?>&&purok_id=<?php echo $row['purok_id']; ?>&&view_purok">Business Clearance</a>
                             </li>
                             <li>
-                                <a href="../certs/certification.php?resident_id=<?php echo $resident_id; ?>&&purok_id=<?php echo $row['purok_id']; ?>&&view_purok">Certification</a>
+                                <a href="../certs/certification.php?resident_id=<?php echo $resident_id; ?>&&purok_id=<?php echo $row['purok_id']; ?>&&view_purok">Barangay Certification</a>
                             </li>
                             <li>
                                 <a href="../certs/certificate_of_travel.php?resident_id=<?php echo $resident_id; ?>&&purok_id=<?php echo $row['purok_id']; ?>&&view_purok">Certificate of Travel</a>

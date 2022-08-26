@@ -530,7 +530,7 @@ if (isset($_POST['edit_resident'])) {
                                 <a href="certs/business_clearance.php?resident_id=<?php echo $resident_id; ?>&&purok_id=<?php echo $purok_id; ?>&&household">Business Clearance</a>
                             </li>
                             <li>
-                                <a href="certs/certification.php?resident_id=<?php echo $resident_id; ?>&&purok_id=<?php echo $purok_id; ?>&&household">Certification</a>
+                                <a href="certs/certification.php?resident_id=<?php echo $resident_id; ?>&&purok_id=<?php echo $purok_id; ?>&&household">Barangay Certification</a>
                             </li>
                             <li>
                                 <a href="certs/certificate_of_travel.php?resident_id=<?php echo $resident_id; ?>&&purok_id=<?php echo $purok_id; ?>&&household">Certificate of Travel</a>
