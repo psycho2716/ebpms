@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 24, 2022 at 12:38 PM
+-- Generation Time: Aug 27, 2022 at 12:27 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -53,7 +53,9 @@ CREATE TABLE `barangays` (
 INSERT INTO `barangays` (`id`, `barangay_name`, `address`, `barangay_captain`, `treasurer`, `secretary`, `kagawad_1`, `kagawad_2`, `kagawad_3`, `kagawad_4`, `kagawad_5`, `kagawad_6`, `kagawad_7`, `bhw`, `sk_chairman`, `barangay_id`) VALUES
 (1, 'Lonos', 'Brgy. Lonos, Romblon, Romblon, Philippines', 'Editha Atanoc', 'Aldrin Mindo', 'Ricardo Capispisan', 'Archie Mindo', 'Reynald Miñon', 'Dominador Madeja', 'Armenda Ramos', 'Jessie Fortu', 'Annie Doblas', 'Bebe Maestro', 'Minchie Arcillas', 'Margie Fortu', 2184),
 (2, 'Mapula', 'Brgy. Mapula, Romblon, Romblon, Philippines', 'Editha Atanoc', 'Aldrin Mindo', 'Ricardo Capispisan', 'Archie Mindo', 'Reynald Miñon', 'Dominador Madeja', 'Armenda Ramos', 'Jessie Fortu', 'Annie Doblas', 'Bebe Maestro', 'Minchie Arcillas', 'Margie Fortu', 3950),
-(3, 'Agbaluto', 'Brgy. Agnipa, Romblon, Romblon, Philippines', 'Ignacio pacio', 'Aldrin D. Mindo', 'Ricardo M. Capispisan', 'Archie Mindo', 'Reynald Miñon', 'Dominador Madeja', 'Armenda Ramos', 'Jessie M. Fortu', 'Annie Doblas', 'Bebe Maestro', 'Minchie R. Arcillas', 'Jake R. Miñon', 6970);
+(3, 'Agbaluto', 'Brgy. Agnipa, Romblon, Romblon, Philippines', 'Ignacio pacio', 'Aldrin D. Mindo', 'Ricardo M. Capispisan', 'Archie Mindo', 'Reynald Miñon', 'Dominador Madeja', 'Armenda Ramos', 'Jessie M. Fortu', 'Annie Doblas', 'Bebe Maestro', 'Minchie R. Arcillas', 'Jake R. Miñon', 6970),
+(4, 'Lonos', 'Brgy, Lonos Romblon, Romblon', 'Eric Manzo', 'Jimwell Magramo', 'John Clent Baloco', 'ipin', 'upin', 'w', 'e', 'r', 't', 'y', 'q', 'q', 4353),
+(5, 'Lunas', 'Brgy. Lunas, Romblon, Romblon, Philippines', 'Editha Atanoc', 'Aldrin D. Mindo', 'Ricardo M. Capispisan', 'Archie M. Mindo', 'Reynald S. Miñon', 'Dominador Madeja', 'Armenda Ramos', 'Jessie M. Fortu', 'Annie Doblas', 'Bebe Maestro', 'Minchie R. Arcillas', 'Jake R. Miñon', 919);
 
 -- --------------------------------------------------------
 
@@ -75,32 +77,7 @@ CREATE TABLE `certificates` (
 
 INSERT INTO `certificates` (`id`, `certificate_name`, `img`, `barangay_id`, `file`) VALUES
 (6, 'Barangay Clearance', 'clearance.png', 2184, 'CLEARANCE 2022.docx'),
-(7, 'Certification', 'Certification.png', 2184, 'CERTIFICATION CY 2022.doc');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `officials`
---
-
-CREATE TABLE `officials` (
-  `id` int(11) NOT NULL,
-  `barangay_name` varchar(50) NOT NULL,
-  `barangay_captain` varchar(50) NOT NULL,
-  `treasurer` varchar(50) NOT NULL,
-  `address` varchar(50) NOT NULL,
-  `secretary` varchar(50) NOT NULL,
-  `kagawad_1` varchar(50) NOT NULL,
-  `kagawad_2` varchar(50) NOT NULL,
-  `kagawad_3` varchar(50) NOT NULL,
-  `kagawad_4` varchar(50) NOT NULL,
-  `kagawad_5` varchar(50) NOT NULL,
-  `kagawad_6` varchar(50) NOT NULL,
-  `kagawad_7` varchar(50) NOT NULL,
-  `bhw` varchar(50) NOT NULL,
-  `sk_kagawad` varchar(50) NOT NULL,
-  `barangay_id` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(7, 'Barangay Certification', 'Certification.png', 2184, 'CERTIFICATION CY 2022.doc');
 
 -- --------------------------------------------------------
 
@@ -122,11 +99,7 @@ CREATE TABLE `purok` (
 --
 
 INSERT INTO `purok` (`id`, `purok_name`, `purok_id`, `barangay_id`, `img`, `purok_address`) VALUES
-(9, 'Suwa', 2065, 2184, 'mapula.png', 'Brgy. Lonos, Sitio Suwa, Romblon, Romblon'),
-(10, 'Ipil', 3687, 2184, 'logo.png', 'Brgy. Lonos, Sitio Ipil, Romblon, Romblon'),
-(11, 'Lusod', 3414, 2184, 'logo_copy.png', 'Brgy. Lonos, Sitio Lusod, Romblon, Romblon'),
-(12, 'Parayan', 6320, 2184, 'seal.png', 'Brgy. Lonos, Sitio Parayan, Romblon, Romblon'),
-(14, 'Matiniison', 7448, 3950, '', 'Brgy. cabugaw, Sitio Batiano, Romblon, Romblon');
+(19, ' matatag', 2604, 4353, '', 'Baranggay. Lonos Romblon, Romblon ');
 
 -- --------------------------------------------------------
 
@@ -152,22 +125,9 @@ CREATE TABLE `residents` (
   `blood_type` varchar(50) NOT NULL,
   `household_type` varchar(50) NOT NULL,
   `4p_s` varchar(50) NOT NULL,
-  `pwd` varchar(50) NOT NULL
+  `pwd` varchar(50) NOT NULL,
+  `senior` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `residents`
---
-
-INSERT INTO `residents` (`id`, `first_name`, `residents_address`, `purok_id`, `dob`, `gender`, `barangay_id`, `civil_status`, `citizenship`, `last_name`, `middle_name`, `occupation`, `school_attainment`, `skills`, `blood_type`, `household_type`, `4p_s`, `pwd`) VALUES
-(25, 'Alvin', 'Brgy. Lonos, Sitio Suwa, Romblon, Romblon', '2065', '1970-08-18', 'Male', '2184', 'Single Parent', 'Filipino', 'Delos Angeles', 'G.', 'Construction Worker', 'High School Graduate', 'Business Man', 'Type O', 'Head', 'Yes', 'No'),
-(26, 'Carlo', 'Brgy. Lonos, Sitio Parayan, Romblon, Romblon', '6320', '1999-11-29', 'Male', '2184', 'Single', 'Filipino', 'Mutia', 'V.', 'None', 'High School Graduate', 'None', 'Type B', 'Member', 'Yes', 'Yes'),
-(27, 'John Kevin', 'Brgy. Lonos, Sitio Lusod, Romblon, Romblon', '3414', '1995-11-29', 'Male', '2184', 'Single', 'Filipino', 'Manzo', 'M.', 'Branch Manager', 'College Graduate', 'Housekeeping', 'Type A', 'Member', 'No', 'No'),
-(28, 'johnclentbaloco', 'Brgy. cabugaw, Sitio Batiano, Romblon, Romblon', '7448', '2022-08-24', 'Male', '3950', 'Single', 'Filipino', '', '', '', '', '', '', '', '', ''),
-(30, 'Jonna', 'Brgy. Lonos, Sitio Suwa, Romblon, Romblon', '2065', '1999-02-24', 'Female', '2184', 'Single', 'Filipino', 'Esquilona', 'M.', 'Branch Manager', 'College Graduate', 'Computing', 'Type O', 'Member', 'Yes', 'No'),
-(32, 'John Kevin', 'Romblon, Philippines', '9857', '2022-08-22', 'Male', '2184', 'Single', 'Filipino', 'Manzo', 'E.', '', '', '', '', '', '', ''),
-(33, 'Eric John', 'Brgy. Lonos, Sitio Suwa, Romblon, Romblon', '2065', '1997-10-29', 'Male', '2184', 'Single', 'Filipino', 'Manzo', 'M.', 'Web Developer', 'College Graduate', 'Computing', 'Type A', 'Member', 'No', 'No'),
-(34, 'Jake', 'Brgy. Lonos, Sitio Ipil, Romblon, Romblon', '3687', '1999-09-19', 'Male', '2184', 'Single', 'Filipino', 'Cuenca', 'C.', 'Manager', 'College Graduate', 'Computing', 'Type O', 'Member', 'No', 'No');
 
 -- --------------------------------------------------------
 
@@ -190,7 +150,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `password`, `img`, `barangay_id`) VALUES
 (17, 'lonos', '30151e8fda60d374e68bafa69cbac983', '', 2184),
 (18, 'mapula', 'ed5f273a63ab07653a70f79e85635acd', '', 3950),
-(19, 'agnipa', '5f3daf3137d6add65e47599e0e944c95', '', 6970);
+(19, 'agnipa', '5f3daf3137d6add65e47599e0e944c95', '', 6970),
+(20, 'Cocomelon', '81dc9bdb52d04dc20036dbd8313ed055', '', 4353),
+(21, 'lunas', '910cf1aed4ed2477bae688c32644f522', '', 919);
 
 --
 -- Indexes for dumped tables
@@ -206,12 +168,6 @@ ALTER TABLE `barangays`
 -- Indexes for table `certificates`
 --
 ALTER TABLE `certificates`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `officials`
---
-ALTER TABLE `officials`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -240,7 +196,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `barangays`
 --
 ALTER TABLE `barangays`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `certificates`
@@ -249,28 +205,22 @@ ALTER TABLE `certificates`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `officials`
---
-ALTER TABLE `officials`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `purok`
 --
 ALTER TABLE `purok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `residents`
 --
 ALTER TABLE `residents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
