@@ -58,6 +58,7 @@ $barangay_name = $row['barangay_name'];
             while ($row = mysqli_fetch_assoc($run_query)) {
                 $id = $row['id'];
                 $barangay_name = $row['barangay_name'];
+                $address = $row['address'];
                 $barangay_captain = $row['barangay_captain'];
                 $secretary = $row['secretary'];
                 $treasurer = $row['treasurer'];
@@ -76,7 +77,7 @@ $barangay_name = $row['barangay_name'];
                     <h3>Barangay <?php echo $barangay_name; ?> Officials</h3>
                     <div class="officials">
 
-                        <a href="edit_officials.php?official_name=<?php echo $barangay_captain; ?>&&position=Barangay Captain" class="official-card-link officials-official-link-1">
+                        <a href="#" data-bs-toggle='modal' role='button' data-bs-target='#viewCaptain' class="official-card-link officials-official-link-1">
                             <div class="card custom-card card-1 mb-3" style="max-width: 100%;">
                                 <div class="row g-0">
                                     <div class="col-md-3 custom-card-img-container">
@@ -96,7 +97,7 @@ $barangay_name = $row['barangay_name'];
                                 <div class="official-shine"></div>
                             </div>
                         </a>
-                        <a href="edit_officials.php?official_name=<?php echo $secretary; ?>&&position=Secretary" class="official-card-link officials-official-link-2">
+                        <a href="#" data-bs-toggle='modal' role='button' data-bs-target='#viewSecretary' class="official-card-link officials-official-link-2">
                             <div class="card custom-card card-2 mb-3" style="max-width: 100%;">
                                 <div class="row g-0">
                                     <div class="col-md-3 custom-card-img-container">
@@ -116,7 +117,7 @@ $barangay_name = $row['barangay_name'];
                                 <div class="official-shine"></div>
                             </div>
                         </a>
-                        <a href="edit_officials.php?official_name=<?php echo $treasurer; ?>&&position=Treasurer" class="official-card-link officials-official-link-3">
+                        <a href="#" data-bs-toggle='modal' role='button' data-bs-target='#viewTreasurer' class="official-card-link officials-official-link-3">
                             <div class="card custom-card card-3 mb-3" style="max-width: 100%;">
                                 <div class="row g-0">
                                     <div class="col-md-3 custom-card-img-container">
@@ -136,7 +137,7 @@ $barangay_name = $row['barangay_name'];
                                 <div class="official-shine"></div>
                             </div>
                         </a>
-                        <a href="edit_officials.php?official_name=<?php echo $kagawad_1; ?>&&position=Kagawad 1" class="official-card-link officials-official-link-4">
+                        <a href="#" data-bs-toggle='modal' role='button' data-bs-target='#viewKagawad1' class="official-card-link officials-official-link-4">
                             <div class="card custom-card card-4 mb-3" style="max-width: 100%;">
                                 <div class="row g-0">
                                     <div class="col-md-3 custom-card-img-container">
@@ -156,7 +157,7 @@ $barangay_name = $row['barangay_name'];
                                 <div class="official-shine"></div>
                             </div>
                         </a>
-                        <a href="edit_officials.php?official_name=<?php echo $kagawad_2; ?>&&position=Kagawad 2" class="official-card-link officials-official-link-5">
+                        <a href="#" data-bs-toggle='modal' role='button' data-bs-target='#viewKagawad2' class="official-card-link officials-official-link-5">
                             <div class="card custom-card card-5 mb-3" style="max-width: 100%;">
                                 <div class="row g-0">
                                     <div class="col-md-3 custom-card-img-container">
@@ -176,7 +177,7 @@ $barangay_name = $row['barangay_name'];
                                 <div class="official-shine"></div>
                             </div>
                         </a>
-                        <a href="edit_officials.php?official_name=<?php echo $kagawad_3; ?>&&position=Kagawad 3" class="official-card-link officials-official-link-6">
+                        <a href="#" data-bs-toggle='modal' role='button' data-bs-target='#viewKagawad3' class="official-card-link officials-official-link-6">
                             <div class="card custom-card card-6 mb-3" style="max-width: 100%;">
                                 <div class="row g-0">
                                     <div class="col-md-3 custom-card-img-container">
@@ -196,7 +197,7 @@ $barangay_name = $row['barangay_name'];
                                 <div class="official-shine"></div>
                             </div>
                         </a>
-                        <a href="edit_officials.php?official_name=<?php echo $kagawad_4; ?>&&position=Kagawad 4" class="official-card-link officials-official-link-7">
+                        <a href="#" data-bs-toggle='modal' role='button' data-bs-target='#viewKagawad4' class="official-card-link officials-official-link-7">
                             <div class="card custom-card card-7 mb-3" style="max-width: 100%;">
                                 <div class="row g-0">
                                     <div class="col-md-3 custom-card-img-container">
@@ -216,7 +217,7 @@ $barangay_name = $row['barangay_name'];
                                 <div class="official-shine"></div>
                             </div>
                         </a>
-                        <a href="edit_officials.php?official_name=<?php echo $kagawad_5; ?>&&position=Kagawad 5" class="official-card-link officials-official-link-8">
+                        <a href="#" data-bs-toggle='modal' role='button' data-bs-target='#viewKagawad5' class="official-card-link officials-official-link-8">
                             <div class="card custom-card card-8 mb-3" style="max-width: 100%;">
                                 <div class="row g-0">
                                     <div class="col-md-3 custom-card-img-container">
@@ -236,7 +237,7 @@ $barangay_name = $row['barangay_name'];
                                 <div class="official-shine"></div>
                             </div>
                         </a>
-                        <a href="edit_officials.php?official_name=<?php echo $kagawad_6; ?>&&position=Kagawad 6" class="official-card-link officials-official-link-9">
+                        <a href="#" data-bs-toggle='modal' role='button' data-bs-target='#viewKagawad6' class="official-card-link officials-official-link-9">
                             <div class="card custom-card card-9 mb-3" style="max-width: 100%;">
                                 <div class="row g-0">
                                     <div class="col-md-3 custom-card-img-container">
@@ -256,7 +257,7 @@ $barangay_name = $row['barangay_name'];
                                 <div class="official-shine"></div>
                             </div>
                         </a>
-                        <a href="edit_officials.php?official_name=<?php echo $kagawad_7; ?>&&position=Kagawad 7" class="official-card-link officials-official-link-10">
+                        <a href="#" data-bs-toggle='modal' role='button' data-bs-target='#viewKagawad7' class="official-card-link officials-official-link-10">
                             <div class="card custom-card card-10 mb-3" style="max-width: 100%;">
                                 <div class="row g-0">
                                     <div class="col-md-3 custom-card-img-container">
@@ -276,7 +277,7 @@ $barangay_name = $row['barangay_name'];
                                 <div class="official-shine"></div>
                             </div>
                         </a>
-                        <a href="edit_officials.php?official_name=<?php echo $bhw; ?>&&position=Barangay Health Worker" class="official-card-link officials-official-link-11">
+                        <a href="#" data-bs-toggle='modal' role='button' data-bs-target='#viewBhw' class="official-card-link officials-official-link-11">
                             <div class="card custom-card card-11 mb-3" style="max-width: 100%;">
                                 <div class="row g-0">
                                     <div class="col-md-3 custom-card-img-container">
@@ -296,7 +297,7 @@ $barangay_name = $row['barangay_name'];
                                 <div class="official-shine"></div>
                             </div>
                         </a>
-                        <a href="edit_officials.php?official_name=<?php echo $sk_chairman; ?>&&position=SK Kagawad" class="official-card-link officials-official-link-12">
+                        <a href="#" data-bs-toggle='modal' role='button' data-bs-target='#viewSkChairman' class="official-card-link officials-official-link-12">
                             <div class="card custom-card card-12 mb-3" style="max-width: 100%;">
                                 <div class="row g-0">
                                     <div class="col-md-3 custom-card-img-container">
@@ -305,7 +306,7 @@ $barangay_name = $row['barangay_name'];
                                     <div class="col-md-8">
                                         <div class="card-body custom-card-body">
                                             <div class="custom-card-header">
-                                                <h4 class="card-title text-center">SK Kagawad</h4>
+                                                <h4 class="card-title text-center">SK Chairman</h4>
                                             </div>
                                             <div class="custom-card-text">
                                                 <h5 class="card-text text-center"><?php echo $sk_chairman; ?></h5>
@@ -321,6 +322,426 @@ $barangay_name = $row['barangay_name'];
                     ?>
                     </div>
                 </div>
+        </div>
+    </div>
+
+    <!-- Official Profile Modal -->
+
+    <div class="modal fade" id="viewCaptain" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="staticBackdropLabel"><strong>Profile</strong></h5>
+                    <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="custom-profile-card">
+                        <div class="profile-header">
+                            <img src="images/logo.png">
+                        </div>
+                        <div class="profile-body mt-2">
+                            <div class="body-header text-center">
+                                <h4><?php echo $barangay_captain; ?></h4>
+                                <span>
+                                    Barangay Captain
+                                </span>
+                            </div>
+                            <div class="profile-text mt-3">
+                                <div class="row mb-1">
+                                    <div class="col">
+                                        <span>Address: <?php echo $address; ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Official Profile Modal -->
+
+    <div class="modal fade" id="viewSecretary" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="staticBackdropLabel"><strong>Profile</strong></h5>
+                    <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="custom-profile-card">
+                        <div class="profile-header">
+                            <img src="images/logo.png">
+                        </div>
+                        <div class="profile-body mt-2">
+                            <div class="body-header text-center">
+                                <h4><?php echo $secretary; ?></h4>
+                                <span>
+                                    Barangay Secretary
+                                </span>
+                            </div>
+                            <div class="profile-text mt-3">
+                                <div class="row mb-1">
+                                    <div class="col">
+                                        <span>Address: <?php echo $address; ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Official Profile Modal -->
+
+    <div class="modal fade" id="viewTreasurer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="staticBackdropLabel"><strong>Profile</strong></h5>
+                    <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="custom-profile-card">
+                        <div class="profile-header">
+                            <img src="images/logo.png">
+                        </div>
+                        <div class="profile-body mt-2">
+                            <div class="body-header text-center">
+                                <h4><?php echo $treasurer; ?></h4>
+                                <span>
+                                    Barangay Treasurer
+                                </span>
+                            </div>
+                            <div class="profile-text mt-3">
+                                <div class="row mb-1">
+                                    <div class="col">
+                                        <span>Address: <?php echo $address; ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Official Profile Modal -->
+
+    <div class="modal fade" id="viewKagawad1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="staticBackdropLabel"><strong>Profile</strong></h5>
+                    <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="custom-profile-card">
+                        <div class="profile-header">
+                            <img src="images/logo.png">
+                        </div>
+                        <div class="profile-body mt-2">
+                            <div class="body-header text-center">
+                                <h4><?php echo $kagawad_1; ?></h4>
+                                <span>
+                                    Barangay Kagawad 1
+                                </span>
+                            </div>
+                            <div class="profile-text mt-3">
+                                <div class="row mb-1">
+                                    <div class="col">
+                                        <span>Address: <?php echo $address; ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Official Profile Modal -->
+
+    <div class="modal fade" id="viewKagawad2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="staticBackdropLabel"><strong>Profile</strong></h5>
+                    <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="custom-profile-card">
+                        <div class="profile-header">
+                            <img src="images/logo.png">
+                        </div>
+                        <div class="profile-body mt-2">
+                            <div class="body-header text-center">
+                                <h4><?php echo $kagawad_2; ?></h4>
+                                <span>
+                                    Barangay Kagawad 2
+                                </span>
+                            </div>
+                            <div class="profile-text mt-3">
+                                <div class="row mb-1">
+                                    <div class="col">
+                                        <span>Address: <?php echo $address; ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Official Profile Modal -->
+
+    <div class="modal fade" id="viewKagawad3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="staticBackdropLabel"><strong>Profile</strong></h5>
+                    <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="custom-profile-card">
+                        <div class="profile-header">
+                            <img src="images/logo.png">
+                        </div>
+                        <div class="profile-body mt-2">
+                            <div class="body-header text-center">
+                                <h4><?php echo $kagawad_3; ?></h4>
+                                <span>
+                                    Barangay Kagawad 3
+                                </span>
+                            </div>
+                            <div class="profile-text mt-3">
+                                <div class="row mb-1">
+                                    <div class="col">
+                                        <span>Address: <?php echo $address; ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Official Profile Modal -->
+
+    <div class="modal fade" id="viewKagawad4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="staticBackdropLabel"><strong>Profile</strong></h5>
+                    <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="custom-profile-card">
+                        <div class="profile-header">
+                            <img src="images/logo.png">
+                        </div>
+                        <div class="profile-body mt-2">
+                            <div class="body-header text-center">
+                                <h4><?php echo $kagawad_4; ?></h4>
+                                <span>
+                                    Barangay Kagawad 4
+                                </span>
+                            </div>
+                            <div class="profile-text mt-3">
+                                <div class="row mb-1">
+                                    <div class="col">
+                                        <span>Address: <?php echo $address; ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Official Profile Modal -->
+
+    <div class="modal fade" id="viewKagawad5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="staticBackdropLabel"><strong>Profile</strong></h5>
+                    <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="custom-profile-card">
+                        <div class="profile-header">
+                            <img src="images/logo.png">
+                        </div>
+                        <div class="profile-body mt-2">
+                            <div class="body-header text-center">
+                                <h4><?php echo $kagawad_5; ?></h4>
+                                <span>
+                                    Barangay Kagawad 5
+                                </span>
+                            </div>
+                            <div class="profile-text mt-3">
+                                <div class="row mb-1">
+                                    <div class="col">
+                                        <span>Address: <?php echo $address; ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Official Profile Modal -->
+
+    <div class="modal fade" id="viewKagawad6" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="staticBackdropLabel"><strong>Profile</strong></h5>
+                    <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="custom-profile-card">
+                        <div class="profile-header">
+                            <img src="images/logo.png">
+                        </div>
+                        <div class="profile-body mt-2">
+                            <div class="body-header text-center">
+                                <h4><?php echo $kagawad_6; ?></h4>
+                                <span>
+                                    Barangay Kagawad 6
+                                </span>
+                            </div>
+                            <div class="profile-text mt-3">
+                                <div class="row mb-1">
+                                    <div class="col">
+                                        <span>Address: <?php echo $address; ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Official Profile Modal -->
+
+    <div class="modal fade" id="viewKagawad7" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="staticBackdropLabel"><strong>Profile</strong></h5>
+                    <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="custom-profile-card">
+                        <div class="profile-header">
+                            <img src="images/logo.png">
+                        </div>
+                        <div class="profile-body mt-2">
+                            <div class="body-header text-center">
+                                <h4><?php echo $kagawad_7; ?></h4>
+                                <span>
+                                    Barangay Kagawad 7
+                                </span>
+                            </div>
+                            <div class="profile-text mt-3">
+                                <div class="row mb-1">
+                                    <div class="col">
+                                        <span>Address: <?php echo $address; ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Official Profile Modal -->
+
+    <div class="modal fade" id="viewBhw" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="staticBackdropLabel"><strong>Profile</strong></h5>
+                    <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="custom-profile-card">
+                        <div class="profile-header">
+                            <img src="images/logo.png">
+                        </div>
+                        <div class="profile-body mt-2">
+                            <div class="body-header text-center">
+                                <h4><?php echo $bhw; ?></h4>
+                                <span>
+                                    Barangay Health Worker
+                                </span>
+                            </div>
+                            <div class="profile-text mt-3">
+                                <div class="row mb-1">
+                                    <div class="col">
+                                        <span>Address: <?php echo $address; ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Official Profile Modal -->
+
+    <div class="modal fade" id="viewSkChairman" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="staticBackdropLabel"><strong>Profile</strong></h5>
+                    <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="custom-profile-card">
+                        <div class="profile-header">
+                            <img src="images/logo.png">
+                        </div>
+                        <div class="profile-body mt-2">
+                            <div class="body-header text-center">
+                                <h4><?php echo $sk_chairman; ?></h4>
+                                <span>
+                                    SK Chairman
+                                </span>
+                            </div>
+                            <div class="profile-text mt-3">
+                                <div class="row mb-1">
+                                    <div class="col">
+                                        <span>Address: <?php echo $address; ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
