@@ -227,7 +227,7 @@
                         <div class="form-input-container row mb-2">
                             <div class="col">
                                 <label>Household Type</label>
-                                <select name="household_type" class="form-control">
+                                <select name="household_type" class="form-control" required>
                                     <option selected disabled> -- Select Household Type -- </option>
                                     <option value="Head">Head of Household</option>
                                     <option value="Member">Member of Household</option>
@@ -237,13 +237,13 @@
                         <div class="form-input-container row mb-2">
                             <div class="col">
                                 <label>Address</label>
-                                <input type="text" name="residents_address" class="form-control" value="<?php echo $result_purok_address; ?>" placeholder="Complete Address" required>
+                                <input type="text" name="residents_address" class="form-control" required value="<?php echo $result_purok_address; ?>" placeholder="Complete Address" required>
                             </div>
                         </div>
                         <div class="form-input-container row mb-2">
                             <div class="col">
                                 <label>Gender</label>
-                                <select name="gender" class="form-control">
+                                <select name="gender" class="form-control" required>
                                     <option selected disabled> -- Select Gender -- </option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
@@ -253,19 +253,19 @@
                         <div class="form-input-container row mb-2">
                             <div class="col">
                                 <label>Date of Birth</label>
-                                <input type="date" name="dob" class="form-control" required>
+                                <input type="date" name="dob" class="form-control" required required>
                             </div>
                         </div>
                         <div class="form-input-container row mb-2">
                             <div class="col">
                                 <label>Citizenship</label>
-                                <input type="text" name="citizenship" placeholder="Citizenship" class="form-control">
+                                <input type="text" name="citizenship" placeholder="Citizenship" required class="form-control">
                             </div>
                         </div>
                         <div class="form-input-container row mb-2">
                             <div class="col">
                                 <label>Civil Status</label>
-                                <select name="civil_status" class="form-control">
+                                <select name="civil_status" class="form-control" required>
                                     <option selected disabled> -- Select Status -- </option>
                                     <option value="Single">Single</option>
                                     <option value="Married">Married</option>
@@ -277,31 +277,31 @@
                         <div class="form-input-container row mb-2">
                             <div class="col">
                                 <label>Occupation</label>
-                                <input type="text" name="occupation" placeholder="Occupation" class="form-control">
+                                <input type="text" name="occupation" placeholder="Occupation" required class="form-control">
                             </div>
                         </div>
                         <div class="form-input-container row mb-2">
                             <div class="col">
                                 <label>School Attainment</label>
-                                <input type="text" name="school_attainment" placeholder="School Attainment" class="form-control">
+                                <input type="text" name="school_attainment" placeholder="School Attainment" required class="form-control">
                             </div>
                         </div>
                         <div class="form-input-container row mb-2">
                             <div class="col">
                                 <label>Skills</label>
-                                <input type="text" name="skills" placeholder="Skills" class="form-control">
+                                <input type="text" name="skills" placeholder="Skills(Optional)" class="form-control">
                             </div>
                         </div>
                         <div class="form-input-container row mb-2">
                             <div class="col">
                                 <label>Blood Type</label>
-                                <input type="text" name="blood_type" placeholder="Blood Type" class="form-control">
+                                <input type="text" name="blood_type" required placeholder="Blood Type" class="form-control">
                             </div>
                         </div>
                         <div class="form-input-container row mb-2">
                             <div class="col">
                                 <label>4P's</label>
-                                <select name="four_ps" class="form-control">
+                                <select name="four_ps" class="form-control" required>
                                     <option selected value="Yes">Yes</option>
                                     <option value="No">No</option>
                                 </select>
@@ -310,7 +310,7 @@
                         <div class="form-input-container row mb-2">
                             <div class="col">
                                 <label>PWD</label>
-                                <select name="pwd" class="form-control">
+                                <select name="pwd" class="form-control" required>
                                     <option selected value="Yes">Yes</option>
                                     <option value="No">No</option>
                                 </select>
@@ -382,13 +382,13 @@
                         <div class="form-input-container row mb-2">
                             <div class="col">
                                 <label>Purok Name</label>
-                                <input type="text" name="purok_name" class="form-control" value="<?php echo $result_purok_name; ?>">
+                                <input type="text" name="purok_name" class="form-control" value="<?php echo $result_purok_name; ?>" required>
                             </div>
                         </div>
                         <div class="form-input-container row mb-2">
                             <div class="col">
                                 <label>Address</label>
-                                <input type="text" name="purok_address" class="form-control" value="<?php echo $result_purok_address; ?>">
+                                <input type="text" name="purok_address" class="form-control" value="<?php echo $result_purok_address; ?>" required>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary" name="edit_purok">Submit</button>
@@ -416,7 +416,7 @@
                         <div class="form-input-container row mb-3">
                             <div class="col">
                                 <label>Upload Image</label>
-                                <input type="file" name="image" class="form-control">
+                                <input type="file" name="image" class="form-control" required>
                             </div>
                         </div>
                         <div class="container d-flex justify-content-end gap-1">

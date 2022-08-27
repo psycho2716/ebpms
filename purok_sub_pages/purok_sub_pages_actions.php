@@ -23,8 +23,8 @@ if (isset($_POST['add_resident'])) {
     $pwd = $_POST['pwd'];
 
 
-    mysqli_query($conn, "INSERT INTO residents (first_name, residents_address, gender, dob, purok_id, barangay_id, civil_status, citizenship, last_name, middle_name, occupation, school_attainment, skills, blood_type, household_type, 4p_s, pwd)
-        VALUES('$first_name', '$residents_address', '$gender', '$dob', '$purok_id', '$barangay_id', '$civil_status', '$citizenship', '$last_name', '$middle_name', '$occupation', '$school_attainment', '$skills', '$blood_type', '$household_type', '$four_ps', '$pwd')");
+    mysqli_query($conn, "INSERT INTO residents (first_name, residents_address, gender, dob, purok_id, barangay_id, civil_status, citizenship, last_name, middle_name, occupation, school_attainment, skills, blood_type, household_type, 4p_s, pwd, senior)
+        VALUES('$first_name', '$residents_address', '$gender', '$dob', '$purok_id', '$barangay_id', '$civil_status', '$citizenship', '$last_name', '$middle_name', '$occupation', '$school_attainment', '$skills', '$blood_type', '$household_type', '$four_ps', '$pwd', 'No')");
 
     header('location: view_purok.php?purok_id=' . $purok_id . '&&add=success');
 }
