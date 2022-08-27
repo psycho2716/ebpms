@@ -63,7 +63,7 @@ if (isset($_SESSION['id'])) {
                         ?>
                     </div>
                 </div>
-                <div class="row mb-2">
+                <div class="row mb-3">
                     <div class="col input-container">
                         <label for="username">Password</label>
                         <input type="password" class="form-control form-input-password" name="password" placeholder="Enter Password">
@@ -81,7 +81,6 @@ if (isset($_SESSION['id'])) {
                         ?>
                     </div>
                 </div>
-                <p>Forgot Password <a href="#">click here</a></p>
                 <button type="submit" name="login" class="btn btn-primary mt-2 w-100">Log In</button>
 
             </form>
