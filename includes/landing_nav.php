@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark px-3">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark px-3 sticky-top">
     <div class="container-fluid">
         <a href="login.php" class="navbar-brand">
             <img src="images/logo.png"> EBPMS
