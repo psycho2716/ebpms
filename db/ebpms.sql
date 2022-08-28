@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2022 at 01:24 PM
+-- Generation Time: Aug 28, 2022 at 05:23 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -46,17 +46,6 @@ CREATE TABLE `barangays` (
   `barangay_id` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `barangays`
---
-
-INSERT INTO `barangays` (`id`, `barangay_name`, `address`, `barangay_captain`, `treasurer`, `secretary`, `kagawad_1`, `kagawad_2`, `kagawad_3`, `kagawad_4`, `kagawad_5`, `kagawad_6`, `kagawad_7`, `bhw`, `sk_chairman`, `barangay_id`) VALUES
-(1, 'Lonos', 'Brgy. Lonos, Romblon, Romblon, Philippines', 'Editha Atanoc', 'Aldrin Mindo', 'Ricardo Capispisan', 'Archie Mindo', 'Reynald Miñon', 'Dominador Madeja', 'Armenda Ramos', 'Jessie Fortu', 'Annie Doblas', 'Bebe Maestro', 'Minchie Arcillas', 'Margie Fortu', 2184),
-(2, 'Mapula', 'Brgy. Mapula, Romblon, Romblon, Philippines', 'Editha Atanoc', 'Aldrin Mindo', 'Ricardo Capispisan', 'Archie Mindo', 'Reynald Miñon', 'Dominador Madeja', 'Armenda Ramos', 'Jessie Fortu', 'Annie Doblas', 'Bebe Maestro', 'Minchie Arcillas', 'Margie Fortu', 3950),
-(3, 'Agbaluto', 'Brgy. Agnipa, Romblon, Romblon, Philippines', 'Ignacio pacio', 'Aldrin D. Mindo', 'Ricardo M. Capispisan', 'Archie Mindo', 'Reynald Miñon', 'Dominador Madeja', 'Armenda Ramos', 'Jessie M. Fortu', 'Annie Doblas', 'Bebe Maestro', 'Minchie R. Arcillas', 'Jake R. Miñon', 6970),
-(4, 'Lonos', 'Brgy, Lonos Romblon, Romblon', 'Eric Manzo', 'Jimwell Magramo', 'John Clent Baloco', 'ipin', 'upin', 'w', 'e', 'r', 't', 'y', 'q', 'q', 4353),
-(5, 'Lunas', 'Brgy. Lunas, Romblon, Romblon, Philippines', 'Editha Atanoc', 'Aldrin D. Mindo', 'Ricardo M. Capispisan', 'Archie M. Mindo', 'Reynald S. Miñon', 'Dominador Madeja', 'Armenda Ramos', 'Jessie M. Fortu', 'Annie Doblas', 'Bebe Maestro', 'Minchie R. Arcillas', 'Jake R. Miñon', 919);
-
 -- --------------------------------------------------------
 
 --
@@ -82,6 +71,21 @@ INSERT INTO `certificates` (`id`, `certificate_name`, `img`, `barangay_id`, `fil
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `officials`
+--
+
+CREATE TABLE `officials` (
+  `id` int(11) NOT NULL,
+  `official_name` varchar(50) NOT NULL,
+  `official_title` varchar(50) NOT NULL,
+  `profile_img` varchar(50) NOT NULL,
+  `barangay_id` int(50) NOT NULL,
+  `official_id` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `purok`
 --
 
@@ -93,13 +97,6 @@ CREATE TABLE `purok` (
   `img` varchar(255) NOT NULL,
   `purok_address` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `purok`
---
-
-INSERT INTO `purok` (`id`, `purok_name`, `purok_id`, `barangay_id`, `img`, `purok_address`) VALUES
-(19, ' matatag', 2604, 4353, '', 'Baranggay. Lonos Romblon, Romblon ');
 
 -- --------------------------------------------------------
 
@@ -144,17 +141,6 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `username`, `password`, `img`, `barangay_id`) VALUES
-(17, 'lonos', '30151e8fda60d374e68bafa69cbac983', '', 2184),
-(18, 'mapula', 'ed5f273a63ab07653a70f79e85635acd', '', 3950),
-(19, 'agnipa', '5f3daf3137d6add65e47599e0e944c95', '', 6970),
-(20, 'Cocomelon', '81dc9bdb52d04dc20036dbd8313ed055', '', 4353),
-(21, 'lunas', '910cf1aed4ed2477bae688c32644f522', '', 919);
-
---
 -- Indexes for dumped tables
 --
 
@@ -168,6 +154,12 @@ ALTER TABLE `barangays`
 -- Indexes for table `certificates`
 --
 ALTER TABLE `certificates`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `officials`
+--
+ALTER TABLE `officials`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -203,6 +195,12 @@ ALTER TABLE `barangays`
 --
 ALTER TABLE `certificates`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `officials`
+--
+ALTER TABLE `officials`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `purok`
