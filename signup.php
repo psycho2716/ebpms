@@ -138,11 +138,11 @@ include('includes/user_actions.php');
                     <hr>
                 </div>
                 <div class="row mb-3">
-                    <div class="col">
+                    <div class="col-md-6">
                         <label for="">Barangay Health Worker</label>
                         <input type="text" name="bhw" class="form-control" value="<?php echo $bhw; ?>" placeholder="Barangay Health Worker" required>
                     </div>
-                    <div class="col">
+                    <div class="col-md-6">
                         <label for="">SK Chairman</label>
                         <input type="text" name="sk_chairman" class="form-control" value="<?php echo $sk_chairman; ?>" placeholder="SK Kagawad" required>
                     </div>
@@ -173,7 +173,7 @@ include('includes/user_actions.php');
                 ?>
 
                 <div class="row mb-3">
-                    <div class="col">
+                    <div class="col-md-4">
                         <label for="">Username</label>
                         <input type="text" name="username" value="<?php echo $username; ?>" class="form-control" placeholder="Username">
                         <?php
@@ -186,14 +186,13 @@ include('includes/user_actions.php');
                         }
                         ?>
                     </div>
-                    <div class="col input-container">
+                    <div class="col-md-4 input-container">
                         <label for="">Password</label>
                         <input type="password" name="password" class="form-control form-input-password" placeholder="Password">
-                        <i class='bx bx-show eye-icon'></i>
-
+                        <i class='bx bx-hide eye-icon'></i>
                     </div>
 
-                    <div class="col input-container">
+                    <div class="col-md-4 input-container">
                         <label for="">Confirm Password</label>
                         <input type="password" name="confirm_password" class="form-control form-input-password" placeholder="Confirm Password">
                         <?php

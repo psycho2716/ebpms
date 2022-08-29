@@ -68,7 +68,7 @@ if (isset($_SESSION['id'])) {
                         <div class="col input-container">
                             <label for="username">Password</label>
                             <input type="password" class="form-control form-input-password" name="password" placeholder="Enter Password">
-                            <i class='bx bx-show eye-icon'></i>
+                            <i class='bx bx-hide eye-icon'></i>
                         </div>
                         <div class="input-container">
                             <?php

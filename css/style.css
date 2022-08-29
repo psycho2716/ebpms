@@ -998,7 +998,11 @@ body::-webkit-scrollbar-thumb {
 
 @media screen and (max-width: 320px) {
   .content {
-    padding: 20px;
+    padding: 10px;
+  }
+
+  .login-container{
+    padding: 10px;
   }
 
   .button-container{
