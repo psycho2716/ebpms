@@ -59,7 +59,15 @@ $barangay_name = $row['barangay_name'];
                         <div class="barangay-card-img-container">
                             <img src="images/pwd-logo.png" class="beneficiaries-card-img img-fluid">
                         </div>
+                        <h1 class="text-center">
+                            <?php
+                            $sql = "SELECT * FROM residents WHERE pwd = 'Yes' AND barangay_id = '$barangay_id'";
+                            $result = mysqli_query($conn, $sql);
+                            $four_ps = mysqli_num_rows($result);
 
+                            echo $four_ps;
+                            ?>
+                        </h1>
                     </div>
                     <div class="shine"></div>
                 </a>
@@ -73,7 +81,15 @@ $barangay_name = $row['barangay_name'];
                         <div class="barangay-card-img-container">
                             <img src="images/solo-logo.png" class="beneficiaries-card-solo-img img-fluid">
                         </div>
+                        <h1 class="text-center">
+                            <?php
+                            $sql = "SELECT * FROM residents WHERE civil_status = 'Single Parent' AND barangay_id = '$barangay_id'";
+                            $result = mysqli_query($conn, $sql);
+                            $four_ps = mysqli_num_rows($result);
 
+                            echo $four_ps;
+                            ?>
+                        </h1>
                     </div>
                     <div class="shine"></div>
                 </a>
@@ -87,7 +103,15 @@ $barangay_name = $row['barangay_name'];
                         <div class="barangay-card-img-container">
                             <img src="images/4ps-logo.png" class="beneficiaries-card-img img-fluid">
                         </div>
+                        <h1 class="text-center">
+                            <?php
+                            $sql = "SELECT * FROM residents WHERE 4p_s = 'Yes' AND barangay_id = '$barangay_id'";
+                            $result = mysqli_query($conn, $sql);
+                            $four_ps = mysqli_num_rows($result);
 
+                            echo $four_ps;
+                            ?>
+                        </h1>
                     </div>
                     <div class="shine"></div>
                 </a>
@@ -101,7 +125,15 @@ $barangay_name = $row['barangay_name'];
                         <div class="barangay-card-img-container">
                             <img src="images/senior-logo.png" class="beneficiaries-card-img img-fluid">
                         </div>
+                        <h1 class="text-center">
+                            <?php
+                            $counters = $conn->query("SELECT COUNT(senior) AS counter FROM residents WHERE senior = 'Yes' AND barangay_id = '$barangay_id'");
+                            $counter = $counters->fetch_assoc();
+                            $senior = $counter['counter'];
 
+                            echo $senior;
+                            ?>
+                        </h1>
                     </div>
                     <div class="shine"></div>
                 </a>

@@ -113,7 +113,15 @@ body::-webkit-scrollbar-thumb {
   padding: 5px 10px;
   border-radius: 3px;
   color: #4b4b4b;
-  display: none;
+  margin-top: 5px;
+}
+
+.input-field{
+  position: relative;
+}
+
+.error-message.absolute-error{
+  position: absolute;
 }
 
 .landing-body {

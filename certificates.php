@@ -68,13 +68,7 @@ $barangay_name = $row['barangay_name'];
                         </div>
                         <div class="form-input-container mb-2 row">
                             <div class="col">
-                                <label>Upload Document</label>
-                                <input type="file" name="file" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="form-input-container mb-2 row">
-                            <div class="col">
-                                <label>Upload Image</label>
+                                <label>Upload Certificate Image</label>
                                 <input type="file" name="image" class="form-control" required>
                             </div>
                         </div>
@@ -114,14 +108,14 @@ $barangay_name = $row['barangay_name'];
     }
     ?>
 
-    <!-- Download Document Modal -->
+    <!-- View Certificate Modal -->
     <?php
     $sql = "SELECT * FROM certificates";
     $result = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_array($result)) {
         $certificate_id = $row['id'];
         $certificate_name = $row['certificate_name'];
-        $file = $row['file'];
+        $img = $row['img'];
 
         echo "
                 <div class='modal fade' id='certificate$certificate_id' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
@@ -135,7 +129,7 @@ $barangay_name = $row['barangay_name'];
                                 <h6>Download Document.</h6>
                             </div>
                             <div class='modal-footer'>
-                                <a href='uploads/$file' type='button' class='btn btn-success'><i class='fa-solid fa-download'></i> Download Document</a>
+                                <a href='uploads/$img' type='button' class='btn btn-success'><i class='fa-solid fa-download'></i> Download Document</a>
                                 <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#deleteCertificate$certificate_id'>Delete</button>
                             </div>
                         </div>
@@ -164,27 +158,27 @@ $barangay_name = $row['barangay_name'];
             while ($row = mysqli_fetch_assoc($run_query)) {
                 $certificate_id = $row['id'];
                 $certificate_name = $row['certificate_name'];
-                $file = $row['file'];
-                $certificate_image = $row['img'];
+                $img = $row['img'];
 
             ?>
                 <div class="card dashboard-card h-100" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Click to view <?php echo $purok_name; ?>">
                     <img src="images/logo_copy.png" class="official-logo">
-                    <a type="button" data-bs-toggle="modal" data-bs-target="#certificate<?php echo $certificate_id; ?>" class="card-link">
+                    <a href="uploads/<?php echo $img; ?>" class="card-link">
                         <div class="card-body mt-5 text-light">
                             <h3 class="card-title text-center"><?php echo $certificate_name; ?></h3>
                             <div class="barangay-card-img-container">
                                 <?php
-                                if (!$file) {
+                                if (!$img) {
                                 ?>
                                     <img src="images/logo.png" class="certificate-card-img img-fluid">
                                 <?php
                                 } else {
                                 ?>
-                                    <img src="uploads/<?php echo $certificate_image; ?>" class="certificate-card-img img-fluid">
+                                    <img src="uploads/<?php echo $img; ?>" class="certificate-card-img img-fluid">
                                 <?php
                                 }
                                 ?>
+                                
                             </div>
 
                         </div>

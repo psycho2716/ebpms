@@ -1,13 +1,14 @@
 <?php
 include('db.php');
-$barangay_name = $barangay_captain = $address = $treasurer = $secretary = $kagawad_1 = $kagawad_2 = $kagawad_3 = $kagawad_4 = $kagawad_5 = $kagawad_6 = $kagawad_7 = $bhw = $sk_chairman = $username = "";
-$username_err = $password_err = $confirm_password_err = $barangay_err = "";
+$barangay_captain = $address = $treasurer = $secretary = $kagawad_1 = $kagawad_2 = $kagawad_3 = $kagawad_4 = $kagawad_5 = $kagawad_6 = $kagawad_7 = $bhw = $sk_chairman = $username = "";
+$username_err = $password_err = $confirm_password_err = $barangay_err = $barangay_name_err = "";
 $error = "";
+$barangay_name = "";
 
 // Signup Starts Here!
 if (isset($_POST['signup'])) {
     $barangay_id = mt_rand(0000, 9999);
-    $barangay_name = $_POST['barangay_name'];
+    $barangay_name = trim($_POST['barangay_name']);
     $barangay_captain = $_POST['barangay_captain'];
     $address = $_POST['address'];
     $treasurer = $_POST['treasurer'];
@@ -33,28 +34,34 @@ if (isset($_POST['signup'])) {
         $confirm_password_err = "Please Confirm Password!";
     }
 
-    $sql = "SELECT * FROM users";
+    $sql = "SELECT * FROM users WHERE username = '$username'";
     $result = mysqli_query($conn, $sql);
     $username_check = mysqli_fetch_assoc($result);
 
     if ($username_check) { // if user exists
-        if ($username_check['username'] === $username) {
-            $username_err = "Username is not available!";
-        }
+        $username_err = "Username is not available!";
     }
 
-    if ($username_check) {
-        if ($username_check['barangay_name'] === $barangay_name) {
-            $barangay_err = $barangay_name . " is already registered!";
-        }
-    }
+    // if ($username_check) {
+    //     if ($username_check['barangay_name'] === $barangay_name) {
+    //         $barangay_err = $barangay_name . " is already registered!";
+    //     }
+    // }
 
     if ($password !== $confirm_password) {
         $error = "Password is not match, Please try again!";
     }
 
+    $sql1 = "SELECT * FROM  barangays WHERE barangay_name = '$barangay_name'";
+    $result1 = mysqli_query($conn, $sql1);
+    $barangay_check = mysqli_fetch_assoc($result1);
 
-    if (empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($barangay_err)) {
+    if ($barangay_check) {
+        $barangay_name_err = $barangay_name . " is already registered!";
+    }
+
+
+    if (empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($barangay_err) && empty($barangay_name_err)) {
         $password = md5($password); //encrypt the password before saving in the database
 
         $query1 = "INSERT INTO users (username, barangay_id, password) 
@@ -136,25 +143,15 @@ if (isset($_POST['certificate_add'])) {
         $msg = "Failed to upload image";
     }
 
-    // File Upload
-    $file = $_FILES['file']['name'];
-    $target = "uploads/" . basename($file);
-
-    if (move_uploaded_file($_FILES['file']['tmp_name'], $target)) {
-        $msg = "File uploaded successfully";
-    } else {
-        $msg = "Failed to upload file";
-    }
-
     $query = mysqli_query($conn, "SELECT * FROM certificates WHERE certificate_name = '$certificate_name'");
     $fetch = mysqli_fetch_array($query);
 
     if (!$fetch) {
-        mysqli_query($conn, "INSERT INTO certificates (certificate_name, img, file, barangay_id)
-        VALUES('$certificate_name', '$image', '$file', '$barangay_id')");
+        mysqli_query($conn, "INSERT INTO certificates (certificate_name, img, barangay_id)
+        VALUES('$certificate_name', '$image', '$barangay_id')");
         header('location: certificates.php?add=success');
     } else {
-        $certificate_err = " is already registered!";
+        $certificate_err = " is already added!";
     }
 }
 

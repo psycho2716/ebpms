@@ -64,7 +64,7 @@ include('includes/user_actions.php');
                             <option value="Macalas">Macalas</option>
                             <option value="Mapula">Mapula</option>
                             <option value="Cobrador(Naguso)">Cobrador(Naguso)</option>
-                            <option value="palje">palje</option>
+                            <option value="Palje">Palje</option>
                             <option value="Barangay I (Poblacion)">Barangay I (Poblacion)</option>
                             <option value="Barangay II (Poblacion)">Barangay II (Poblacion)</option>
                             <option value="Barangay III (Poblacion)">Barangay III (Poblacion)</option>
@@ -73,6 +73,13 @@ include('includes/user_actions.php');
                             <option value="Sawang">Sawang</option>
                             <option value="Tambac">Tambac</option>
                         </select>
+                        <?php
+                        if (!empty($barangay_name_err)) {
+                        ?>
+                            <span class="error-message"><?php echo $barangay_name_err; ?></span>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -150,36 +157,43 @@ include('includes/user_actions.php');
                 <?php
                 if (!empty($error)) {
                 ?>
-                    <span class="error-message mb-3" style="display: block; ">
+                    <span class="error-message error">
                         <?php echo $error ?>
                     </span>
                 <?php
                 } elseif (!empty($barangay_err)) {
                 ?>
-                    <span class="error-message mb-3" style="display: block; ">
+                    <span class="error-message barangay-error">
                         <?php echo $barangay_err ?>
                     </span>
                 <?php
                 }
                 ?>
                 <?php
-                if ($password_err !== "") {
+                if (!empty($password_err)) {
                 ?>
-                    <span class="error-message" style="display: block; ">
+                    <span class="error-message">
                         <?php echo $password_err ?>
+                    </span>
+                <?php
+                }
+                if ($confirm_password_err !== "") {
+                ?>
+                    <span class="error-message">
+                        <?php echo $confirm_password_err ?>
                     </span>
                 <?php
                 }
                 ?>
 
                 <div class="row mb-3">
-                    <div class="col-md-4 mb-2">
+                    <div class="col-md-4 mb-2 input-field">
                         <label for="">Username</label>
-                        <input type="text" name="username" value="<?php echo $username; ?>" class="form-control" placeholder="Username">
+                        <input type="text" name="username" value="<?php echo $username; ?>" class="form-control" placeholder="Username" required>
                         <?php
-                        if ($username_err !== "") {
+                        if (!empty($username_err)) {
                         ?>
-                            <span class="error-message" style="display: block; ">
+                            <span class="error-message absolute-error">
                                 <?php echo $username_err ?>
                             </span>
                         <?php
@@ -192,18 +206,9 @@ include('includes/user_actions.php');
                         <i class='bx bx-hide eye-icon'></i>
                     </div>
 
-                    <div class="col-md-4 input-container">
+                    <div class="col-md-4 input-container input-field">
                         <label for="">Confirm Password</label>
-                        <input type="password" name="confirm_password" class="form-control form-input-password" placeholder="Confirm Password">
-                        <?php
-                        if ($confirm_password_err !== "") {
-                        ?>
-                            <span class="error-message" style="display: block; ">
-                                <?php echo $confirm_password_err ?>
-                            </span>
-                        <?php
-                        }
-                        ?>
+                        <input type="password" name="confirm_password" class="form-control form-input-password confirm_password_input" placeholder="Confirm Password">
                     </div>
                 </div>
                 <div class="container d-flex justify-content-end gap-2">
