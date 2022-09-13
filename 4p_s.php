@@ -66,16 +66,36 @@ if (isset($_POST['edit_resident'])) {
     $four_ps = $_POST['four_ps'];
     $pwd = $_POST['pwd'];
 
+    $currentDate = date("Y-m-d");
+    $age = date_diff(date_create($dob), date_create($currentDate));
+    $age_result = intval($age->format("%y"));
 
-    $sql = "UPDATE residents SET first_name ='$first_name', middle_name ='$middle_name', last_name ='$last_name', occupation ='$occupation', school_attainment ='$school_attainment', skills ='$skills', blood_type ='$blood_type', residents_address = '$residents_address', gender = '$gender', dob = '$dob', citizenship = '$citizenship', civil_status = '$civil_status', household_type = '$household_type', 4p_s = '$four_ps', pwd = '$pwd' WHERE id = $id ";
-    $result = mysqli_query($conn, $sql);
 
-    if ($result) {
-        header('location: 4p_s.php?edit=success');
-        exit;
+
+
+    if ($age_result >= 60) {
+
+        $sql = "UPDATE residents SET first_name ='$first_name', middle_name ='$middle_name', last_name ='$last_name', occupation ='$occupation', school_attainment ='$school_attainment', skills ='$skills', blood_type ='$blood_type', residents_address = '$residents_address', gender = '$gender', dob = '$dob', citizenship = '$citizenship', civil_status = '$civil_status', household_type = '$household_type', 4p_s = '$four_ps', pwd = '$pwd', senior = 'Yes' WHERE id = $id ";
+        $result = mysqli_query($conn, $sql);
+
+        if ($result) {
+            header('location: 4p_s.php?edit=success');
+            exit;
+        } else {
+            header('location: 4p_s.php?edit=failed');
+            exit;
+        }
     } else {
-        header('location: 4p_s.php?edit=failed');
-        exit;
+        $sql = "UPDATE residents SET first_name ='$first_name', middle_name ='$middle_name', last_name ='$last_name', occupation ='$occupation', school_attainment ='$school_attainment', skills ='$skills', blood_type ='$blood_type', residents_address = '$residents_address', gender = '$gender', dob = '$dob', citizenship = '$citizenship', civil_status = '$civil_status', household_type = '$household_type', 4p_s = '$four_ps', pwd = '$pwd', senior = 'No' WHERE id = $id ";
+        $result = mysqli_query($conn, $sql);
+
+        if ($result) {
+            header('location: 4p_s.php?edit=success');
+            exit;
+        } else {
+            header('location: 4p_s.php?edit=failed');
+            exit;
+        }
     }
 }
 
@@ -94,26 +114,26 @@ if (isset($_POST['edit_resident'])) {
     <style>
         <?php
         if (!isset($_GET['edit'])) {
-        ?>
-            .alert.edit {
-                display: none;
-            }
+        ?>.alert.edit {
+            display: none;
+        }
+
         <?php
         }
 
         if (!isset($_GET['delete'])) {
-        ?>
-            .alert.delete {
-                display: none;
-            }
+        ?>.alert.delete {
+            display: none;
+        }
+
         <?php
         }
 
         if (!isset($_GET['add'])) {
-        ?>
-            .alert.add {
-                display: none;
-            }
+        ?>.alert.add {
+            display: none;
+        }
+
         <?php
         }
         ?>
@@ -210,32 +230,32 @@ if (isset($_POST['edit_resident'])) {
 
     <!-- Edit Modal -->
     <?php
-        $sql = "SELECT * FROM residents";
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($result)) {
-            $resident_id = $row['id'];
-            $first_name = $row['first_name'];
-            $middle_name = $row['middle_name'];
-            $last_name = $row['last_name'];
-            $residents_address = $row['residents_address'];
-            $gender = $row['gender'];
-            $dob = $row['dob'];
-            $civil_status = $row['civil_status'];
-            $occupation = $row['occupation'];
-            $school_attainment = $row['school_attainment'];
-            $skills = $row['skills'];
-            $blood_type = $row['blood_type'];
-            $citizenship = $row['citizenship'];
-            $purok_id = $row['purok_id'];
-            $household_type = $row['household_type'];
-            $four_ps = $row['4p_s'];
-            $pwd = $row['pwd'];
+    $sql = "SELECT * FROM residents";
+    $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_array($result)) {
+        $resident_id = $row['id'];
+        $first_name = $row['first_name'];
+        $middle_name = $row['middle_name'];
+        $last_name = $row['last_name'];
+        $residents_address = $row['residents_address'];
+        $gender = $row['gender'];
+        $dob = $row['dob'];
+        $civil_status = $row['civil_status'];
+        $occupation = $row['occupation'];
+        $school_attainment = $row['school_attainment'];
+        $skills = $row['skills'];
+        $blood_type = $row['blood_type'];
+        $citizenship = $row['citizenship'];
+        $purok_id = $row['purok_id'];
+        $household_type = $row['household_type'];
+        $four_ps = $row['4p_s'];
+        $pwd = $row['pwd'];
 
-            if ($household_type === "Head") {
-                $household_type_result = "Head of Household";
-            } else {
-                $household_type_result = "Member of Household";
-            }
+        if ($household_type === "Head") {
+            $household_type_result = "Head of Household";
+        } else {
+            $household_type_result = "Member of Household";
+        }
 
         echo "
                 <div class='modal fade' id='edit$resident_id' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
@@ -369,10 +389,10 @@ if (isset($_POST['edit_resident'])) {
 
     <!-- Delete Resident Modal -->
     <?php
-        $sql = "SELECT * FROM residents";
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($result)) {
-            $resident_id = $row['id'];
+    $sql = "SELECT * FROM residents";
+    $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_array($result)) {
+        $resident_id = $row['id'];
 
         echo "
                 <div class='modal fade' id='delete$resident_id' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
@@ -398,27 +418,27 @@ if (isset($_POST['edit_resident'])) {
 
     <!-- Residents Profile Modal -->
     <?php
-        $sql = "SELECT * FROM residents";
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($result)) {
-            $resident_id = $row['id'];
-            $first_name = $row['first_name'];
-            $middle_name = $row['middle_name'];
-            $last_name = $row['last_name'];
-            $residents_address = $row['residents_address'];
-            $gender = $row['gender'];
-            $dob = $row['dob'];
-            $citizenship = $row['citizenship'];
-            $civil_status = $row['civil_status'];
-            $occupation = $row['occupation'];
-            $school_attainment = $row['school_attainment'];
-            $skills = $row['skills'];
-            $blood_type = $row['blood_type'];
-            $purok_id = $row['purok_id'];
-            $household_type = $row['household_type'];
-            $four_ps = $row['4p_s'];
-            $pwd = $row['pwd'];
-        ?>
+    $sql = "SELECT * FROM residents";
+    $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_array($result)) {
+        $resident_id = $row['id'];
+        $first_name = $row['first_name'];
+        $middle_name = $row['middle_name'];
+        $last_name = $row['last_name'];
+        $residents_address = $row['residents_address'];
+        $gender = $row['gender'];
+        $dob = $row['dob'];
+        $citizenship = $row['citizenship'];
+        $civil_status = $row['civil_status'];
+        $occupation = $row['occupation'];
+        $school_attainment = $row['school_attainment'];
+        $skills = $row['skills'];
+        $blood_type = $row['blood_type'];
+        $purok_id = $row['purok_id'];
+        $household_type = $row['household_type'];
+        $four_ps = $row['4p_s'];
+        $pwd = $row['pwd'];
+    ?>
         <div class="modal fade" id="view<?php echo $resident_id; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -436,11 +456,11 @@ if (isset($_POST['edit_resident'])) {
                                     <h4><?php echo $last_name . ", " . $first_name; ?><span> <?php echo $middle_name; ?></span></h4>
                                     <span>
                                         <?php
-                                            if ($household_type === "Head") {
-                                                echo "Head of Household";
-                                            } else {
-                                                echo "Member of Household";
-                                            }
+                                        if ($household_type === "Head") {
+                                            echo "Head of Household";
+                                        } else {
+                                            echo "Member of Household";
+                                        }
                                         ?>
                                     </span>
                                 </div>
@@ -508,12 +528,12 @@ if (isset($_POST['edit_resident'])) {
 
     <!-- Print Modal -->
     <?php
-        $sql = "SELECT * FROM residents";
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($result)) {
-            $resident_id = $row['id'];
+    $sql = "SELECT * FROM residents";
+    $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_array($result)) {
+        $resident_id = $row['id'];
 
-        ?>
+    ?>
         <div class="modal fade" id="print<?php echo $resident_id; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

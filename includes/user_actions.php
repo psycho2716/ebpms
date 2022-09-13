@@ -183,16 +183,31 @@ if (isset($_POST['add_resident'])) {
     $ethnicity = $_POST['ethnicity'];
     $civil_status = $_POST['civil_status'];
 
-    $query = mysqli_query($conn, "SELECT * FROM residents WHERE residents_name = '$residents_name'");
-    $fetch = mysqli_fetch_array($query);
+    $currentDate = date("Y-m-d");
+    $age = date_diff(date_create($dob), date_create($currentDate));
+    $age_result = intval($age->format("%y"));
 
-    if (!$fetch) {
-        mysqli_query($conn, "INSERT INTO residents (residents_name, residents_address, gender, dob, purok_id, barangay_id, civil_status, ethnicity)
-        VALUES('$residents_name', '$residents_address', '$gender', '$dob', '$purok_id', '$barangay_id', '$civil_status', '$ethnicity')");
 
-        header('location: residents.php?add=success');
+    if ($age_result >= 60) {
+        $query = mysqli_query($conn, "SELECT * FROM residents WHERE residents_name = '$residents_name'");
+        $fetch = mysqli_fetch_array($query);
+
+        if (!$fetch) {
+            mysqli_query($conn, "INSERT INTO residents (residents_name, residents_address, gender, dob, purok_id, barangay_id, civil_status, ethnicity, senior)
+            VALUES('$residents_name', '$residents_address', '$gender', '$dob', '$purok_id', '$barangay_id', '$civil_status', '$ethnicity', 'Yes')");
+
+            header('location: residents.php?add=success');
+        }
     } else {
-        $purok_err = " is already registered!";
+        $query = mysqli_query($conn, "SELECT * FROM residents WHERE residents_name = '$residents_name'");
+        $fetch = mysqli_fetch_array($query);
+
+        if (!$fetch) {
+            mysqli_query($conn, "INSERT INTO residents (residents_name, residents_address, gender, dob, purok_id, barangay_id, civil_status, ethnicity, senior)
+            VALUES('$residents_name', '$residents_address', '$gender', '$dob', '$purok_id', '$barangay_id', '$civil_status', '$ethnicity', 'No')");
+
+            header('location: residents.php?add=success');
+        }
     }
 }
 
@@ -236,15 +251,35 @@ if (isset($_POST['edit_resident'])) {
     $four_ps = $_POST['four_ps'];
     $pwd = $_POST['pwd'];
 
+    $currentDate = date("Y-m-d");
+    $age = date_diff(date_create($dob), date_create($currentDate));
+    $age_result = intval($age->format("%y"));
 
-    $sql = "UPDATE residents SET first_name ='$first_name', middle_name ='$middle_name', last_name ='$last_name', occupation ='$occupation', school_attainment ='$school_attainment', skills ='$skills', blood_type ='$blood_type', residents_address = '$residents_address', gender = '$gender', dob = '$dob', citizenship = '$citizenship', civil_status = '$civil_status', household_type = '$household_type', 4p_s = '$four_ps', pwd = '$pwd' WHERE id = $id ";
-    $result = mysqli_query($conn, $sql);
 
-    if ($result) {
-        header('location: residents.php?edit=success');
-        exit;
+
+
+    if ($age_result >= 60) {
+
+        $sql = "UPDATE residents SET first_name ='$first_name', middle_name ='$middle_name', last_name ='$last_name', occupation ='$occupation', school_attainment ='$school_attainment', skills ='$skills', blood_type ='$blood_type', residents_address = '$residents_address', gender = '$gender', dob = '$dob', citizenship = '$citizenship', civil_status = '$civil_status', household_type = '$household_type', 4p_s = '$four_ps', pwd = '$pwd', senior = 'Yes' WHERE id = $id ";
+        $result = mysqli_query($conn, $sql);
+
+        if ($result) {
+            header('location: residents.php?edit=success');
+            exit;
+        } else {
+            header('location: residents.php?edit=failed');
+            exit;
+        }
     } else {
-        header('location: residents.php?edit=failed');
-        exit;
+        $sql = "UPDATE residents SET first_name ='$first_name', middle_name ='$middle_name', last_name ='$last_name', occupation ='$occupation', school_attainment ='$school_attainment', skills ='$skills', blood_type ='$blood_type', residents_address = '$residents_address', gender = '$gender', dob = '$dob', citizenship = '$citizenship', civil_status = '$civil_status', household_type = '$household_type', 4p_s = '$four_ps', pwd = '$pwd', senior = 'No' WHERE id = $id ";
+        $result = mysqli_query($conn, $sql);
+
+        if ($result) {
+            header('location: residents.php?edit=success');
+            exit;
+        } else {
+            header('location: residents.php?edit=failed');
+            exit;
+        }
     }
 }

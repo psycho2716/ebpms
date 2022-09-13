@@ -127,9 +127,9 @@ $barangay_name = $row['barangay_name'];
                         </div>
                         <h1 class="text-center">
                             <?php
-                            $counters = $conn->query("SELECT COUNT(senior) AS counter FROM residents WHERE senior = 'Yes' AND barangay_id = '$barangay_id'");
-                            $counter = $counters->fetch_assoc();
-                            $senior = $counter['counter'];
+                            $sql = "SELECT * FROM residents WHERE senior = 'Yes' AND barangay_id = '$barangay_id'";
+                            $result = mysqli_query($conn, $sql);
+                            $senior = mysqli_num_rows($result);
 
                             echo $senior;
                             ?>
