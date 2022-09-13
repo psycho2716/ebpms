@@ -49,7 +49,15 @@ $barangay_name = $row['barangay_name'];
                 <a href="purok.php" class="card-link">
                     <div class="card-body mt-5 text-light">
                         <h4 class="card-title text-center">Purok/Sitio</h4>
-                        
+                        <h2 class="card-text text-center">
+                            <?php
+                            $sql = "SELECT * FROM purok WHERE barangay_id = '$barangay_id'";
+                            $result = mysqli_query($conn, $sql);
+                            $purok = mysqli_num_rows($result);
+
+                            echo $purok;
+                            ?>
+                        </h2>
                     </div>
                     <div class="card-footer">
                         <span class="text-light">More Details</span>
@@ -64,7 +72,15 @@ $barangay_name = $row['barangay_name'];
                 <a href="residents.php" class="card-link">
                     <div class="card-body mt-5 text-light">
                         <h4 class="card-title text-center">Residents</h4>
-                        
+                        <h2 class="card-text text-center">
+                            <?php
+                            $sql = "SELECT * FROM residents WHERE barangay_id = '$barangay_id'";
+                            $result = mysqli_query($conn, $sql);
+                            $residents = mysqli_num_rows($result);
+
+                            echo $residents;
+                            ?>
+                        </h2>
                     </div>
                     <div class="card-footer">
                         <span class="text-light">More Details</span>
@@ -79,7 +95,15 @@ $barangay_name = $row['barangay_name'];
                 <a href="household.php" class="card-link">
                     <div class="card-body mt-5 text-light">
                         <h4 class="card-title text-center">Household</h4>
-                        
+                        <h2 class="card-text text-center">
+                            <?php
+                            $sql = "SELECT * FROM residents WHERE household_type = 'Head' AND barangay_id = '$barangay_id'";
+                            $result = mysqli_query($conn, $sql);
+                            $household_type = mysqli_num_rows($result);
+
+                            echo $household_type;
+                            ?>
+                        </h2>
                     </div>
                     <div class="card-footer">
                         <span class="text-light">More Details</span>
@@ -94,7 +118,27 @@ $barangay_name = $row['barangay_name'];
                 <a href="beneficiaries.php" class="card-link">
                     <div class="card-body mt-5 text-light">
                         <h4 class="card-title text-center">Beneficiaries</h4>
-                        
+                        <h2 class="card-text text-center">
+                            <?php
+                            $counters = $conn->query("SELECT COUNT(pwd) AS counter FROM residents WHERE pwd = 'Yes' AND barangay_id = '$barangay_id'");
+                            $counter = $counters->fetch_assoc();
+                            $pwd = $counter['counter'];
+
+                            $counters = $conn->query("SELECT COUNT(civil_status) AS counter FROM residents WHERE civil_status = 'Single Parent' AND barangay_id = '$barangay_id'");
+                            $counter = $counters->fetch_assoc();
+                            $civil_status = $counter['counter'];
+
+                            $counters = $conn->query("SELECT COUNT(4p_s) AS counter FROM residents WHERE 4p_s = 'Yes' AND barangay_id = '$barangay_id'");
+                            $counter = $counters->fetch_assoc();
+                            $four_ps = $counter['counter'];
+
+                            $counters = $conn->query("SELECT COUNT(senior) AS counter FROM residents WHERE senior = 'Yes' AND barangay_id = '$barangay_id'");
+                            $counter = $counters->fetch_assoc();
+                            $senior = $counter['counter'];
+
+                            echo $pwd + $civil_status + $four_ps + $senior;
+                            ?>
+                        </h2>
                     </div>
                     <div class="card-footer">
                         <span class="text-light">More Details</span>
@@ -110,7 +154,13 @@ $barangay_name = $row['barangay_name'];
                     <div class="card-body mt-5 text-light">
                         <h4 class="card-title text-center">Certificates</h4>
                         <h2 class="card-text text-center">
-                            
+                            <?php
+                            $sql = "SELECT * FROM certificates WHERE barangay_id = '$barangay_id'";
+                            $result = mysqli_query($conn, $sql);
+                            $certificates = mysqli_num_rows($result);
+
+                            echo $certificates;
+                            ?>
                         </h2>
                     </div>
                     <div class="card-footer">
