@@ -228,6 +228,22 @@ if (isset($_GET['delete_resident'])) {
     }
 }
 
+// Delete Certificate
+if (isset($_GET['delete_certificate_id'])) {
+    $id = $_GET['delete_certificate_id'];
+
+    $sql = "DELETE FROM certificates WHERE id=$id";
+
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        header('location: ../certificates.php?delete=success');
+        exit;
+    } else {
+        header('location: ../certificates.php?delete=failed');
+    }
+}
+
 // Edit Resident
 if (isset($_POST['edit_resident'])) {
     // Get edit id and purok id

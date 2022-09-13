@@ -542,10 +542,10 @@ $barangay_name = $row['barangay_name'];
 
     <!-- Print Modal -->
     <?php
-    $sql = "SELECT * FROM residents";
-    $result = mysqli_query($conn, $sql);
-    while ($row = mysqli_fetch_array($result)) {
-        $resident_id = $row['id'];
+        $sql = "SELECT * FROM residents";
+        $result = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_array($result)) {
+            $resident_id = $row['id'];
 
         echo "
                 <div class='modal fade' id='print$resident_id' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
