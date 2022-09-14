@@ -268,8 +268,8 @@ while ($row = mysqli_fetch_array($result)) {
                         </div>
                         <div class="form-input-container row mb-2">
                             <div class="col">
-                                <label>Address</label>
-                                <input type="text" name="residents_address" class="form-control" required value="<?php echo $result_purok_name; ?>" placeholder="Complete Address" required>
+                                <label>Purok</label>
+                                <input type="text" name="residents_address" class="form-control" required value="<?php echo $result_purok_name; ?>" placeholder="Purok Name" required>
                             </div>
                         </div>
                         <div class="form-input-container row mb-2">
