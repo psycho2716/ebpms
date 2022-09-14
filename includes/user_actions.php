@@ -97,6 +97,7 @@ if (isset($_POST['login'])) {
 
             $_SESSION['username'] = $username;
             $_SESSION['id'] = $row['id'];
+            $_SESSION['barangay_id'] = $row['barangay_id'];
             header('location: index.php');
             exit();
         } else {
@@ -215,16 +216,34 @@ if (isset($_POST['add_resident'])) {
 if (isset($_GET['delete_resident'])) {
     $id = $_GET['delete_resident'];
     $purok_id = $_GET['purok_id'];
+    $username = $_GET['username'];
 
-    $sql = "DELETE FROM residents WHERE id=$id";
-
-    $result = mysqli_query($conn, $sql);
-
-    if ($result) {
-        header('location: residents.php?delete=success');
-        exit;
+    if (empty(trim($_POST['password']))) {
+        $password_err = "Please enter your password!";
     } else {
-        header('location: residents.php?delete=failed');
+        $password = mysqli_real_escape_string($conn, $_POST['password']);
+    }
+
+    if (empty($password_err)) {
+        $password = md5($password);
+
+        $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+        $result_query = mysqli_query($conn, $sql);
+
+        if (mysqli_num_rows($result_query) == 1) {
+            $sql = "DELETE FROM residents WHERE id=$id";
+
+            $result = mysqli_query($conn, $sql);
+
+            if ($result) {
+                header('location: residents.php?delete=success');
+                exit;
+            } else {
+                header('location: residents.php?delete=failed');
+            }
+        } else {
+            $password_err = "Incorrect Password!";
+        }
     }
 }
 

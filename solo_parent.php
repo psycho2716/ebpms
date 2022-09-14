@@ -3,18 +3,12 @@ include('includes/db.php');
 
 session_start();
 $id = $_SESSION['id'];
+$barangay_id = $_SESSION['barangay_id'];
+$username = $_SESSION['username'];
 
 if (!isset($_SESSION['id'])) {
     header('location: login.php');
 }
-
-// Fetch Barangay ID from Users
-$get_data = "SELECT * FROM users WHERE id = $id";
-$run_data = mysqli_query($conn, $get_data);
-$fetch = mysqli_fetch_assoc($run_data);
-
-$barangay_id = $fetch['barangay_id'];
-// Fetch End
 
 // Get barangay id from barangays
 $sql = "SELECT * FROM barangays WHERE barangay_id = '$barangay_id'";
@@ -30,16 +24,34 @@ $barangay_name = $row['barangay_name'];
 if (isset($_GET['delete_resident'])) {
     $id = $_GET['delete_resident'];
     $purok_id = $_GET['purok_id'];
+    $username = $_GET['username'];
 
-    $sql = "DELETE FROM residents WHERE id=$id";
-
-    $result = mysqli_query($conn, $sql);
-
-    if ($result) {
-        header('location: solo_parent.php?delete=success');
-        exit;
+    if (empty(trim($_POST['password']))) {
+        $password_err = "Please enter your password!";
     } else {
-        header('location: solo_parent.php?delete=failed');
+        $password = mysqli_real_escape_string($conn, $_POST['password']);
+    }
+
+    if (empty($password_err)) {
+        $password = md5($password);
+
+        $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+        $result_query = mysqli_query($conn, $sql);
+
+        if (mysqli_num_rows($result_query) == 1) {
+            $sql = "DELETE FROM residents WHERE id=$id";
+
+            $result = mysqli_query($conn, $sql);
+
+            if ($result) {
+                header('location: 4p_s.php?delete=success');
+                exit;
+            } else {
+                header('location: 4p_s.php?delete=failed');
+            }
+        } else {
+            $password_err = "Incorrect Password!";
+        }
     }
 }
 
@@ -114,26 +126,26 @@ if (isset($_POST['edit_resident'])) {
     <style>
         <?php
         if (!isset($_GET['edit'])) {
-        ?>
-            .alert.edit {
-                display: none;
-            }
+        ?>.alert.edit {
+            display: none;
+        }
+
         <?php
         }
 
         if (!isset($_GET['delete'])) {
-        ?>
-            .alert.delete {
-                display: none;
-            }
+        ?>.alert.delete {
+            display: none;
+        }
+
         <?php
         }
 
         if (!isset($_GET['add'])) {
-        ?>
-            .alert.add {
-                display: none;
-            }
+        ?>.alert.add {
+            display: none;
+        }
+
         <?php
         }
         ?>
@@ -155,6 +167,8 @@ if (isset($_POST['edit_resident'])) {
         <div class="alert alert-success text-center m-3 add"><span>Data has been Added!</span></div>
         <div class="alert alert-success text-center m-3 edit"><span>Data has been Edited!</span></div>
     </div>
+
+    <?php include('includes/delete_error.php'); ?>
 
     <div class="dashboard-content pt-4">
         <div class="table-container table-responsive p-2">
@@ -230,32 +244,32 @@ if (isset($_POST['edit_resident'])) {
 
     <!-- Edit Modal -->
     <?php
-        $sql = "SELECT * FROM residents";
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($result)) {
-            $resident_id = $row['id'];
-            $first_name = $row['first_name'];
-            $middle_name = $row['middle_name'];
-            $last_name = $row['last_name'];
-            $residents_address = $row['residents_address'];
-            $gender = $row['gender'];
-            $dob = $row['dob'];
-            $civil_status = $row['civil_status'];
-            $occupation = $row['occupation'];
-            $school_attainment = $row['school_attainment'];
-            $skills = $row['skills'];
-            $blood_type = $row['blood_type'];
-            $citizenship = $row['citizenship'];
-            $purok_id = $row['purok_id'];
-            $household_type = $row['household_type'];
-            $four_ps = $row['4p_s'];
-            $pwd = $row['pwd'];
+    $sql = "SELECT * FROM residents";
+    $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_array($result)) {
+        $resident_id = $row['id'];
+        $first_name = $row['first_name'];
+        $middle_name = $row['middle_name'];
+        $last_name = $row['last_name'];
+        $residents_address = $row['residents_address'];
+        $gender = $row['gender'];
+        $dob = $row['dob'];
+        $civil_status = $row['civil_status'];
+        $occupation = $row['occupation'];
+        $school_attainment = $row['school_attainment'];
+        $skills = $row['skills'];
+        $blood_type = $row['blood_type'];
+        $citizenship = $row['citizenship'];
+        $purok_id = $row['purok_id'];
+        $household_type = $row['household_type'];
+        $four_ps = $row['4p_s'];
+        $pwd = $row['pwd'];
 
-            if ($household_type === "Head") {
-                $household_type_result = "Head of Household";
-            } else {
-                $household_type_result = "Member of Household";
-            }
+        if ($household_type === "Head") {
+            $household_type_result = "Head of Household";
+        } else {
+            $household_type_result = "Member of Household";
+        }
 
         echo "
                 <div class='modal fade' id='edit$resident_id' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
@@ -387,34 +401,8 @@ if (isset($_POST['edit_resident'])) {
     }
     ?>
 
-    <!-- Delete Resident Modal -->
-    <?php
-        $sql = "SELECT * FROM residents";
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($result)) {
-            $resident_id = $row['id'];
+    <?php include('includes/delete_modals.php'); ?>
 
-        echo "
-                <div class='modal fade' id='delete$resident_id' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
-                    <div class='modal-dialog'>
-                        <div class='modal-content'>
-                            <div class='modal-header bg-dark text-light'>
-                                <h5 class='modal-title' id='staticBackdropLabel'>Are you sure you want to delete?</h5>
-                                <button type='button' class='btn-close bg-light' data-bs-dismiss='modal' aria-label='Close'></button>
-                            </div>
-                            <div class='modal-body'>
-                                <h6>Resident data will be deleted.</h6>
-                            </div>
-                            <div class='modal-footer'>
-                                <a href='solo_parent.php?delete_resident=$resident_id' type='button' class='btn btn-danger'>Delete</a>
-                                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            ";
-    }
-    ?>
 
     <!-- Residents Profile Modal -->
     <?php
@@ -456,11 +444,11 @@ if (isset($_POST['edit_resident'])) {
                                     <h4><?php echo $last_name . ", " . $first_name; ?><span> <?php echo $middle_name; ?></span></h4>
                                     <span>
                                         <?php
-                                            if ($household_type === "Head") {
-                                                echo "Head of Household";
-                                            } else {
-                                                echo "Member of Household";
-                                            }
+                                        if ($household_type === "Head") {
+                                            echo "Head of Household";
+                                        } else {
+                                            echo "Member of Household";
+                                        }
                                         ?>
                                     </span>
                                 </div>
@@ -528,12 +516,12 @@ if (isset($_POST['edit_resident'])) {
 
     <!-- Print Modal -->
     <?php
-        $sql = "SELECT * FROM residents";
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($result)) {
-            $resident_id = $row['id'];
+    $sql = "SELECT * FROM residents";
+    $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_array($result)) {
+        $resident_id = $row['id'];
 
-        ?>
+    ?>
         <div class="modal fade" id="print<?php echo $resident_id; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -543,7 +531,7 @@ if (isset($_POST['edit_resident'])) {
                     </div>
                     <div class="cert-modal-body modal-body">
                         <ol>
-                        <li>
+                            <li>
                                 <a href="certs/barangay_clearance.php?resident_id=<?php echo $resident_id; ?>&&purok_id=<?php echo $purok_id; ?>&&solo_parent">Barangay Clearance</a>
                             </li>
                             <li>

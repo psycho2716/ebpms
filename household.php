@@ -3,18 +3,12 @@ include('includes/db.php');
 
 session_start();
 $id = $_SESSION['id'];
+$barangay_id = $_SESSION['barangay_id'];
+$username = $_SESSION['username'];
 
 if (!isset($_SESSION['id'])) {
     header('location: login.php');
 }
-
-// Fetch Barangay ID from Users
-$get_data = "SELECT * FROM users WHERE id = $id";
-$run_data = mysqli_query($conn, $get_data);
-$fetch = mysqli_fetch_assoc($run_data);
-
-$barangay_id = $fetch['barangay_id'];
-// Fetch End
 
 // Get barangay id from barangays
 $sql = "SELECT * FROM barangays WHERE barangay_id = '$barangay_id'";
@@ -30,16 +24,34 @@ $barangay_name = $row['barangay_name'];
 if (isset($_GET['delete_resident'])) {
     $id = $_GET['delete_resident'];
     $purok_id = $_GET['purok_id'];
+    $username = $_GET['username'];
 
-    $sql = "DELETE FROM residents WHERE id=$id";
-
-    $result = mysqli_query($conn, $sql);
-
-    if ($result) {
-        header('location: 4p_s.php?delete=success');
-        exit;
+    if (empty(trim($_POST['password']))) {
+        $password_err = "Please enter your password!";
     } else {
-        header('location: 4p_s.php?delete=failed');
+        $password = mysqli_real_escape_string($conn, $_POST['password']);
+    }
+
+    if (empty($password_err)) {
+        $password = md5($password);
+
+        $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+        $result_query = mysqli_query($conn, $sql);
+
+        if (mysqli_num_rows($result_query) == 1) {
+            $sql = "DELETE FROM residents WHERE id=$id";
+
+            $result = mysqli_query($conn, $sql);
+
+            if ($result) {
+                header('location: household.php?delete=success');
+                exit;
+            } else {
+                header('location: household.php?delete=failed');
+            }
+        } else {
+            $password_err = "Incorrect Password!";
+        }
     }
 }
 
@@ -156,6 +168,8 @@ if (isset($_POST['edit_resident'])) {
         <div class="alert alert-success text-center m-3 edit"><span>Data has been Edited!</span></div>
     </div>
 
+    <?php include('includes/delete_error.php'); ?>
+    
     <div class="dashboard-content pt-4">
         <div class="table-container table-responsive p-2">
             <table class="table table-striped table-hover table-sm text-center align-middle" id="datatable">
@@ -387,34 +401,8 @@ if (isset($_POST['edit_resident'])) {
     }
     ?>
 
-    <!-- Delete Resident Modal -->
-    <?php
-    $sql = "SELECT * FROM residents";
-    $result = mysqli_query($conn, $sql);
-    while ($row = mysqli_fetch_array($result)) {
-        $resident_id = $row['id'];
-
-        echo "
-                <div class='modal fade' id='delete$resident_id' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
-                    <div class='modal-dialog'>
-                        <div class='modal-content'>
-                            <div class='modal-header bg-dark text-light'>
-                                <h5 class='modal-title' id='staticBackdropLabel'>Are you sure you want to delete?</h5>
-                                <button type='button' class='btn-close bg-light' data-bs-dismiss='modal' aria-label='Close'></button>
-                            </div>
-                            <div class='modal-body'>
-                                <h6>Resident data will be deleted.</h6>
-                            </div>
-                            <div class='modal-footer'>
-                                <a href='4p_s.php?delete_resident=$resident_id' type='button' class='btn btn-danger'>Delete</a>
-                                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            ";
-    }
-    ?>
+    <!-- Delete Modals -->
+    <?php include('includes/delete_modals.php'); ?>
 
     <!-- Residents Profile Modal -->
     <?php

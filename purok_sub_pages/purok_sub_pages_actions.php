@@ -1,6 +1,8 @@
 <?php
 include('../includes/db.php');
 
+$password_err = "";
+
 // Add Resident
 if (isset($_POST['add_resident'])) {
     $purok_id = $_GET['purok_id'];
@@ -33,16 +35,34 @@ if (isset($_POST['add_resident'])) {
 if (isset($_GET['delete_resident'])) {
     $id = $_GET['delete_resident'];
     $purok_id = $_GET['purok_id'];
+    $username = $_GET['username'];
 
-    $sql = "DELETE FROM residents WHERE id=$id";
-
-    $result = mysqli_query($conn, $sql);
-
-    if ($result) {
-        header('location: view_purok.php?purok_id=' . $purok_id . '&&delete=success');
-        exit;
+    if (empty(trim($_POST['password']))) {
+        $password_err = "Please enter your password!";
     } else {
-        header('location: view_purok.php?purok_id=' . $purok_id . '&&delete=failed');
+        $password = mysqli_real_escape_string($conn, $_POST['password']);
+    }
+
+    if (empty($password_err)) {
+        $password = md5($password);
+
+        $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+        $result_query = mysqli_query($conn, $sql);
+
+        if (mysqli_num_rows($result_query) == 1) {
+            $sql = "DELETE FROM residents WHERE id=$id";
+
+            $result = mysqli_query($conn, $sql);
+
+            if ($result) {
+                header('location: view_purok.php?purok_id=' . $purok_id . '&&delete=success');
+                exit;
+            } else {
+                header('location: view_purok.php?purok_id=' . $purok_id . '&&delete=failed');
+            }
+        } else {
+            $password_err = "Incorrect Password!";
+        }
     }
 }
 

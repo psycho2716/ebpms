@@ -1,5 +1,6 @@
 <?php
 include('../includes/db.php');
+include('purok_sub_pages_actions.php');
 
 session_start();
 $id = $_SESSION['id'];
@@ -179,6 +180,8 @@ $result_purok_img = $purok_data['img'];
     <?php
     }
     ?>
+
+    <?php include('delete_error.php'); ?>
 
     <div class="dashboard-content pt-5">
         <div class="table-container table-responsive p-2">

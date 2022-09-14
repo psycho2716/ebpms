@@ -67,7 +67,7 @@ if (isset($_SESSION['id'])) {
                     <div class="row mb-3">
                         <div class="col input-container">
                             <label for="username">Password</label>
-                            <input type="password" class="form-control form-input-password" name="password" placeholder="Enter Password">
+                            <input type="password" class="form-control form-input-password" id="passwordInput" name="password" placeholder="Enter Password">
                             <i class='bx bx-hide eye-icon'></i>
                         </div>
                         <div class="input-container">
@@ -94,8 +94,25 @@ if (isset($_SESSION['id'])) {
         </div>
     </div>
 
+    <script>
+        const pwdShowHide = document.querySelector(".eye-icon");
 
-    <?php include('includes/foot.php'); ?>
+        // password show and hide
+        pwdShowHide.addEventListener('click', () => {
+            let pwFields = document.getElementById("passwordInput");
+
+            if (pwFields.type === "password") {
+                pwFields.type = "text";
+                pwdShowHide.classList.replace("bx-hide", "bx-show");
+
+            } else {
+                pwFields.type = "password";
+                pwdShowHide.classList.replace("bx-show", "bx-hide");
+            }
+        })
+    </script>
+
+    
 </body>
 
 </html>

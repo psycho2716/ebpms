@@ -1,21 +1,15 @@
 <?php
-include('includes/db.php');
-include('includes/user_actions.php');
-
 session_start();
 $id = $_SESSION['id'];
+$barangay_id = $_SESSION['barangay_id'];
+$username = $_SESSION['username'];
+
+include('includes/db.php');
+include('includes/user_actions.php');
 
 if (!isset($_SESSION['id'])) {
     header('location: login.php');
 }
-
-// Fetch Barangay ID from Users
-$get_data = "SELECT * FROM users WHERE id = $id";
-$run_data = mysqli_query($conn, $get_data);
-$fetch = mysqli_fetch_assoc($run_data);
-
-$barangay_id = $fetch['barangay_id'];
-// Fetch End
 
 // Get barangay id from barangays
 $sql = "SELECT * FROM barangays WHERE barangay_id = '$barangay_id'";
@@ -168,7 +162,9 @@ $barangay_name = $row['barangay_name'];
     <?php
     }
     ?>
-
+    
+    <?php include('includes/delete_error.php'); ?>
+    
     <div class="dashboard-content pt-4">
         <div class="table-container table-responsive p-2">
             <table class="table table-striped table-hover table-sm text-center align-middle" id="datatable">
@@ -510,42 +506,14 @@ $barangay_name = $row['barangay_name'];
     }
     ?>
 
-    <!-- Delete Modal -->
+    <?php include('includes/delete_modals.php'); ?>
+
+    <!-- Print Modal -->
     <?php
     $sql = "SELECT * FROM residents";
     $result = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_array($result)) {
         $resident_id = $row['id'];
-        $purok_id = $row['purok_id'];
-
-        echo "
-                    <div class='modal fade' id='delete$resident_id' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
-                        <div class='modal-dialog'>
-                            <div class='modal-content'>
-                                <div class='modal-header bg-dark text-light'>
-                                    <h5 class='modal-title' id='staticBackdropLabel'>Are you sure you want to delete?</h5>
-                                    <button type='button' class='btn-close bg-light' data-bs-dismiss='modal' aria-label='Close'></button>
-                                </div>
-                                <div class='modal-body'>
-                                    <h6>Resident data will be deleted.</h6>
-                                </div>
-                                <div class='modal-footer'>
-                                    <a href='residents.php?delete_resident=$resident_id&&purok_id=$purok_id' type='button' class='btn btn-danger'>Delete</a>
-                                    <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                ";
-    }
-    ?>
-
-    <!-- Print Modal -->
-    <?php
-        $sql = "SELECT * FROM residents";
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($result)) {
-            $resident_id = $row['id'];
 
         echo "
                 <div class='modal fade' id='print$resident_id' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
