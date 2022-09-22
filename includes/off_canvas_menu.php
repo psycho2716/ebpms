@@ -28,9 +28,6 @@
                 <li class="<?= ($activePage == 'residents') ? 'active' : ''; ?>">
                     <a href="residents.php" class="sidebar-link">Residents</a>
                 </li>
-                <li class="<?= ($activePage == 'certificates') ? 'active' : ''; ?>">
-                    <a href="certificates.php" class="sidebar-link">Certificates</a>
-                </li>
                 <li class="<?= ($activePage == 'officials') ? 'active' : ''; ?>">
                     <a href="officials.php?barangay_id=<?php echo $result_barangay_id; ?>" class="sidebar-link">Barangay Officials</a>
                 </li>

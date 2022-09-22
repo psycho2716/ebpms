@@ -146,30 +146,6 @@ $barangay_name = $row['barangay_name'];
                     <div class="shine"></div>
                 </a>
             </div>
-            <div class="card dashboard-card h-100">
-                <div class="icon-background">
-                    <i class="fa-solid fa-certificate card-logo"></i>
-                </div>
-                <a href="certificates.php" class="card-link">
-                    <div class="card-body mt-5 text-light">
-                        <h4 class="card-title text-center">Certificates</h4>
-                        <h2 class="card-text text-center">
-                            <?php
-                            $sql = "SELECT * FROM certificates WHERE barangay_id = '$barangay_id'";
-                            $result = mysqli_query($conn, $sql);
-                            $certificates = mysqli_num_rows($result);
-
-                            echo $certificates;
-                            ?>
-                        </h2>
-                    </div>
-                    <div class="card-footer">
-                        <span class="text-light">More Details</span>
-                    </div>
-                    <div class="shine"></div>
-                </a>
-            </div>
-
         </div>
 
     </div>
